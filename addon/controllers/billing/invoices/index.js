@@ -92,7 +92,7 @@ export default class BillingInvoicesIndexController extends Controller {
             {
                 label: this.intl.t('column.status'),
                 valuePath: 'status',
-                cellComponent: 'table/cell/status',
+                cellComponent: 'table/cell/ledger-status',
                 resizable: true,
                 sortable: true,
                 filterable: true,

@@ -66,7 +66,8 @@ export default class InvoiceTransactionsComponent extends Component {
             {
                 label: this.intl.t('column.type'),
                 valuePath: 'type',
-                humanize: true,
+                cellComponent: 'table/cell/ledger-label',
+                labelNamespace: 'transaction-type',
                 resizable: true,
                 sortable: false,
             },
@@ -74,7 +75,8 @@ export default class InvoiceTransactionsComponent extends Component {
             {
                 label: this.intl.t('column.direction'),
                 valuePath: 'direction',
-                humanize: true,
+                cellComponent: 'table/cell/ledger-label',
+                labelNamespace: 'direction',
                 resizable: true,
                 sortable: false,
             },
@@ -90,7 +92,7 @@ export default class InvoiceTransactionsComponent extends Component {
             {
                 label: this.intl.t('column.status'),
                 valuePath: 'status',
-                cellComponent: 'table/cell/status',
+                cellComponent: 'table/cell/ledger-status',
                 resizable: true,
                 sortable: false,
             },

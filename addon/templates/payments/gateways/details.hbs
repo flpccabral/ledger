@@ -10,7 +10,7 @@
                         <div class="flex flex-wrap items-center gap-2">
                             <h1 class="truncate text-lg font-bold text-gray-900 dark:text-gray-100">{{or @model.name @model.driver}}</h1>
                             <Badge @status={{@model.status}} @hideStatusDot={{true}}>{{this.statusLabel}}</Badge>
-                            <Badge @color={{if (eq @model.environment "live") "success" "warning"}}>{{titleize @model.environment}}</Badge>
+                            <Badge @color={{if (eq @model.environment "live") "success" "warning"}}>{{ledger-label @model.environment "environment"}}</Badge>
                         </div>
                         <div class="mt-1 text-sm text-gray-500 dark:text-gray-300">
                             {{titleize @model.driver}}

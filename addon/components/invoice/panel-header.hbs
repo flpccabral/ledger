@@ -7,7 +7,7 @@
                     <span class="text-sm text-gray-500 dark:text-gray-400">{{@resource.customerName}}</span>
                 {{/if}}
                 <Badge @status={{@resource.status}} @color={{@resource.statusBadgeColor}}>
-                    {{titleize @resource.status}}
+                    {{ledger-label @resource.status}}
                 </Badge>
             </div>
         </div>

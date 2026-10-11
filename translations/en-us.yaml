@@ -1,5 +1,90 @@
 ledger:
   extension-name: Ledger
+  status:
+    draft: Draft
+    sent: Sent
+    viewed: Viewed
+    partial: Partial
+    paid: Paid
+    partial_refund_pending: Partial Refund Pending
+    refund_pending: Refund Pending
+    refunded: Refunded
+    overdue: Overdue
+    void: Void
+    voided: Voided
+    cancelled: Cancelled
+    canceled: Canceled
+    active: Active
+    inactive: Inactive
+    frozen: Frozen
+    suspended: Suspended
+    closed: Closed
+    pending: Pending
+    processing: Processing
+    success: Success
+    succeeded: Succeeded
+    completed: Completed
+    failed: Failed
+    reversed: Reversed
+    expired: Expired
+    posted: Posted
+    ok: OK
+    error: Error
+    unsupported: Unsupported
+    not_checked: Not Checked
+    verified: Verified
+    configured: Configured
+    unpaid: Unpaid
+    partially_paid: Partially Paid
+    partially_refunded: Partially Refunded
+    settled: Settled
+    seen: Seen
+  environment:
+    live: Live
+    sandbox: Sandbox
+  transaction-type:
+    wallet_deposit: Wallet Deposit
+    wallet_withdrawal: Wallet Withdrawal
+    wallet_transfer: Wallet Transfer
+    gateway_charge: Gateway Charge
+    gateway_refund: Gateway Refund
+    gateway_payout: Gateway Payout
+    adjustment: Adjustment
+    earning: Earning
+    fee: Fee
+    invoice_payment: Invoice Payment
+    refund: Refund
+    payment: Payment
+    deposit: Deposit
+    withdrawal: Withdrawal
+    transfer: Transfer
+    transfer_in: Transfer In
+    transfer_out: Transfer Out
+    manual_entry: Manual Entry
+    charge: Charge
+    payout: Payout
+  direction:
+    credit: Credit
+    debit: Debit
+  payment-method:
+    card: Card
+    bank_transfer: Bank Transfer
+    wallet: Wallet
+    cash: Cash
+    cheque: Cheque
+    credit_card: Credit Card
+    debit_card: Debit Card
+    paypal: PayPal
+    stripe: Stripe
+    other: Other
+  wallet-type:
+    driver: Driver
+    customer: Customer
+    company: Company
+    system: System
+    contact: Contact
+    vendor: Vendor
+    user: User
   common:
     actions: Actions
     active: Active
@@ -29,7 +114,6 @@ ledger:
     checkout-readiness: Checkout Readiness
     cheque: Cheque
     choose-payment-gateway: Choose Payment Gateway
-    company: Company
     configuration: Configuration
     configured: Configured
     connect-gateway: Connect gateway
@@ -269,7 +353,6 @@ ledger:
     unfreeze-wallet: Unfreeze Wallet
     unit-price: Unit Price
     unnamed-gateway: Unnamed gateway
-    user: User
     verified: Verified
     view: View
     view-refunds: View Refunds
@@ -530,6 +613,7 @@ ledger:
       title: Template Preview
 
 common:
+  unauthorized-access: You are not authorized to access this resource.
   ledger: Ledger
   overview: Overview
   transactions: Transactions

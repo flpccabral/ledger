@@ -165,7 +165,7 @@
                                         @disabled={{cannot-write @resource}}
                                         as |option|
                                     >
-                                        <div class="capitalize text-sm">{{option}}</div>
+                                        <div class="text-sm">{{ledger-label option "environment"}}</div>
                                     </PowerSelect>
                                 </div>
                             </InputGroup>
@@ -181,7 +181,7 @@
                                         @disabled={{cannot-write @resource}}
                                         as |option|
                                     >
-                                        <div class="capitalize text-sm">{{option}}</div>
+                                        <div class="text-sm">{{ledger-label option "status"}}</div>
                                     </PowerSelect>
                                 </div>
                             </InputGroup>
@@ -219,7 +219,7 @@
                             </div>
                             <div class="flex items-center justify-between gap-3 rounded-md border border-gray-200 p-2 dark:border-gray-700">
                                 <span class="text-gray-500 dark:text-gray-300">{{t "column.environment"}}</span>
-                                <span class="font-semibold capitalize text-gray-900 dark:text-gray-100">{{or @resource.environment "sandbox"}}</span>
+                                <span class="font-semibold text-gray-900 dark:text-gray-100">{{ledger-label (or @resource.environment "sandbox") "environment"}}</span>
                             </div>
                         </div>
                     </aside>
@@ -240,8 +240,8 @@
                             </div>
                             <div class="rounded-md border border-gray-200 p-3 dark:border-gray-700">
                                 <div class="text-[11px] font-semibold uppercase text-gray-400 dark:text-gray-500">{{t "ledger.common.mode"}}</div>
-                                <div class="mt-2 text-sm font-bold capitalize text-gray-900 dark:text-gray-100">{{or @resource.environment "sandbox"}}</div>
-                                <div class="mt-1 text-xs capitalize text-gray-500 dark:text-gray-300">{{or @resource.status "active"}}</div>
+                                <div class="mt-2 text-sm font-bold text-gray-900 dark:text-gray-100">{{ledger-label (or @resource.environment "sandbox") "environment"}}</div>
+                                <div class="mt-1 text-xs text-gray-500 dark:text-gray-300">{{ledger-label (or @resource.status "active")}}</div>
                             </div>
                         </div>
 

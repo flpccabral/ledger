@@ -1,5 +1,90 @@
 ledger:
   extension-name: Ledger
+  status:
+    draft: Rascunho
+    sent: Enviada
+    viewed: Visualizada
+    partial: Parcial
+    paid: Paga
+    partial_refund_pending: Reembolso Parcial Pendente
+    refund_pending: Reembolso Pendente
+    refunded: Reembolsada
+    overdue: Vencida
+    void: Anulada
+    voided: Anulada
+    cancelled: Cancelada
+    canceled: Cancelada
+    active: Ativo
+    inactive: Inativo
+    frozen: Bloqueada
+    suspended: Suspensa
+    closed: Encerrada
+    pending: Pendente
+    processing: Processando
+    success: Sucesso
+    succeeded: Concluída
+    completed: Concluída
+    failed: Falhou
+    reversed: Estornada
+    expired: Expirada
+    posted: Lançado
+    ok: OK
+    error: Erro
+    unsupported: Não suportado
+    not_checked: Não verificado
+    verified: Verificado
+    configured: Configurado
+    unpaid: Não paga
+    partially_paid: Parcialmente paga
+    partially_refunded: Parcialmente reembolsada
+    settled: Liquidada
+    seen: Recebido
+  environment:
+    live: Produção
+    sandbox: Sandbox
+  transaction-type:
+    wallet_deposit: Depósito na Carteira
+    wallet_withdrawal: Saque da Carteira
+    wallet_transfer: Transferência entre Carteiras
+    gateway_charge: Cobrança no Gateway
+    gateway_refund: Reembolso no Gateway
+    gateway_payout: Repasse do Gateway
+    adjustment: Ajuste
+    earning: Ganho
+    fee: Taxa
+    invoice_payment: Pagamento de Fatura
+    refund: Reembolso
+    payment: Pagamento
+    deposit: Depósito
+    withdrawal: Saque
+    transfer: Transferência
+    transfer_in: Transferência Recebida
+    transfer_out: Transferência Enviada
+    manual_entry: Lançamento Manual
+    charge: Cobrança
+    payout: Repasse
+  direction:
+    credit: Crédito
+    debit: Débito
+  payment-method:
+    card: Cartão
+    bank_transfer: Transferência Bancária
+    wallet: Carteira
+    cash: Dinheiro
+    cheque: Cheque
+    credit_card: Cartão de Crédito
+    debit_card: Cartão de Débito
+    paypal: PayPal
+    stripe: Stripe
+    other: Outro
+  wallet-type:
+    driver: Motorista
+    customer: Cliente
+    company: Empresa
+    system: Sistema
+    contact: Contato
+    vendor: Fornecedor
+    user: Usuário
   common:
     actions: Ações
     active: Ativo
@@ -29,7 +114,6 @@ ledger:
     checkout-readiness: Prontidão para Pagamento
     cheque: Cheque
     choose-payment-gateway: Escolher Gateway de Pagamento
-    company: Empresa
     configuration: Configuração
     configured: Configurado
     connect-gateway: Conectar gateway
@@ -269,7 +353,6 @@ ledger:
     unfreeze-wallet: Desbloquear Carteira
     unit-price: Preço Unitário
     unnamed-gateway: Gateway sem nome
-    user: Usuário
     verified: Verificado
     view: Ver
     view-refunds: Ver Reembolsos
@@ -530,6 +613,7 @@ ledger:
       title: Pré-visualização do Modelo
 
 common:
+  unauthorized-access: Você não tem autorização para acessar este recurso.
   ledger: Ledger
   overview: Visão Geral
   transactions: Transações

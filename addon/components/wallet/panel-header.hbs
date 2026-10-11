@@ -3,7 +3,7 @@
         <div class="flex flex-col">
             <h1 class="text-gray-900 dark:text-white font-semibold text-lg">{{n-a @resource.name}}</h1>
             <div class="flex flex-row items-center space-x-2 mt-0.5">
-                <Badge @status={{@resource.status}}>{{titleize @resource.status}}</Badge>
+                <Badge @status={{@resource.status}}>{{ledger-label @resource.status}}</Badge>
                 <Badge @status="info" @hideStatusDot={{true}}>{{n-a @resource.currency}}</Badge>
                 {{#if @resource.is_frozen}}
                     <Badge @color="blue">{{t "column.frozen"}}</Badge>

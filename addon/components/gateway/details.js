@@ -4,6 +4,7 @@ import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { task } from 'ember-concurrency';
 import copyToClipboard from '@fleetbase/ember-core/utils/copy-to-clipboard';
+import ledgerLabel from '../../utils/ledger-label';
 
 export default class GatewayDetailsComponent extends Component {
     @service fetch;
@@ -205,7 +206,7 @@ export default class GatewayDetailsComponent extends Component {
             },
             {
                 label: this.intl.t('ledger.common.credentials'),
-                value: this.credentialStatus === 'not_checked' ? this.intl.t('ledger.common.not-checked-2') : this.credentialStatus,
+                value: this.credentialStatus === 'not_checked' ? this.intl.t('ledger.common.not-checked-2') : ledgerLabel(this.intl, this.credentialStatus),
                 caption: this.lastCredentialTestMessage,
                 date: this.lastCredentialTestedAt,
                 icon: 'key',
@@ -234,7 +235,7 @@ export default class GatewayDetailsComponent extends Component {
             },
             {
                 label: this.intl.t('ledger.common.settlement'),
-                value: this.reconciliationStatus ?? this.intl.t('ledger.common.not-checked-2'),
+                value: this.reconciliationStatus ? ledgerLabel(this.intl, this.reconciliationStatus) : this.intl.t('ledger.common.not-checked-2'),
                 date: this.lastSettlementAt,
                 icon: 'scale-balanced',
                 status: this.reconciliationStatus ? 'success' : 'warning',

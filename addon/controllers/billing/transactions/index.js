@@ -23,7 +23,7 @@ export default class BillingTransactionsIndexController extends Controller {
         { label: this.intl.t('resource.gateway'), valuePath: 'gateway_code', width: '120px' },
         { label: this.intl.t('column.customer'), valuePath: 'customer_name', width: '160px' },
         { label: this.intl.t('column.amount'), valuePath: 'formatted_amount', width: '120px', sortable: true },
-        { label: this.intl.t('column.status'), valuePath: 'status', width: '100px', component: 'table/cell/status' },
+        { label: this.intl.t('column.status'), valuePath: 'status', width: '100px', component: 'table/cell/ledger-status' },
     ];
 
     get actionButtons() {

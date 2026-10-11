@@ -25,7 +25,7 @@ export default class WalletsIndexController extends Controller {
         { label: this.intl.t('column.type'), valuePath: 'type_label', width: '100px' },
         { label: this.intl.t('column.currency'), valuePath: 'currency', width: '80px' },
         { label: this.intl.t('column.balance'), valuePath: 'formatted_balance', width: '140px', sortable: true },
-        { label: this.intl.t('column.status'), valuePath: 'status_label', width: '100px', component: 'table/cell/status' },
+        { label: this.intl.t('column.status'), valuePath: 'status', width: '100px', component: 'table/cell/ledger-status' },
     ];
 
     get actionButtons() {

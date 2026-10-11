@@ -33,7 +33,7 @@
                         <p class="text-indigo-200 text-xs uppercase tracking-widest font-semibold mb-1">{{t "resource.invoice"}}</p>
                         <h1 class="text-white text-2xl font-bold">{{this.invoice.number}}</h1>
                     </div>
-                    <Badge @status={{this.invoice.status}} />
+                    <Badge @status={{this.invoice.status}} @text={{ledger-label this.invoice.status}} @disableHumanize={{true}} />
                 </div>
 
                 {{! Invoice meta }}

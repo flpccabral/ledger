@@ -1,5 +1,6 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
+import ledgerLabel from '../../../utils/ledger-label';
 import { tracked } from '@glimmer/tracking';
 
 export default class PaymentsTransactionsIndexController extends Controller {
@@ -101,18 +102,32 @@ export default class PaymentsTransactionsIndexController extends Controller {
             {
                 label: this.intl.t('column.type'),
                 valuePath: 'type',
+                cellComponent: 'table/cell/ledger-label',
+                labelNamespace: 'transaction-type',
                 resizable: true,
                 sortable: true,
                 filterable: true,
                 filterParam: 'type',
                 filterComponent: 'filter/multi-option',
-                filterOptions: ['wallet_deposit', 'wallet_withdrawal', 'wallet_transfer', 'gateway_charge', 'gateway_refund', 'gateway_payout', 'adjustment', 'earning', 'fee'],
+                filterOptionLabel: 'label',
+                filterOptionValue: 'value',
+                filterOptions: [
+                    { label: ledgerLabel(this.intl, 'wallet_deposit', 'transaction-type'), value: 'wallet_deposit' },
+                    { label: ledgerLabel(this.intl, 'wallet_withdrawal', 'transaction-type'), value: 'wallet_withdrawal' },
+                    { label: ledgerLabel(this.intl, 'wallet_transfer', 'transaction-type'), value: 'wallet_transfer' },
+                    { label: ledgerLabel(this.intl, 'gateway_charge', 'transaction-type'), value: 'gateway_charge' },
+                    { label: ledgerLabel(this.intl, 'gateway_refund', 'transaction-type'), value: 'gateway_refund' },
+                    { label: ledgerLabel(this.intl, 'gateway_payout', 'transaction-type'), value: 'gateway_payout' },
+                    { label: ledgerLabel(this.intl, 'adjustment', 'transaction-type'), value: 'adjustment' },
+                    { label: ledgerLabel(this.intl, 'earning', 'transaction-type'), value: 'earning' },
+                    { label: ledgerLabel(this.intl, 'fee', 'transaction-type'), value: 'fee' },
+                ],
             },
             {
                 label: this.intl.t('column.direction'),
                 valuePath: 'direction',
-                cellComponent: 'table/cell/base',
-                humanize: true,
+                cellComponent: 'table/cell/ledger-label',
+                labelNamespace: 'direction',
                 resizable: true,
                 sortable: true,
                 filterable: true,
@@ -137,25 +152,43 @@ export default class PaymentsTransactionsIndexController extends Controller {
             {
                 label: this.intl.t('column.status'),
                 valuePath: 'status',
-                cellComponent: 'table/cell/status',
+                cellComponent: 'table/cell/ledger-status',
                 resizable: true,
                 sortable: true,
                 filterable: true,
                 filterParam: 'status',
                 filterComponent: 'filter/multi-option',
-                filterOptions: ['pending', 'success', 'failed', 'cancelled', 'voided', 'reversed', 'expired'],
+                filterOptionLabel: 'label',
+                filterOptionValue: 'value',
+                filterOptions: [
+                    { label: ledgerLabel(this.intl, 'pending', 'status'), value: 'pending' },
+                    { label: ledgerLabel(this.intl, 'success', 'status'), value: 'success' },
+                    { label: ledgerLabel(this.intl, 'failed', 'status'), value: 'failed' },
+                    { label: ledgerLabel(this.intl, 'cancelled', 'status'), value: 'cancelled' },
+                    { label: ledgerLabel(this.intl, 'voided', 'status'), value: 'voided' },
+                    { label: ledgerLabel(this.intl, 'reversed', 'status'), value: 'reversed' },
+                    { label: ledgerLabel(this.intl, 'expired', 'status'), value: 'expired' },
+                ],
             },
             {
                 label: this.intl.t('ledger.common.settlement'),
                 valuePath: 'settlement_status',
-                cellComponent: 'table/cell/status',
+                cellComponent: 'table/cell/ledger-status',
                 hidden: true,
                 resizable: true,
                 sortable: true,
                 filterable: true,
                 filterParam: 'settlement_status',
                 filterComponent: 'filter/multi-option',
-                filterOptions: ['unpaid', 'partially_paid', 'paid', 'partially_refunded', 'refunded'],
+                filterOptionLabel: 'label',
+                filterOptionValue: 'value',
+                filterOptions: [
+                    { label: ledgerLabel(this.intl, 'unpaid', 'status'), value: 'unpaid' },
+                    { label: ledgerLabel(this.intl, 'partially_paid', 'status'), value: 'partially_paid' },
+                    { label: ledgerLabel(this.intl, 'paid', 'status'), value: 'paid' },
+                    { label: ledgerLabel(this.intl, 'partially_refunded', 'status'), value: 'partially_refunded' },
+                    { label: ledgerLabel(this.intl, 'refunded', 'status'), value: 'refunded' },
+                ],
             },
             // ── Hidden / toggleable columns ──────────────────────────────────
             {

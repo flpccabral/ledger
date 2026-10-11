@@ -19,7 +19,7 @@ export default class SettingsGatewaysIndexController extends Controller {
         { label: this.intl.t('column.name'), valuePath: 'name', width: '180px' },
         { label: this.intl.t('column.driver'), valuePath: 'driver_label', width: '120px' },
         { label: this.intl.t('column.environment'), valuePath: 'environment', width: '100px' },
-        { label: this.intl.t('column.status'), valuePath: 'status_label', width: '90px', cellComponent: 'table/cell/status' },
+        { label: this.intl.t('column.status'), valuePath: 'status', width: '90px', cellComponent: 'table/cell/ledger-status' },
     ];
 
     get actionButtons() {

@@ -25,7 +25,7 @@
                     {{this.invoice.number}}
                 </span>
                 <Badge @status={{this.invoice.status}} @color={{this.invoice.statusBadgeColor}} class="capitalize text-[10px]">
-                    {{titleize this.invoice.status}}
+                    {{ledger-label this.invoice.status}}
                 </Badge>
             </div>
             <div class="flex items-center gap-2">
@@ -59,7 +59,7 @@
                     <div class="field-name">{{t "column.status"}}</div>
                     <div class="field-value">
                         <Badge @status={{this.invoice.status}} @color={{this.invoice.statusBadgeColor}}>
-                            {{titleize this.invoice.status}}
+                            {{ledger-label this.invoice.status}}
                         </Badge>
                     </div>
                 </div>

@@ -3,9 +3,9 @@
         <div class="flex flex-col">
             <h1 class="text-gray-900 dark:text-white font-semibold text-lg">{{n-a @resource.public_id}}</h1>
             <div class="flex flex-row items-center space-x-2 mt-0.5">
-                <Badge @status={{@resource.status}}>{{titleize @resource.status}}</Badge>
+                <Badge @status={{@resource.status}}>{{ledger-label @resource.status}}</Badge>
                 {{#if @resource.type}}
-                    <Badge @status="info" @hideStatusDot={{true}}>{{titleize @resource.type}}</Badge>
+                    <Badge @status="info" @hideStatusDot={{true}}>{{ledger-label @resource.type "transaction-type"}}</Badge>
                 {{/if}}
             </div>
         </div>

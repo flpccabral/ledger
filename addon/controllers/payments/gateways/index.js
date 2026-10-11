@@ -109,7 +109,7 @@ export default class PaymentsGatewaysIndexController extends Controller {
             {
                 label: this.intl.t('column.status'),
                 valuePath: 'status',
-                cellComponent: 'table/cell/status',
+                cellComponent: 'table/cell/ledger-status',
                 width: 100,
                 resizable: true,
                 sortable: true,

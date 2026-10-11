@@ -13,7 +13,7 @@
                 <div class="field-name">{{t "column.status"}}</div>
                 <div class="field-value">
                     <Badge @status={{@resource.status}} @color={{@resource.statusBadgeColor}}>
-                        {{titleize @resource.status}}
+                        {{ledger-label @resource.status}}
                     </Badge>
                 </div>
             </div>

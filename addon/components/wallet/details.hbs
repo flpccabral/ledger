@@ -14,7 +14,7 @@
 
             <div class="field-info-container">
                 <div class="field-name">{{t "column.type"}}</div>
-                <div class="field-value">{{n-a (humanize @resource.type)}}</div>
+                <div class="field-value">{{n-a (ledger-label @resource.type "wallet-type")}}</div>
             </div>
 
             <div class="field-info-container">
@@ -26,7 +26,7 @@
                 <div class="field-name">{{t "column.status"}}</div>
                 <div class="field-value">
                     {{#if @resource.status}}
-                        <Badge @status={{@resource.status}} />
+                        <Badge @status={{@resource.status}} @text={{ledger-label @resource.status}} @disableHumanize={{true}} />
                     {{else}}
                         —
                     {{/if}}
@@ -58,7 +58,7 @@
 
             <div class="field-info-container">
                 <div class="field-name">{{t "ledger.common.owner-type"}}</div>
-                <div class="field-value">{{n-a (humanize @resource.type)}}</div>
+                <div class="field-value">{{n-a (ledger-label @resource.type "wallet-type")}}</div>
             </div>
 
             {{! Show email/phone only for user-type wallets }}

@@ -1,5 +1,6 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
+import ledgerLabel from '../../../utils/ledger-label';
 import { tracked } from '@glimmer/tracking';
 
 export default class PaymentsWalletsIndexController extends Controller {
@@ -77,8 +78,8 @@ export default class PaymentsWalletsIndexController extends Controller {
             {
                 label: this.intl.t('column.type'),
                 valuePath: 'type',
-                cellComponent: 'table/cell/base',
-                humanize: true,
+                cellComponent: 'table/cell/ledger-label',
+                labelNamespace: 'wallet-type',
                 width: 110,
                 resizable: true,
                 sortable: true,
@@ -88,10 +89,10 @@ export default class PaymentsWalletsIndexController extends Controller {
                 filterOptionLabel: 'label',
                 filterOptionValue: 'value',
                 filterOptions: [
-                    { label: this.intl.t('ledger.common.company'), value: 'company' },
-                    { label: this.intl.t('column.driver'), value: 'driver' },
-                    { label: this.intl.t('column.customer'), value: 'customer' },
-                    { label: this.intl.t('ledger.common.user'), value: 'user' },
+                    { label: ledgerLabel(this.intl, 'company', 'wallet-type'), value: 'company' },
+                    { label: ledgerLabel(this.intl, 'driver', 'wallet-type'), value: 'driver' },
+                    { label: ledgerLabel(this.intl, 'customer', 'wallet-type'), value: 'customer' },
+                    { label: ledgerLabel(this.intl, 'user', 'wallet-type'), value: 'user' },
                 ],
             },
             {
@@ -117,7 +118,7 @@ export default class PaymentsWalletsIndexController extends Controller {
             {
                 label: this.intl.t('column.status'),
                 valuePath: 'status',
-                cellComponent: 'table/cell/status',
+                cellComponent: 'table/cell/ledger-status',
                 width: 100,
                 resizable: true,
                 sortable: true,

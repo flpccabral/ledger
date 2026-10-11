@@ -19,7 +19,7 @@
                         @disabled={{cannot-write @resource}}
                         as |option|
                     >
-                        <div class="capitalize text-sm">{{option}}</div>
+                        <div class="text-sm">{{ledger-label option "transaction-type"}}</div>
                     </PowerSelect>
                 </div>
             </InputGroup>
@@ -35,7 +35,7 @@
                         @disabled={{cannot-write @resource}}
                         as |option|
                     >
-                        <div class="capitalize text-sm">{{option}}</div>
+                        <div class="text-sm">{{ledger-label option "direction"}}</div>
                     </PowerSelect>
                 </div>
             </InputGroup>
@@ -51,7 +51,7 @@
                         @disabled={{cannot-write @resource}}
                         as |option|
                     >
-                        <div class="capitalize text-sm">{{option}}</div>
+                        <div class="text-sm">{{ledger-label option "status"}}</div>
                     </PowerSelect>
                 </div>
             </InputGroup>
@@ -159,7 +159,7 @@
                         @disabled={{cannot-write @resource}}
                         as |option|
                     >
-                        <div class="capitalize text-sm">{{option}}</div>
+                        <div class="text-sm">{{ledger-label option "payment-method"}}</div>
                     </PowerSelect>
                 </div>
             </InputGroup>
