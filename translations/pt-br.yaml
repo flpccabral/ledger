@@ -1,6 +1,7 @@
 ledger:
   extension-name: Ledger
   extension:
+    order-invoice-tab: Fatura
     description: Faturamento, pagamentos, contabilidade e relatórios financeiros em tempo real.
     shortcuts:
       invoices:

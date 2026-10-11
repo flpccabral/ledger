@@ -1,6 +1,7 @@
 ledger:
   extension-name: Ledger
   extension:
+    order-invoice-tab: Invoice
     description: Invoicing, payments, accounting, and real-time financial reporting.
     shortcuts:
       invoices:

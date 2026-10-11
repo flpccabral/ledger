@@ -131,7 +131,8 @@ export default {
         menuService.registerMenuItem(
             'fleet-ops:component:order:details',
             new MenuItem({
-                title: 'Invoice',
+                id: 'invoice',
+                title: label('ledger.extension.order-invoice-tab'),
                 route: 'operations.orders.index.details.virtual',
                 component: new ExtensionComponent('@fleetbase/ledger-engine', 'order-invoice'),
                 icon: 'file-invoice-dollar',
@@ -145,7 +146,8 @@ export default {
         menuService.registerMenuItem(
             'storefront:component:order:details',
             new MenuItem({
-                title: 'Invoice',
+                id: 'invoice',
+                title: label('ledger.extension.order-invoice-tab'),
                 route: 'orders.index.view.virtual',
                 component: new ExtensionComponent('@fleetbase/ledger-engine', 'order-invoice'),
                 icon: 'file-invoice-dollar',
