@@ -11,7 +11,7 @@
                         {{format-currency summary.total_amount summary.currency}}
                     </span>
                     <span class="text-xs text-gray-500">
-                        Remaining refundable:
+                        {{t "ledger.refund.remaining-refundable"}}
                         {{format-currency summary.remaining_refundable_amount summary.currency}}
                     </span>
                 </div>
@@ -19,20 +19,20 @@
 
             <div class="grid grid-cols-3 gap-3 mb-4">
                 <div class="rounded-md border border-gray-200 dark:border-gray-700 p-3">
-                    <div class="text-xs text-gray-500">Paid</div>
+                    <div class="text-xs text-gray-500">{{t "ledger.common.paid"}}</div>
                     <div class="text-sm font-semibold text-gray-900 dark:text-white">{{format-currency summary.amount_paid summary.currency}}</div>
                 </div>
                 <div class="rounded-md border border-gray-200 dark:border-gray-700 p-3">
-                    <div class="text-xs text-gray-500">Refunded</div>
+                    <div class="text-xs text-gray-500">{{t "ledger.common.refunded"}}</div>
                     <div class="text-sm font-semibold text-gray-900 dark:text-white">{{format-currency summary.refunded_amount summary.currency}}</div>
                 </div>
                 <div class="rounded-md border border-gray-200 dark:border-gray-700 p-3">
-                    <div class="text-xs text-gray-500">Available</div>
+                    <div class="text-xs text-gray-500">{{t "ledger.common.available"}}</div>
                     <div class="text-sm font-semibold text-gray-900 dark:text-white">{{format-currency summary.remaining_refundable_amount summary.currency}}</div>
                 </div>
             </div>
 
-            <InputGroup @name="Payment" @helpText="Refunds are issued against the original successful gateway payment.">
+            <InputGroup @name={{t "ledger.common.payment"}} @helpText={{t "ledger.refund.refunds-are-issued-against-the-original"}}>
                 <Select
                     class="w-full"
                     @value={{this.selectedGatewayTransactionId}}
@@ -40,7 +40,7 @@
                     @optionLabel="label"
                     @optionValue="gateway_transaction_id"
                     @onChange={{this.selectGatewayTransaction}}
-                    @placeholder="Select payment..."
+                    @placeholder={{t "ledger.refund.select-payment"}}
                 />
             </InputGroup>
 
@@ -51,13 +51,13 @@
                         <span>{{format-currency this.selectedOption.refundable_amount this.selectedOption.currency}}</span>
                     </div>
                     <div class="mt-1 text-gray-500">
-                        Reference:
+                        {{t "ledger.refund.reference"}}
                         {{n-a this.selectedOption.gateway_transaction_id}}
                     </div>
                 </div>
             {{/if}}
 
-            <InputGroup @name="Refund Type" @helpText="Use full for the selected payment's remaining refundable amount, or custom for a partial refund.">
+            <InputGroup @name={{t "ledger.common.refund-type"}} @helpText={{t "ledger.refund.use-full-for-the-selected-payment"}}>
                 <Select
                     class="w-full"
                     @value={{this.refundMode}}
@@ -68,17 +68,17 @@
                 />
             </InputGroup>
 
-            <InputGroup @name="Amount" @helpText="The amount cannot exceed the remaining refundable amount.">
+            <InputGroup @name={{t "column.amount"}} @helpText={{t "ledger.refund.the-amount-cannot-exceed-the-remaining"}}>
                 <MoneyInput class="w-full" @value={{this.amount}} @currency={{summary.currency}} @onChange={{this.setAmount}} disabled={{not this.isCustomRefund}} />
             </InputGroup>
 
-            <InputGroup @name="Reason" @helpText="Optional note recorded with the gateway refund and Ledger reversal.">
-                <Textarea @value={{this.reason}} class="w-full form-input" rows="3" placeholder="Reason for refund" {{on "input" this.setReason}} />
+            <InputGroup @name={{t "ledger.common.reason"}} @helpText={{t "ledger.refund.optional-note-recorded-with-the-gateway"}}>
+                <Textarea @value={{this.reason}} class="w-full form-input" rows="3" placeholder={{t "ledger.common.reason-for-refund"}} {{on "input" this.setReason}} />
             </InputGroup>
 
             {{#if this.requiresCustomerAction}}
                 <div class="rounded-md border border-blue-200 bg-blue-50 p-3 text-sm text-blue-800 dark:border-blue-700 dark:bg-blue-900 dark:text-blue-100">
-                    GNU Taler may return a refund URI. Share it with the customer so they can open it with their Taler wallet and accept the refund.
+                    {{t "ledger.refund.gnu-taler-may-return-a-refund"}}
                 </div>
             {{/if}}
         {{/let}}

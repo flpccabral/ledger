@@ -1,8 +1,8 @@
 <div class="space-y-4">
     <div class="flex items-center justify-between">
-        <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Accounts Receivable Aging</h2>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-white">{{t "ledger.common.accounts-receivable-aging"}}</h2>
         {{#if @data.as_of_date}}
-            <span class="text-sm text-gray-500">As of {{format-date-fns @data.as_of_date "MMMM d, yyyy"}}</span>
+            <span class="text-sm text-gray-500">{{t "ledger.common.as-of"}} {{format-date-fns @data.as_of_date "MMMM d, yyyy"}}</span>
         {{/if}}
     </div>
 
@@ -18,12 +18,12 @@
     <table class="w-full text-sm">
         <thead>
             <tr class="border-b border-gray-200 dark:border-gray-700">
-                <th class="text-left py-2 text-xs font-medium text-gray-500 uppercase">Invoice</th>
-                <th class="text-left py-2 text-xs font-medium text-gray-500 uppercase">Customer</th>
-                <th class="text-left py-2 text-xs font-medium text-gray-500 uppercase">Due Date</th>
-                <th class="text-right py-2 text-xs font-medium text-gray-500 uppercase">Balance</th>
-                <th class="text-right py-2 text-xs font-medium text-gray-500 uppercase">Days Overdue</th>
-                <th class="text-left py-2 text-xs font-medium text-gray-500 uppercase">Bucket</th>
+                <th class="text-left py-2 text-xs font-medium text-gray-500 uppercase">{{t "resource.invoice"}}</th>
+                <th class="text-left py-2 text-xs font-medium text-gray-500 uppercase">{{t "column.customer"}}</th>
+                <th class="text-left py-2 text-xs font-medium text-gray-500 uppercase">{{t "column.due-date"}}</th>
+                <th class="text-right py-2 text-xs font-medium text-gray-500 uppercase">{{t "column.balance"}}</th>
+                <th class="text-right py-2 text-xs font-medium text-gray-500 uppercase">{{t "ledger.common.days-overdue"}}</th>
+                <th class="text-left py-2 text-xs font-medium text-gray-500 uppercase">{{t "ledger.common.bucket"}}</th>
             </tr>
         </thead>
         <tbody>
@@ -40,14 +40,14 @@
                 </tr>
             {{else}}
                 <tr>
-                    <td colspan="6" class="py-4 text-center text-gray-400 text-xs">No outstanding receivables</td>
+                    <td colspan="6" class="py-4 text-center text-gray-400 text-xs">{{t "ledger.common.no-outstanding-receivables"}}</td>
                 </tr>
             {{/each}}
         </tbody>
         {{#if @data.grand_total}}
             <tfoot>
                 <tr class="border-t-2 border-gray-300">
-                    <td colspan="3" class="py-2 font-semibold text-gray-900 dark:text-white">Total Outstanding</td>
+                    <td colspan="3" class="py-2 font-semibold text-gray-900 dark:text-white">{{t "ledger.common.total-outstanding"}}</td>
                     <td class="py-2 text-right font-bold text-red-600">{{format-currency @data.grand_total @companyCurrency}}</td>
                     <td colspan="2"></td>
                 </tr>

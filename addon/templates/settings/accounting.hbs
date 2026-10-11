@@ -1,9 +1,9 @@
-<Layout::Section::Header @title="Accounting Settings">
+<Layout::Section::Header @title={{t "menu.accounting-settings"}}>
     <Button
         @type="primary"
         @size="sm"
         @icon="save"
-        @text="Save Changes"
+        @text={{t "ledger.common.save-changes"}}
         @onClick={{perform this.saveSettings}}
         @disabled={{this.saveSettings.isRunning}}
         @isLoading={{or this.saveSettings.isRunning this.getSettings.isRunning}}
@@ -15,28 +15,28 @@
         <div class="max-w-3xl my-10 mx-auto space-y-6">
 
             {{! ── Base Currency & Fiscal Year ────────────────────────────────────── }}
-            <ContentPanel @title="Currency & Fiscal Year" @open={{true}} @wrapperClass="bordered-classic">
-                <InputGroup @name="Base Currency" @helpText="The reporting currency for all financial statements and the chart of accounts.">
+            <ContentPanel @title={{t "ledger.accounting-settings.currency-and-fiscal-year"}} @open={{true}} @wrapperClass="bordered-classic">
+                <InputGroup @name={{t "ledger.common.base-currency"}} @helpText={{t "ledger.accounting-settings.the-reporting-currency-for-all-financial"}}>
                     <CurrencySelect
                         @currency={{this.effectiveCurrency}}
                         @currencyData={{this.selectedCurrency}}
                         @onCurrencyChange={{this.onSelectCurrency}}
                         @triggerClass="form-select form-input"
-                        @placeholder={{concat "Default: " this.companyCurrency}}
+                        @placeholder={{t "ledger.invoice-settings.default-currency-placeholder" currency=this.companyCurrency}}
                         @allowClear={{true}}
                     />
                     {{#unless this.base_currency}}
-                        <p class="text-xs text-gray-400 mt-1">Using organisation default ({{this.companyCurrency}}). Select a currency above to override.</p>
+                        <p class="text-xs text-gray-400 mt-1">{{t "ledger.invoice-settings.using-organisation-default-currency" currency=this.companyCurrency}}</p>
                     {{/unless}}
                 </InputGroup>
 
-                <InputGroup @name="Fiscal Year Start Month" @helpText="The month in which your organisation's fiscal year begins. Affects period-based financial reports.">
+                <InputGroup @name={{t "ledger.accounting-settings.fiscal-year-start-month"}} @helpText={{t "ledger.accounting-settings.the-month-in-which-your-organisation"}}>
                     <div class="fleetbase-model-select fleetbase-power-select ember-model-select">
                         <PowerSelect
                             @options={{this.fiscalYearMonthOptions}}
                             @selected={{find-by "value" this.fiscal_year_start_month this.fiscalYearMonthOptions}}
                             @onChange={{this.onSelectFiscalYearMonth}}
-                            @placeholder="Select start month"
+                            @placeholder={{t "ledger.common.select-start-month"}}
                             @triggerClass="form-select form-input"
                             as |opt|
                         >
@@ -47,18 +47,18 @@
             </ContentPanel>
 
             {{! ── Default Accounts ────────────────────────────────────────────────── }}
-            <ContentPanel @title="Default Accounts" @open={{true}} @wrapperClass="bordered-classic">
+            <ContentPanel @title={{t "ledger.common.default-accounts"}} @open={{true}} @wrapperClass="bordered-classic">
                 <div class="text-xs text-gray-500 mb-3">
-                    These accounts are used automatically when posting transactions unless a specific account is selected on the transaction itself.
+                    {{t "ledger.accounting-settings.these-accounts-are-used-automatically-when"}}
                 </div>
 
-                <InputGroup @name="Default Revenue Account" @helpText="Applied to income line items on invoices and sales transactions.">
+                <InputGroup @name={{t "ledger.common.default-revenue-account"}} @helpText={{t "ledger.accounting-settings.applied-to-income-line-items-on"}}>
                     <div class="fleetbase-model-select fleetbase-power-select ember-model-select">
                         <PowerSelect
                             @options={{this.revenueAccounts}}
                             @selected={{this.selectedRevenueAccount}}
                             @onChange={{this.onSelectRevenueAccount}}
-                            @placeholder="Select revenue account"
+                            @placeholder={{t "ledger.common.select-revenue-account"}}
                             @triggerClass="form-select form-input"
                             @allowClear={{true}}
                             as |account|
@@ -73,13 +73,13 @@
                     </div>
                 </InputGroup>
 
-                <InputGroup @name="Default Expense Account" @helpText="Applied to cost and expense line items on bills and purchase transactions.">
+                <InputGroup @name={{t "ledger.common.default-expense-account"}} @helpText={{t "ledger.accounting-settings.applied-to-cost-and-expense-line"}}>
                     <div class="fleetbase-model-select fleetbase-power-select ember-model-select">
                         <PowerSelect
                             @options={{this.expenseAccounts}}
                             @selected={{this.selectedExpenseAccount}}
                             @onChange={{this.onSelectExpenseAccount}}
-                            @placeholder="Select expense account"
+                            @placeholder={{t "ledger.common.select-expense-account"}}
                             @triggerClass="form-select form-input"
                             @allowClear={{true}}
                             as |account|
@@ -94,13 +94,13 @@
                     </div>
                 </InputGroup>
 
-                <InputGroup @name="Default Accounts Receivable (AR) Account" @helpText="The asset account that tracks money owed to your organisation from customers.">
+                <InputGroup @name={{t "ledger.accounting-settings.default-accounts-receivable-ar-account"}} @helpText={{t "ledger.accounting-settings.the-asset-account-that-tracks-money"}}>
                     <div class="fleetbase-model-select fleetbase-power-select ember-model-select">
                         <PowerSelect
                             @options={{this.arAccounts}}
                             @selected={{this.selectedArAccount}}
                             @onChange={{this.onSelectArAccount}}
-                            @placeholder="Select AR account"
+                            @placeholder={{t "ledger.common.select-ar-account"}}
                             @triggerClass="form-select form-input"
                             @allowClear={{true}}
                             as |account|
@@ -115,13 +115,13 @@
                     </div>
                 </InputGroup>
 
-                <InputGroup @name="Default Accounts Payable (AP) Account" @helpText="The liability account that tracks money your organisation owes to vendors.">
+                <InputGroup @name={{t "ledger.accounting-settings.default-accounts-payable-ap-account"}} @helpText={{t "ledger.accounting-settings.the-liability-account-that-tracks-money"}}>
                     <div class="fleetbase-model-select fleetbase-power-select ember-model-select">
                         <PowerSelect
                             @options={{this.apAccounts}}
                             @selected={{this.selectedApAccount}}
                             @onChange={{this.onSelectApAccount}}
-                            @placeholder="Select AP account"
+                            @placeholder={{t "ledger.common.select-ap-account"}}
                             @triggerClass="form-select form-input"
                             @allowClear={{true}}
                             as |account|
@@ -138,11 +138,11 @@
             </ContentPanel>
 
             {{! ── Journal Entry Behaviour ────────────────────────────────────────────── }}
-            <ContentPanel @title="Journal Entry Behaviour" @open={{true}} @wrapperClass="bordered-classic">
-                <InputGroup @name="Auto-Post Journal Entries">
+            <ContentPanel @title={{t "ledger.common.journal-entry-behaviour"}} @open={{true}} @wrapperClass="bordered-classic">
+                <InputGroup @name={{t "ledger.common.auto-post-journal-entries"}}>
                     <Toggle
                         @isToggled={{this.auto_post_journal_entries}}
-                        @label="Automatically post journal entries to the general ledger when created, without requiring manual approval."
+                        @label={{t "ledger.accounting-settings.automatically-post-journal-entries-to-the"}}
                         @onToggle={{fn (mut this.auto_post_journal_entries)}}
                     />
                 </InputGroup>

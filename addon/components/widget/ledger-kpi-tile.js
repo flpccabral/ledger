@@ -7,6 +7,7 @@ import formatCurrency from '@fleetbase/ember-ui/utils/format-currency';
 export default class WidgetLedgerKpiTileComponent extends Component {
     @service fetch;
     @service ledgerDashboard;
+    @service intl;
 
     @tracked data = null;
     @tracked error = null;
@@ -22,12 +23,12 @@ export default class WidgetLedgerKpiTileComponent extends Component {
     }
 
     get title() {
-        return this.args.title ?? this.metric.label ?? 'Metric';
+        return this.args.title ?? this.metric.label ?? this.intl.t('ledger.common.metric');
     }
 
     get formattedValue() {
         if (this.metric.multi_currency) {
-            return 'Multi';
+            return this.intl.t('ledger.common.multi');
         }
 
         const value = this.metric.value ?? 0;
@@ -46,7 +47,7 @@ export default class WidgetLedgerKpiTileComponent extends Component {
     get deltaText() {
         const delta = this.metric.delta_percent;
         if (typeof delta !== 'number') {
-            return 'Current';
+            return this.intl.t('ledger.common.current');
         }
 
         return `${delta > 0 ? '+' : ''}${delta}%`;
@@ -77,10 +78,10 @@ export default class WidgetLedgerKpiTileComponent extends Component {
 
     get footnote() {
         if (this.metric.multi_currency) {
-            return 'Grouped by currency';
+            return this.intl.t('ledger.common.grouped-by-currency');
         }
 
-        return this.args.period ?? 'vs previous period';
+        return this.args.period ?? this.intl.t('ledger.common.vs-previous-period');
     }
 
     @task *load() {
@@ -89,7 +90,7 @@ export default class WidgetLedgerKpiTileComponent extends Component {
             this.data = response?.data ?? response;
             this.error = null;
         } catch (error) {
-            this.error = error?.message ?? 'Unable to load metric';
+            this.error = error?.message ?? this.intl.t('ledger.dashboard.unable-to-load-metric');
         }
     }
 

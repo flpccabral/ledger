@@ -10,6 +10,7 @@ export default class SettingsAccountingController extends Controller {
     @service notifications;
     @service store;
     @service currentUser;
+    @service intl;
 
     // ── Tracked settings fields ───────────────────────────────────────────────
     @tracked base_currency = null; // null = "use company default"
@@ -30,18 +31,18 @@ export default class SettingsAccountingController extends Controller {
     currencies = getCurrency();
 
     fiscalYearMonthOptions = [
-        { label: 'January', value: 1 },
-        { label: 'February', value: 2 },
-        { label: 'March', value: 3 },
-        { label: 'April', value: 4 },
-        { label: 'May', value: 5 },
-        { label: 'June', value: 6 },
-        { label: 'July', value: 7 },
-        { label: 'August', value: 8 },
-        { label: 'September', value: 9 },
-        { label: 'October', value: 10 },
-        { label: 'November', value: 11 },
-        { label: 'December', value: 12 },
+        { label: this.intl.t('ledger.common.january'), value: 1 },
+        { label: this.intl.t('ledger.common.february'), value: 2 },
+        { label: this.intl.t('ledger.common.march'), value: 3 },
+        { label: this.intl.t('ledger.common.april'), value: 4 },
+        { label: this.intl.t('ledger.common.may'), value: 5 },
+        { label: this.intl.t('ledger.common.june'), value: 6 },
+        { label: this.intl.t('ledger.common.july'), value: 7 },
+        { label: this.intl.t('ledger.common.august'), value: 8 },
+        { label: this.intl.t('ledger.common.september'), value: 9 },
+        { label: this.intl.t('ledger.common.october'), value: 10 },
+        { label: this.intl.t('ledger.common.november'), value: 11 },
+        { label: this.intl.t('ledger.common.december'), value: 12 },
     ];
 
     constructor() {
@@ -133,7 +134,7 @@ export default class SettingsAccountingController extends Controller {
                 },
                 { namespace: 'ledger/int/v1' }
             );
-            this.notifications.success('Accounting settings saved.');
+            this.notifications.success(this.intl.t('ledger.accounting-settings.accounting-settings-saved'));
         } catch (error) {
             this.notifications.serverError(error);
         }

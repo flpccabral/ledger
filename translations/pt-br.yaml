@@ -39,6 +39,10 @@ ledger:
     partially_refunded: Parcialmente reembolsada
     settled: Liquidada
     seen: Recebido
+    archived: Arquivada
+    accepted: Aceito
+    issued: Emitido
+    claimed: Resgatado
   environment:
     live: Produção
     sandbox: Sandbox
@@ -85,35 +89,95 @@ ledger:
     contact: Contato
     vendor: Fornecedor
     user: Usuário
+  account-type:
+    asset: Ativo
+    liability: Passivo
+    equity: Patrimônio Líquido
+    revenue: Receita
+    expense: Despesa
+  journal-type:
+    standard: Padrão
+    adjusting: Ajuste
+    closing: Encerramento
+    reversing: Estorno
+    opening: Abertura
+    general: Geral
+    payment: Pagamento
+    refund: Reembolso
+    adjustment: Ajuste
+    deposit: Depósito
+    withdrawal: Saque
+    transfer: Transferência
+    transfer_in: Transferência Recebida
+    transfer_out: Transferência Enviada
+    invoice_payment: Pagamento de Fatura
+    gateway_refund: Reembolso no Gateway
+    manual_entry: Lançamento Manual
+    earning: Ganho
+    fee: Taxa
+    payout: Repasse
+    wallet_deposit: Depósito na Carteira
+    wallet_withdrawal: Saque da Carteira
+    wallet_transfer: Transferência entre Carteiras
+  aging-bucket:
+    current: Em dia
+    '1_30': 1–30 dias
+    '31_60': 31–60 dias
+    '61_90': 61–90 dias
+    over_90: Mais de 90 dias
   common:
+    account-code: Código da Conta
+    account-details: Detalhes da Conta
+    account-information: Informações da Conta
+    account-name: Nome da Conta
+    account-type: Tipo de Conta
+    accounts-receivable-aging: Contas a Receber por Vencimento
     actions: Ações
     active: Ativo
     active-gateways: Gateways ativos
+    active-wallets: Carteiras Ativas
     add-a-gateway: Adicione um gateway
     add-funds: Adicionar Saldo
     add-gateway: Adicionar Gateway
     add-line-item: Adicionar item
     add-one: Adicionar um
+    adjustment: Ajuste
     after-saving: Depois de Salvar
+    all-types: Todos os Tipos
     allow-partial-payments: Permitir Pagamentos Parciais
     amount-paid: Valor Pago
     amounts: Valores
+    april: Abril
+    ar-aging-risk: Risco de Contas a Receber
+    ar-aging-summary: Resumo de Contas a Receber
+    as-of: Em
+    as-of-date: Data de referência
+    asset: Ativo
+    assets: Ativos
+    august: Agosto
     auto-apply-wallet-credit: Aplicar Saldo da Carteira Automaticamente
+    auto-post-journal-entries: Lançar Automaticamente
     auto-send-on-creation: Enviar Automaticamente ao Criar
     automation: Automação
     available: Disponível
     available-on-invoices: Disponível nas faturas
     back: Voltar
     balance-due: Saldo Devedor
+    balanced: Balanceado
     bank-transfer: Transferência Bancária
+    base-currency: Moeda Base
     bill-to: Cobrar de
+    bucket: Faixa
     cancel: Cancelar
     cancelled: Cancelada
     card: Cartão
     cash: Dinheiro
+    cash-flow-statement: Demonstração do Fluxo de Caixa
+    cash-flow-summary: Resumo do Fluxo de Caixa
     checkout-readiness: Prontidão para Pagamento
     cheque: Cheque
     choose-payment-gateway: Escolher Gateway de Pagamento
+    collapse-all: Recolher Tudo
     configuration: Configuração
     configured: Configurado
     connect-gateway: Conectar gateway
@@ -126,26 +190,46 @@ ledger:
     copy-uri: Copiar URI
     copy-webhook-url: Copiar URL do Webhook
     core-information: Informações Principais
+    count: Quantidade
     create-a-template: Crie um modelo
     create-gateway: Criar Gateway
+    create-journal-entry: Criar Lançamento Contábil
+    create-new-account: Criar Nova Conta
     create-new-invoice: Criar Nova Fatura
     create-new-wallet: Criar Nova Carteira
     create-test-order: Criar Pedido de Teste
     credential-test: Teste de credenciais
     credentials: Credenciais
     credit: Crédito
+    credit-account-code: Código da Conta de Crédito
     credit-card: Cartão de Crédito
+    credit-count: Qtd. de Créditos
+    credits: Créditos
+    current: Atual
     current-balance: Saldo Atual
+    custom-partial-amount: Valor parcial personalizado
+    customer-email: E-mail do Cliente
+    customer-example-com: cliente@exemplo.com
+    customer-refund-link: Link de Reembolso do Cliente
+    dashboard-period: Período do painel
     dates: Datas
+    days-overdue: Dias em Atraso
     debit: Débito
+    debit-account-code: Código da Conta de Débito
     debit-card: Cartão de Débito
+    debit-count: Qtd. de Débitos
+    debits: Débitos
+    december: Dezembro
+    default-accounts: Contas Padrão
     default-currency: Moeda Padrão
+    default-expense-account: Conta Padrão de Despesa
     default-gateway: Gateway Padrão
     default-invoice-template: Modelo de Fatura Padrão
     default-invoice-text: Textos Padrão da Fatura
     default-notes: Observações Padrão
     default-payment-gateway: Gateway de Pagamento Padrão
     default-payment-terms: Prazo de Pagamento Padrão
+    default-revenue-account: Conta Padrão de Receita
     default-template: Modelo Padrão
     delete: Excluir
     deposit: Depositar
@@ -153,10 +237,12 @@ ledger:
     details: Detalhes
     diagnostics: Diagnóstico
     done: Concluído
+    double-entry: Partidas Dobradas
     draft: Rascunho
     driver-selected: Provedor selecionado
     due: Vencimento
     due-on-receipt: À vista
+    e-g-je-0001: 'ex.: LC-0001'
     e-g-main-wallet: 'ex.: Carteira Principal'
     e-g-stripe: 'ex.: stripe'
     e-g-taler-sandbox: 'ex.: taler_sandbox'
@@ -165,18 +251,31 @@ ledger:
     edit-settings: Editar Configurações
     email: E-mail
     email-phone: E-mail / Telefone
+    entries: lançamentos
+    entry-date: Data do Lançamento
+    entry-information: Informações do Lançamento
+    entry-number: Número do Lançamento
+    equity: Patrimônio Líquido
     event-type: Tipo de Evento
     exchange-rate: Taxa de Câmbio
+    expand-all: Expandir Tudo
+    expense: Despesa
+    expenses: Despesas
     external-reference: Referência externa
     failed: Falhou
     failure-code: Código da Falha
     failure-information: Informações da Falha
+    february: Fevereiro
     fee-amount: Valor da Taxa
+    financial-reports: Relatórios Financeiros
+    financing: Financiamento
+    financing-activities: Atividades de Financiamento
     fleetbase-ledger: Fleetbase Ledger
     freeze: Bloquear
     freeze-this-wallet: Bloquear esta carteira
     freeze-wallet: Bloquear Carteira
     from: De
+    full-remaining-amount: Valor restante total
     gateway-and-payment: Gateway e Pagamento
     gateway-checkout-readiness: Prontidão do gateway para pagamento
     gateway-credentials: Credenciais do Gateway
@@ -188,26 +287,38 @@ ledger:
     gateway-transaction-id: ID da Transação no Gateway
     gateway-transaction-reference: Referência da transação no gateway
     gateway-verified: Gateway verificado
+    general: Geral
     gnu-taler-refund: Reembolso GNU Taler
+    grouped-by-currency: Agrupado por moeda
     identity: Identificação
     inactive: Inativo
     initiated-by: Iniciado Por
     internal-id: ID Interno
     internal-transfer: Transferência interna
+    investing: Investimento
     invoice-details: Detalhes da Fatura
     invoice-information: Informações da Fatura
     invoice-number: Número da Fatura
     invoice-number-prefix: Prefixo do Número da Fatura
     invoice-numbering: Numeração das Faturas
     invoice-paid: Fatura Paga
+    invoice-pipeline: Funil de Faturas
     invoice-settings: Configurações de Fatura
+    invoice-summary: Resumo de Faturas
     invoice-url: URL da Fatura
+    invoices: faturas
     ip-address: Endereço IP
     issue-refund: Emitir Reembolso
     item-description: Descrição do item
+    january: Janeiro
+    journal-entry-behaviour: Comportamento dos Lançamentos
+    july: Julho
+    june: Junho
     last-results: Últimos Resultados
     last-updated: Última Atualização
     ledger-webhook-url: URL do webhook do Ledger
+    liabilities: Passivos
+    liability: Passivo
     line-items: Itens
     live: Produção
     live-ready: Prontos para produção
@@ -216,10 +327,15 @@ ledger:
     manage-gateway: Gerenciar gateway
     manual: Manual
     manual-top-up: Recarga manual
+    march: Março
     max: Máx.
+    may: Maio
+    metric: Métrica
     min: Mín.
     missing: Pendente
     mode: Modo
+    month-to-date: Mês até hoje
+    multi: Várias
     need-provisioning-review: Precisam de revisão de configuração
     needs-setup: Requer Configuração
     needs-setup-2: Requer configuração
@@ -230,23 +346,42 @@ ledger:
     net-60: 60 dias
     net-7: 7 dias
     net-90: 90 dias
+    net-balance: Saldo Líquido
+    net-cash-change: variação líquida de caixa
+    net-cash-flow: Fluxo de caixa líquido
+    net-income: Lucro Líquido
+    net-loss: Prejuízo
     next: Próximo
     'no': Não
     no-due-date: Sem vencimento
+    no-expenses-recorded: Nenhuma despesa registrada
     no-open-warnings: Nenhum aviso pendente
+    no-outstanding-receivables: Nenhum valor a receber em aberto
     no-payment-yet: Nenhum pagamento ainda
     no-refund-yet: Nenhum reembolso ainda
+    no-revenue-recorded: Nenhuma receita registrada
     no-timestamp: Sem data
+    no-wallet-data: Nenhum dado de carteira
+    no-wallets-found: Nenhuma carteira encontrada
     not-checked: Não Verificado
     not-checked-2: Não verificado
     not-registered: não registrado
     notes: Observações
     notes-and-terms: Observações e Condições
+    november: Novembro
+    october: Outubro
     online-payment-unavailable: Pagamento Online Indisponível
     open-in-ledger: Abrir no Ledger
+    open-invoices: faturas em aberto
+    open-invoices-2: Faturas em Aberto
+    operating: Operacional
+    operating-activities: Atividades Operacionais
     order: Pedido
     other: Outro
+    outstanding-ar: Contas a Receber em Aberto
+    outstanding-invoices: Faturas em Aberto
     overdue: Vencida
+    overdue-ar: Contas a Receber Vencidas
     overview: Visão Geral
     owner-details: Dados do Titular
     owner-type: Tipo de Titular
@@ -268,12 +403,15 @@ ledger:
     payment-settings: Configurações de Pagamento
     payment-summary: Resumo do Pagamento
     pending: Pendente
+    period-transaction-activity: Movimentação no Período
     phone: Telefone
+    posted: Lançado
     powered-by: Desenvolvido com
     preview: Pré-visualizar
     preview-invoice: Pré-visualizar Fatura
     production-connections: Conexões de produção
     production-payments: Pagamentos reais
+    profitable: Lucrativo
     provider-callback-ready: Retorno do provedor pronto
     provider-configuration: Configuração do Provedor
     provider-credentials: Credenciais do provedor
@@ -286,47 +424,72 @@ ledger:
     qty: Qtd.
     ready: Pronto
     ready-to-verify: Pronto para verificar
+    reason: Motivo
+    reason-for-refund: Motivo do reembolso
+    recent-financial-activity: Atividade Financeira Recente
     recent-gateway-activity: Atividade Recente do Gateway
     reconciliation: Conciliação
     record-info: Informações do Registro
     record-payment: Registrar Pagamento
+    ref: Ref. nº
     reference-id: ID de Referência
     refresh: Atualizar
     refresh-diagnostics: Atualizar Diagnóstico
     refund: Reembolso
+    refund-completed: Reembolso concluído
     refund-issued: Reembolso Emitido
     refund-pending: Reembolso Pendente
+    refund-status: Status do Reembolso
+    refund-type: Tipo de Reembolso
+    refund-uri-issued: URI de reembolso emitida
     refunded: Reembolsada
     register-webhook: Registrar Webhook
     registration-needed: Registro necessário
     remove: Remover
     return-url: URL de Retorno
+    revenue: Receita
+    revenue-chart: Gráfico de Receita
+    revenue-trend: Tendência de Receita
     review: Revisar
     review-gateway-setup: Revisar Configuração do Gateway
     routing: Roteamento
     routing-and-status: Roteamento e Status
+    run-report: Gerar Relatório
     sandbox: Sandbox
     save-changes: Salvar Alterações
     save-gateway: Salvar Gateway
     seen: Recebido
+    select-account-type: Selecione o tipo de conta
+    select-ap-account: Selecione a conta de contas a pagar
+    select-ar-account: Selecione a conta de contas a receber
+    select-credit-account: Selecione a conta de crédito
     select-currency: Selecione a moeda
     select-customer: Selecione o cliente
+    select-date-range: Selecione o período
+    select-debit-account: Selecione a conta de débito
     select-direction: Selecione a direção
+    select-entry-type: Selecione o tipo de lançamento
     select-environment: Selecione o ambiente
+    select-expense-account: Selecione a conta de despesa
     select-option: Selecione uma opção
     select-order: Selecione o pedido
     select-owner-type: Selecione o tipo de titular
     select-payment-method: Selecione a forma de pagamento
     select-payment-terms: Selecione o prazo de pagamento
+    select-period: Selecione o período
+    select-revenue-account: Selecione a conta de receita
+    select-start-month: Selecione o mês de início
     select-status: Selecione o status
     select-type: Selecione o tipo
     select-wallet-type: Selecione o tipo de carteira
     selected: Selecionado
     selected-gateway-driver: Provedor de gateway selecionado
+    send-email: Enviar E-mail
     send-invoice: Enviar Fatura
     send-payment-receipt: Enviar Comprovante de Pagamento
     sent: Enviada
     sent-at: Enviada em
+    september: Setembro
     settings: Configurações
     settled-amount: Valor Liquidado
     settled-currency: Moeda de Liquidação
@@ -335,6 +498,7 @@ ledger:
     subtotal: Subtotal
     supported-gateways: Gateways Suportados
     suspended: Suspensa
+    system: Sistema
     tax-amount: Valor do Imposto
     tax-percent: Imposto %
     template: Modelo
@@ -345,30 +509,76 @@ ledger:
     testing-connections: Conexões de teste
     the-selected-gateway: o gateway selecionado
     to-wallet: Carteira de Destino
+    top-wallets: Maiores Carteiras
     total-amount: Valor Total
+    total-assets: Total do Ativo
+    total-balance: Saldo Total
+    total-credits: Total de Créditos
+    total-debits: Total de Débitos
+    total-equity: Total do Patrimônio Líquido
+    total-expenses: Total de Despesas
+    total-liabilities: Total do Passivo
+    total-outstanding: Total em Aberto
+    total-revenue: Receita Total
+    totals: Totais
     transaction-details: Detalhes da Transação
     transaction-information: Informações da Transação
     transfer: Transferir
+    unbalanced: Desbalanceado
     unfreeze: Desbloquear
     unfreeze-wallet: Desbloquear Carteira
     unit-price: Preço Unitário
     unnamed-gateway: Gateway sem nome
+    value: Valor
     verified: Verificado
+    verify-status: Verificar Status
     view: Ver
     view-refunds: Ver Reembolsos
     viewed: Visualizada
     viewed-at: Visualizada em
     void: Anulada
+    voided: Anulado
+    vs-previous-period: em relação ao período anterior
+    wallet: carteira
+    wallet-balance: Saldo das Carteiras
+    wallet-balances: Saldos das Carteiras
     wallet-details: Detalhes da Carteira
     wallet-information: Informações da Carteira
     wallet-name: Nome da Carteira
+    wallet-status: Status da Carteira
+    wallet-uri: URI da Carteira
     warnings: avisos
     webhook: Webhook
     webhook-events: Eventos de Webhook
     webhook-issues: Problemas de webhook
     webhook-registration: Registro do webhook
     withdraw: Sacar
+    withdrawal: Saque
     'yes': Sim
+  navigation:
+    assets-liabilities-and-equity: Ativo, passivo e patrimônio líquido.
+    browse-and-create-double-entry-journal: Consulte e crie lançamentos contábeis por partidas dobradas.
+    cash-movement-over-the-selected-period: Movimentação de caixa no período selecionado.
+    chart-of-accounts-journals-and-general: Plano de contas, lançamentos e razão geral.
+    configure-accounting-automation-and-posting-behavior: Configure a automação contábil e o comportamento dos lançamentos.
+    configure-invoice-numbering-defaults-and-templates: Configure a numeração, os padrões e os modelos das faturas.
+    configure-payment-defaults-and-gateway-behavior: Configure os padrões de pagamento e o comportamento dos gateways.
+    configure-payment-gateway-integrations: Configure as integrações com gateways de pagamento.
+    create-send-and-manage-customer-invoices: Crie, envie e gerencie as faturas dos clientes.
+    debit-and-credit-balances-by-account: Saldos devedores e credores por conta.
+    design-reusable-invoice-templates: Crie modelos de fatura reutilizáveis.
+    financial-statements-and-operational-reports: Demonstrações financeiras e relatórios operacionais.
+    invoices-and-reusable-invoice-templates: Faturas e modelos de fatura reutilizáveis.
+    ledger-billing-payment-and-accounting-settings: Configurações de faturamento, pagamento e contabilidade do Ledger.
+    ledger-dashboard-and-financial-overview: Painel do Ledger e visão geral financeira.
+    manage-company-customer-and-driver-wallets: Gerencie as carteiras da empresa, dos clientes e dos motoristas.
+    manage-the-ledger-account-structure: Gerencie a estrutura de contas do Ledger.
+    outstanding-receivables-by-age-bucket: Valores a receber em aberto por faixa de vencimento.
+    revenue-expenses-and-net-income: Receitas, despesas e lucro líquido.
+    review-payment-and-wallet-transaction-history: Consulte o histórico de transações de pagamentos e carteiras.
+    review-posted-activity-across-accounts: Consulte os lançamentos registrados em todas as contas.
+    transactions-wallets-and-payment-gateways: Transações, carteiras e gateways de pagamento.
+    wallet-balances-and-activity-summary: Saldos e resumo da movimentação das carteiras.
   checkout:
     amount-due: 'Valor devido:'
     due: 'Vencimento:'
@@ -397,15 +607,32 @@ ledger:
     this-invoice-is-no-longer-active: Esta fatura não está mais ativa e não pode receber pagamentos.
     this-invoice-is-not-yet-available: Esta fatura ainda não está disponível. Entre em contato com o emissor.
   refund:
+    advanced-fallback-for-copying-directly-into: Alternativa avançada para copiar diretamente em uma carteira GNU Taler.
+    defaults-to-the-invoice-customer-email: Por padrão, o e-mail do cliente da fatura, quando disponível.
     failed-to-load-refund-please-try: Falha ao carregar o reembolso. Tente novamente mais tarde.
+    gateway-refund-transaction: 'Transação de reembolso no gateway:'
+    gnu-taler-may-return-a-refund: O GNU Taler pode retornar uma URI de reembolso. Compartilhe-a com o cliente para que ele a abra na carteira Taler e aceite o reembolso.
     gnu-taler-refund-qr-code: QR code do reembolso GNU Taler
     loading-refund: Carregando reembolso...
     no-refund-identifier: Nenhum identificador de reembolso informado. Verifique o link e tente novamente.
+    no-refund-uri-has-been-issued: Nenhuma URI de reembolso foi emitida para esta fatura ainda.
     open-gnu-taler-wallet: Abrir Carteira GNU Taler
     open-this-refund-with-your-gnu: Abra este reembolso com sua carteira GNU Taler.
+    optional-note-recorded-with-the-gateway: Observação opcional registrada com o reembolso no gateway e o estorno no Ledger.
+    reference: 'Referência:'
     refund-for-invoice: Este reembolso é referente à fatura {number}. Se sua carteira não abrir automaticamente, escaneie o QR code ou copie a URI da carteira.
     refund-not-found-please-check-the: Reembolso não encontrado. Verifique o link e tente novamente.
     refund-uri-copied: URI de reembolso copiada.
+    refunds-are-issued-against-the-original: Os reembolsos são emitidos sobre o pagamento original bem-sucedido no gateway.
+    remaining-refundable: 'Restante reembolsável:'
+    select-payment: Selecione o pagamento...
+    send-this-fleetbase-link-to-the: Envie este link do Fleetbase ao cliente. Ele abre uma página de transferência para a carteira Taler.
+    share-this-refund-uri-with-the: Compartilhe esta URI de reembolso com o cliente para que ele a abra na carteira GNU Taler e aceite o reembolso.
+    the-amount-cannot-exceed-the-remaining: O valor não pode exceder o restante reembolsável.
+    the-refund-was-accepted-by-the: O reembolso foi aceito pela carteira do cliente e marcado como concluído.
+    this-refund-does-not-expose-a: Este reembolso não oferece uma URI de reembolso para o cliente.
+    use-full-for-the-selected-payment: Use total para o restante reembolsável do pagamento selecionado, ou personalizado para um reembolso parcial.
+    used-when-sending-a-refund-uri: Usado ao enviar uma URI de reembolso pelas linhas abaixo.
   invoice:
     add-any-notes-or-payment-instructions: Adicione observações ou instruções de pagamento para o cliente…
     amount-received-defaults-to-the-full: Valor recebido. Por padrão, o saldo devedor total.
@@ -605,6 +832,72 @@ ledger:
   transaction:
     internal-notes: Observações internas...
     short-description-of-this-transaction: Breve descrição desta transação
+  accounting:
+    create-accounts-in-the-chart-of: Crie contas no Plano de Contas para ver os lançamentos aqui.
+    delete-journal-entry: Excluir Lançamento Contábil?
+    describe-the-purpose-of-this-journal: Descreva a finalidade deste lançamento contábil...
+    e-g-cash-and-cash-equivalents: 'ex.: Caixa e Equivalentes de Caixa'
+    journal-entry-deleted: Lançamento contábil excluído.
+    no-accounts-found: Nenhuma conta encontrada.
+    no-entries-for-account: Nenhum lançamento contábil para esta conta.
+    no-entries-for-account-in-period: Nenhum lançamento contábil para esta conta no período selecionado.
+    optional-description-of-this-account: Descrição opcional desta conta...
+    permanently-delete-this-journal-entry-system: Exclui permanentemente este lançamento contábil. Lançamentos do sistema não podem ser excluídos.
+    this-action-cannot-be-undone: Esta ação não pode ser desfeita.
+  accounting-settings:
+    accounting-settings-saved: Configurações contábeis salvas.
+    applied-to-cost-and-expense-line: Aplicada aos itens de custo e despesa em contas a pagar e transações de compra.
+    applied-to-income-line-items-on: Aplicada aos itens de receita em faturas e transações de venda.
+    automatically-post-journal-entries-to-the: Lançar automaticamente os lançamentos contábeis no razão geral quando forem criados, sem exigir aprovação manual.
+    currency-and-fiscal-year: Moeda e Exercício Fiscal
+    default-accounts-payable-ap-account: Conta Padrão de Contas a Pagar
+    default-accounts-receivable-ar-account: Conta Padrão de Contas a Receber
+    fiscal-year-start-month: Mês de Início do Exercício Fiscal
+    the-asset-account-that-tracks-money: A conta de ativo que registra os valores que os clientes devem à sua organização.
+    the-liability-account-that-tracks-money: A conta de passivo que registra os valores que sua organização deve aos fornecedores.
+    the-month-in-which-your-organisation: O mês em que começa o exercício fiscal da sua organização. Afeta os relatórios financeiros por período.
+    the-reporting-currency-for-all-financial: A moeda de apresentação de todas as demonstrações financeiras e do plano de contas.
+    these-accounts-are-used-automatically-when: Estas contas são usadas automaticamente ao lançar transações, a menos que uma conta específica seja escolhida na própria transação.
+  report:
+    net-change-in-cash: Variação Líquida de Caixa
+    net-financing-cash-flow: Fluxo de Caixa Líquido de Financiamento
+    net-operating-cash-flow: Fluxo de Caixa Líquido Operacional
+    no-account-data-available: Nenhum dado de conta disponível
+    no-financing-activity-data: Nenhum dado de atividades de financiamento
+    no-operating-activity-data: Nenhum dado de atividades operacionais
+    no-report-data-available-select-a: Nenhum dado disponível. Selecione uma data e atualize.
+    no-report-data-available-select-a-2: Nenhum dado disponível. Selecione um período e atualize.
+    no-section-accounts: Nenhuma conta de {section}
+    no-transactions-in-this-period: Nenhuma transação neste período
+    section-total: Total de {section}
+    select-a-report-and-click-run: Selecione um relatório e clique em "Gerar Relatório".
+    top-wallets-by-balance: Carteiras com Maior Saldo
+    total-liabilities-and-equity: Total do Passivo e Patrimônio Líquido
+    wallets-by-owner-type: Carteiras por Tipo de Titular
+  dashboard:
+    grouped-by-currency-with-top-active: Agrupado por moeda, com as carteiras ativas de maior saldo
+    invoices-open-balance-tracked-by-status: faturas · saldo em aberto por status
+    jump-into-the-source-reports-behind: Acesse os relatórios que alimentam o painel
+    latest-journal-entries-posted-to-the: Últimos lançamentos contábeis registrados no razão
+    no-ar-aging-data: Nenhum dado de contas a receber.
+    no-cash-flow-data-yet: Ainda não há dados de fluxo de caixa.
+    no-invoice-data: Nenhum dado de faturas.
+    no-invoices-yet: Nenhuma fatura ainda.
+    no-outstanding-receivables: Nenhum valor a receber em aberto.
+    no-recent-journal-entries: Nenhum lançamento contábil recente.
+    no-revenue-data-for-this-period: Nenhum dado de receita neste período.
+    no-revenue-data-yet: Ainda não há dados de receita.
+    no-wallet-data: Nenhum dado de carteira.
+    revenue-net-summary: '{revenue} de receita · {net} líquido'
+    unable-to-load-activity: Não foi possível carregar a atividade
+    unable-to-load-ar-aging: Não foi possível carregar as contas a receber
+    unable-to-load-cash-flow: Não foi possível carregar o fluxo de caixa
+    unable-to-load-invoice-status: Não foi possível carregar o status das faturas
+    unable-to-load-metric: Não foi possível carregar a métrica
+    unable-to-load-revenue-trend: Não foi possível carregar a tendência de receita
+    unable-to-load-wallet-balances: Não foi possível carregar os saldos das carteiras
+  misc:
+    search-ledger: Buscar no Ledger...
   modals:
     invoice-preview:
       no-content: Nenhuma pré-visualização disponível.

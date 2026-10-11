@@ -34,7 +34,7 @@ export default class AccountingJournalIndexNewController extends Controller {
             yield this.hostRouter.transitionTo('console.ledger.accounting.journal.index.details', journalEntry);
             this.notifications.success(
                 this.intl.t('common.resource-created-success-name', {
-                    resource: 'Journal Entry',
+                    resource: this.intl.t('resource.journal'),
                     resourceName: journalEntry.number,
                 })
             );

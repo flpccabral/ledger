@@ -1,38 +1,38 @@
 <div class="form-wrapper" ...attributes>
     {{! JOURNAL ENTRY DETAILS }}
-    <ContentPanel @title="Journal Entry" @open={{true}} @wrapperClass="bordered-top">
+    <ContentPanel @title={{t "resource.journal"}} @open={{true}} @wrapperClass="bordered-top">
         <div class="grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-2 no-input-group-padding text-xs">
 
             {{! Entry Identification }}
             <div class="col-span-1 lg:col-span-2 text-[11px] uppercase tracking-wide text-gray-500 font-semibold mt-1">
-                Entry Information
+                {{t "ledger.common.entry-information"}}
             </div>
 
-            <InputGroup @name="Entry Number">
-                <Input @value={{@resource.number}} @type="text" class="w-full form-input" placeholder="e.g. JE-0001" disabled={{cannot-write @resource}} />
+            <InputGroup @name={{t "ledger.common.entry-number"}}>
+                <Input @value={{@resource.number}} @type="text" class="w-full form-input" placeholder={{t "ledger.common.e-g-je-0001"}} disabled={{cannot-write @resource}} />
             </InputGroup>
 
-            <InputGroup @name="Entry Date">
+            <InputGroup @name={{t "ledger.common.entry-date"}}>
                 <Input @value={{@resource.entry_date}} @type="date" class="w-full form-input" disabled={{cannot-write @resource}} />
             </InputGroup>
 
-            <InputGroup @name="Type">
+            <InputGroup @name={{t "column.type"}}>
                 <div class="fleetbase-model-select fleetbase-power-select ember-model-select">
                     <PowerSelect
                         @options={{array "standard" "adjusting" "closing" "reversing" "opening"}}
                         @selected={{@resource.type}}
                         @onChange={{fn (mut @resource.type)}}
-                        @placeholder="Select entry type"
+                        @placeholder={{t "ledger.common.select-entry-type"}}
                         @triggerClass="form-select form-input"
                         @disabled={{cannot-write @resource}}
                         as |option|
                     >
-                        <div class="capitalize text-sm">{{option}}</div>
+                        <div class="text-sm">{{ledger-label option "journal-type"}}</div>
                     </PowerSelect>
                 </div>
             </InputGroup>
 
-            <InputGroup @name="Currency">
+            <InputGroup @name={{t "column.currency"}}>
                 <div class="fleetbase-model-select fleetbase-power-select ember-model-select">
                     <PowerSelect
                         @options={{array
@@ -74,7 +74,7 @@
                         }}
                         @selected={{@resource.currency}}
                         @onChange={{fn (mut @resource.currency)}}
-                        @placeholder="Select currency"
+                        @placeholder={{t "ledger.common.select-currency"}}
                         @triggerClass="form-select form-input"
                         @disabled={{cannot-write @resource}}
                         as |option|
@@ -84,7 +84,7 @@
                 </div>
             </InputGroup>
 
-            <InputGroup @name="Amount" @wrapperClass="col-span-2">
+            <InputGroup @name={{t "column.amount"}} @wrapperClass="col-span-2">
                 <MoneyInput
                     @value={{@resource.amount}}
                     @currency={{@resource.currency}}
@@ -99,20 +99,20 @@
     </ContentPanel>
 
     {{! DOUBLE-ENTRY }}
-    <ContentPanel @title="Double-Entry" @open={{true}} @wrapperClass="bordered-top">
+    <ContentPanel @title={{t "ledger.common.double-entry"}} @open={{true}} @wrapperClass="bordered-top">
         <div class="grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-2 no-input-group-padding text-xs">
 
             {{! Debit Account }}
             <div class="col-span-1 lg:col-span-2 text-[11px] uppercase tracking-wide text-gray-500 font-semibold mt-1">
-                Debit Account
+                {{t "column.debit-account"}}
             </div>
 
-            <InputGroup @name="Debit Account">
+            <InputGroup @name={{t "column.debit-account"}}>
                 <div class="fleetbase-model-select fleetbase-power-select ember-model-select">
                     <ModelSelect
                         @modelName="ledger-account"
                         @selectedModel={{this.debitAccount}}
-                        @placeholder="Select debit account"
+                        @placeholder={{t "ledger.common.select-debit-account"}}
                         @triggerClass="form-select form-input"
                         @infiniteScroll={{false}}
                         @renderInPlace={{true}}
@@ -128,21 +128,21 @@
                 </div>
             </InputGroup>
 
-            <InputGroup @name="Debit Account Code">
+            <InputGroup @name={{t "ledger.common.debit-account-code"}}>
                 <Input @value={{@resource.debit_account_code}} @type="text" class="w-full form-input" placeholder="e.g. 1000" disabled={{true}} />
             </InputGroup>
 
             {{! Credit Account }}
             <div class="col-span-1 lg:col-span-2 text-[11px] uppercase tracking-wide text-gray-500 font-semibold mt-3">
-                Credit Account
+                {{t "column.credit-account"}}
             </div>
 
-            <InputGroup @name="Credit Account">
+            <InputGroup @name={{t "column.credit-account"}}>
                 <div class="fleetbase-model-select fleetbase-power-select ember-model-select">
                     <ModelSelect
                         @modelName="ledger-account"
                         @selectedModel={{this.creditAccount}}
-                        @placeholder="Select credit account"
+                        @placeholder={{t "ledger.common.select-credit-account"}}
                         @triggerClass="form-select form-input"
                         @infiniteScroll={{false}}
                         @renderInPlace={{true}}
@@ -158,7 +158,7 @@
                 </div>
             </InputGroup>
 
-            <InputGroup @name="Credit Account Code">
+            <InputGroup @name={{t "ledger.common.credit-account-code"}}>
                 <Input @value={{@resource.credit_account_code}} @type="text" class="w-full form-input" placeholder="e.g. 2000" disabled={{true}} />
             </InputGroup>
 
@@ -166,14 +166,14 @@
     </ContentPanel>
 
     {{! DESCRIPTION }}
-    <ContentPanel @title="Description" @open={{true}} @wrapperClass="bordered-top">
+    <ContentPanel @title={{t "column.description"}} @open={{true}} @wrapperClass="bordered-top">
         <div class="grid grid-cols-1 gap-2 no-input-group-padding text-xs">
-            <InputGroup @name="Description" @wrapperClass="col-span-2">
+            <InputGroup @name={{t "column.description"}} @wrapperClass="col-span-2">
                 <Textarea
                     @value={{@resource.description}}
                     class="w-full form-input"
                     rows="3"
-                    placeholder="Describe the purpose of this journal entry..."
+                    placeholder={{t "ledger.accounting.describe-the-purpose-of-this-journal"}}
                     disabled={{cannot-write @resource}}
                 />
             </InputGroup>

@@ -28,7 +28,7 @@ export default class AccountingJournalIndexEditController extends Controller {
             yield this.hostRouter.transitionTo('console.ledger.accounting.journal.index.details', journalEntry);
             this.notifications.success(
                 this.intl.t('common.resource-updated-success', {
-                    resource: 'Journal Entry',
+                    resource: this.intl.t('resource.journal'),
                     resourceName: journalEntry.number,
                 })
             );
@@ -59,7 +59,7 @@ export default class AccountingJournalIndexEditController extends Controller {
     #confirmContinueWithUnsavedChanges(journalEntry, options = {}) {
         return this.modalsManager.confirm({
             title: this.intl.t('common.continue-without-saving'),
-            body: this.intl.t('common.continue-without-saving-prompt', { resource: 'Journal Entry' }),
+            body: this.intl.t('common.continue-without-saving-prompt', { resource: this.intl.t('resource.journal') }),
             acceptButtonText: this.intl.t('common.continue'),
             confirm: async () => {
                 journalEntry.rollbackAttributes();

@@ -4,9 +4,11 @@ import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { isArray } from '@ember/array';
 import { task } from 'ember-concurrency';
+import ledgerLabel from '../../utils/ledger-label';
 
 export default class ReportsArAgingController extends Controller {
     @service fetch;
+    @service intl;
     @service currentUser;
 
     @tracked data = null;
@@ -23,15 +25,17 @@ export default class ReportsArAgingController extends Controller {
 
     get bucketSummary() {
         if (!this.data?.buckets) return [];
-        return Object.values(this.data.buckets).map((b) => ({
-            label: b.label,
+        return Object.entries(this.data.buckets).map(([key, b]) => ({
+            label: ledgerLabel(this.intl, key, 'aging-bucket', b.label),
             total: b.total ?? 0,
         }));
     }
 
     get allInvoices() {
         if (!this.data?.buckets) return [];
-        return Object.values(this.data.buckets).flatMap((b) => (b.invoices ?? []).map((inv) => ({ ...inv, bucketLabel: b.label, daysRange: b.days_range })));
+        return Object.entries(this.data.buckets).flatMap(([key, b]) =>
+            (b.invoices ?? []).map((inv) => ({ ...inv, bucketLabel: ledgerLabel(this.intl, key, 'aging-bucket', b.label), daysRange: b.days_range }))
+        );
     }
 
     @task *loadReport() {

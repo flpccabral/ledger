@@ -1,15 +1,15 @@
 <div class="space-y-6">
     <div class="flex items-center justify-between">
-        <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Income Statement</h2>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-white">{{t "menu.income-statement"}}</h2>
         {{#if @data.period}}
             <span class="text-sm text-gray-500">{{@data.period}}</span>
         {{/if}}
-        <Badge @color={{if @data.profitable "green" "red"}}>{{if @data.profitable "Profitable" "Net Loss"}}</Badge>
+        <Badge @color={{if @data.profitable "green" "red"}}>{{if @data.profitable (t "ledger.common.profitable") (t "ledger.common.net-loss")}}</Badge>
     </div>
 
     {{! Revenue }}
     <div>
-        <h3 class="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wide mb-2">Revenue</h3>
+        <h3 class="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wide mb-2">{{t "ledger.common.revenue"}}</h3>
         <table class="w-full text-sm">
             <tbody>
                 {{#each @data.revenue as |item|}}
@@ -21,7 +21,7 @@
             </tbody>
             <tfoot>
                 <tr class="border-t-2 border-gray-300">
-                    <td class="py-2 font-semibold text-gray-900 dark:text-white">Total Revenue</td>
+                    <td class="py-2 font-semibold text-gray-900 dark:text-white">{{t "ledger.common.total-revenue"}}</td>
                     <td class="py-2 text-right font-bold text-green-600">{{format-currency @data.total_revenue @data.currency}}</td>
                 </tr>
             </tfoot>
@@ -30,7 +30,7 @@
 
     {{! Expenses }}
     <div>
-        <h3 class="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wide mb-2">Expenses</h3>
+        <h3 class="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wide mb-2">{{t "ledger.common.expenses"}}</h3>
         <table class="w-full text-sm">
             <tbody>
                 {{#each @data.expenses as |item|}}
@@ -42,7 +42,7 @@
             </tbody>
             <tfoot>
                 <tr class="border-t-2 border-gray-300">
-                    <td class="py-2 font-semibold text-gray-900 dark:text-white">Total Expenses</td>
+                    <td class="py-2 font-semibold text-gray-900 dark:text-white">{{t "ledger.common.total-expenses"}}</td>
                     <td class="py-2 text-right font-bold text-red-600">{{format-currency @data.total_expenses @data.currency}}</td>
                 </tr>
             </tfoot>
@@ -52,7 +52,7 @@
     {{! Net Income }}
     <div class="border-t-2 border-gray-400 pt-4">
         <div class="flex justify-between items-center">
-            <span class="text-base font-bold text-gray-900 dark:text-white">Net Income</span>
+            <span class="text-base font-bold text-gray-900 dark:text-white">{{t "ledger.common.net-income"}}</span>
             <span class="text-base font-bold {{if @data.profitable 'text-green-600' 'text-red-600'}}">
                 {{format-currency @data.net_income @data.currency}}
             </span>

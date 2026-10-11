@@ -1,38 +1,44 @@
 <div class="form-wrapper" ...attributes>
     {{! ACCOUNT DETAILS }}
-    <ContentPanel @title="Account Details" @open={{true}} @wrapperClass="bordered-top">
+    <ContentPanel @title={{t "ledger.common.account-details"}} @open={{true}} @wrapperClass="bordered-top">
         <div class="grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-2 no-input-group-padding text-xs">
 
             {{! Identification }}
             <div class="col-span-1 lg:col-span-2 text-[11px] uppercase tracking-wide text-gray-500 font-semibold mt-1">
-                Account Information
+                {{t "ledger.common.account-information"}}
             </div>
 
-            <InputGroup @name="Account Name" @wrapperClass="col-span-2">
-                <Input @value={{@resource.name}} @type="text" class="w-full form-input" placeholder="e.g. Cash and Cash Equivalents" disabled={{cannot-write @resource}} />
+            <InputGroup @name={{t "ledger.common.account-name"}} @wrapperClass="col-span-2">
+                <Input
+                    @value={{@resource.name}}
+                    @type="text"
+                    class="w-full form-input"
+                    placeholder={{t "ledger.accounting.e-g-cash-and-cash-equivalents"}}
+                    disabled={{cannot-write @resource}}
+                />
             </InputGroup>
 
-            <InputGroup @name="Account Code">
+            <InputGroup @name={{t "ledger.common.account-code"}}>
                 <Input @value={{@resource.code}} @type="text" class="w-full form-input" placeholder="e.g. 1000" disabled={{cannot-write @resource}} />
             </InputGroup>
 
-            <InputGroup @name="Account Type">
+            <InputGroup @name={{t "ledger.common.account-type"}}>
                 <div class="fleetbase-model-select fleetbase-power-select ember-model-select">
                     <PowerSelect
                         @options={{array "asset" "liability" "equity" "revenue" "expense"}}
                         @selected={{@resource.type}}
                         @onChange={{fn (mut @resource.type)}}
-                        @placeholder="Select account type"
+                        @placeholder={{t "ledger.common.select-account-type"}}
                         @triggerClass="form-select form-input"
                         @disabled={{cannot-write @resource}}
                         as |option|
                     >
-                        <div class="capitalize text-sm">{{option}}</div>
+                        <div class="text-sm">{{ledger-label option "account-type"}}</div>
                     </PowerSelect>
                 </div>
             </InputGroup>
 
-            <InputGroup @name="Currency">
+            <InputGroup @name={{t "column.currency"}}>
                 <div class="fleetbase-model-select fleetbase-power-select ember-model-select">
                     <PowerSelect
                         @options={{array
@@ -74,7 +80,7 @@
                         }}
                         @selected={{@resource.currency}}
                         @onChange={{fn (mut @resource.currency)}}
-                        @placeholder="Select currency"
+                        @placeholder={{t "ledger.common.select-currency"}}
                         @triggerClass="form-select form-input"
                         @disabled={{cannot-write @resource}}
                         as |option|
@@ -84,29 +90,35 @@
                 </div>
             </InputGroup>
 
-            <InputGroup @name="Status">
+            <InputGroup @name={{t "column.status"}}>
                 <div class="fleetbase-model-select fleetbase-power-select ember-model-select">
                     <PowerSelect
                         @options={{array "active" "inactive" "archived"}}
                         @selected={{@resource.status}}
                         @onChange={{fn (mut @resource.status)}}
-                        @placeholder="Select status"
+                        @placeholder={{t "ledger.common.select-status"}}
                         @triggerClass="form-select form-input"
                         @disabled={{cannot-write @resource}}
                         as |option|
                     >
-                        <div class="capitalize text-sm">{{option}}</div>
+                        <div class="text-sm">{{ledger-label option "status"}}</div>
                     </PowerSelect>
                 </div>
             </InputGroup>
 
             {{! Description }}
             <div class="col-span-1 lg:col-span-2 text-[11px] uppercase tracking-wide text-gray-500 font-semibold mt-3">
-                Description
+                {{t "column.description"}}
             </div>
 
-            <InputGroup @name="Description" @wrapperClass="col-span-2">
-                <Textarea @value={{@resource.description}} class="w-full form-input" rows="3" placeholder="Optional description of this account..." disabled={{cannot-write @resource}} />
+            <InputGroup @name={{t "column.description"}} @wrapperClass="col-span-2">
+                <Textarea
+                    @value={{@resource.description}}
+                    class="w-full form-input"
+                    rows="3"
+                    placeholder={{t "ledger.accounting.optional-description-of-this-account"}}
+                    disabled={{cannot-write @resource}}
+                />
             </InputGroup>
 
         </div>

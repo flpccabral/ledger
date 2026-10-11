@@ -1,8 +1,10 @@
 import Component from '@glimmer/component';
+import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
 export default class ModalsIssueRefundComponent extends Component {
+    @service intl;
     @tracked selectedGatewayTransactionId = this.args.options.selectedGatewayTransactionId;
     @tracked refundMode = this.args.options.refundMode ?? 'full';
     @tracked amount = this.args.options.amount ?? 0;
@@ -10,8 +12,8 @@ export default class ModalsIssueRefundComponent extends Component {
 
     get refundModes() {
         return [
-            { label: 'Full remaining amount', value: 'full' },
-            { label: 'Custom partial amount', value: 'partial' },
+            { label: this.intl.t('ledger.common.full-remaining-amount'), value: 'full' },
+            { label: this.intl.t('ledger.common.custom-partial-amount'), value: 'partial' },
         ];
     }
 

@@ -1,7 +1,7 @@
 <Layout::Resource::Panel
     @resource={{this.journalEntry}}
     @controller={{this}}
-    @headerTitle="Create Journal Entry"
+    @headerTitle={{t "ledger.common.create-journal-entry"}}
     @actionButtons={{this.actionButtons}}
     @saveTask={{this.save}}
     @onPressCancel={{transition-to "accounting.journal.index"}}

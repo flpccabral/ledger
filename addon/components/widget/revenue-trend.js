@@ -7,6 +7,7 @@ import getCurrency from '@fleetbase/ember-ui/utils/get-currency';
 export default class WidgetRevenueTrendComponent extends Component {
     @service fetch;
     @service ledgerDashboard;
+    @service intl;
 
     @tracked data = null;
     @tracked error = null;
@@ -108,7 +109,7 @@ export default class WidgetRevenueTrendComponent extends Component {
                     mode: 'index',
                     intersect: false,
                     callbacks: {
-                        label: (context) => `${context.dataset?.label ?? 'Value'}: ${this.formatChartCurrency(context.parsed?.y ?? context.raw)}`,
+                        label: (context) => `${context.dataset?.label ?? this.intl.t('ledger.common.value')}: ${this.formatChartCurrency(context.parsed?.y ?? context.raw)}`,
                     },
                 },
             },
@@ -133,7 +134,7 @@ export default class WidgetRevenueTrendComponent extends Component {
             this.data = response?.data ?? response;
             this.error = null;
         } catch (error) {
-            this.error = error?.message ?? 'Unable to load revenue trend';
+            this.error = error?.message ?? this.intl.t('ledger.dashboard.unable-to-load-revenue-trend');
         }
     }
 

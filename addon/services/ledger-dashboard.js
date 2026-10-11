@@ -1,4 +1,4 @@
-import Service from '@ember/service';
+import Service, { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 
 function formatDate(date) {
@@ -10,6 +10,7 @@ function formatDate(date) {
 }
 
 export default class LedgerDashboardService extends Service {
+    @service intl;
     @tracked startDate = null;
     @tracked endDate = null;
     @tracked dateRange = null;
@@ -43,7 +44,7 @@ export default class LedgerDashboardService extends Service {
     }
 
     get periodLabel() {
-        return this.startDate && this.endDate ? `${this.startDate} - ${this.endDate}` : 'Month to date';
+        return this.startDate && this.endDate ? `${this.startDate} - ${this.endDate}` : this.intl.t('ledger.common.month-to-date');
     }
 
     get dateRangeValue() {

@@ -1,7 +1,14 @@
-<Layout::Section::Header @title="AR Aging" @actionsWrapperClass="flex flex-row items-center space-x-2">
+<Layout::Section::Header @title={{t "menu.ar-aging"}} @actionsWrapperClass="flex flex-row items-center space-x-2">
     <div class="flex flex-row items-center space-x-2">
-        <DatePicker @value={{this.as_of}} @onSelect={{this.onDateChanged}} @autoClose={{true}} @buttons={{array "clear"}} @placeholder="As of date" class="w-44 form-input form-input-sm" />
-        <Button @size="sm" @type="default" @icon="refresh" @helpText="Refresh" {{on "click" this.reload}} />
+        <DatePicker
+            @value={{this.as_of}}
+            @onSelect={{this.onDateChanged}}
+            @autoClose={{true}}
+            @buttons={{array "clear"}}
+            @placeholder={{t "ledger.common.as-of-date"}}
+            class="w-44 form-input form-input-sm"
+        />
+        <Button @size="sm" @type="default" @icon="refresh" @helpText={{t "ledger.common.refresh"}} {{on "click" this.reload}} />
     </div>
 </Layout::Section::Header>
 <Layout::Section::Body class="overflow-y-auto h-full">
@@ -11,14 +18,14 @@
         {{else if this.data}}
             <div class="flex items-center justify-between mb-6">
                 <div>
-                    <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Accounts Receivable Aging</h2>
+                    <h2 class="text-lg font-semibold text-gray-900 dark:text-white">{{t "ledger.common.accounts-receivable-aging"}}</h2>
                     {{#if this.data.as_of_date}}
-                        <p class="text-sm text-gray-500 mt-0.5">As of {{format-date-fns this.data.as_of_date "MMMM d, yyyy"}}</p>
+                        <p class="text-sm text-gray-500 mt-0.5">{{t "ledger.common.as-of"}} {{format-date-fns this.data.as_of_date "MMMM d, yyyy"}}</p>
                     {{/if}}
                 </div>
                 {{#if this.data.grand_total}}
                     <div class="text-right">
-                        <p class="text-xs text-gray-500 uppercase tracking-wide">Total Outstanding</p>
+                        <p class="text-xs text-gray-500 uppercase tracking-wide">{{t "ledger.common.total-outstanding"}}</p>
                         <p class="text-lg font-bold text-gray-900 dark:text-white">{{format-currency this.data.grand_total this.companyCurrency}}</p>
                     </div>
                 {{/if}}
@@ -38,16 +45,16 @@
 
             <div class="border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
                 <div class="bg-gray-50 dark:bg-gray-800 px-4 py-2 border-b border-gray-200 dark:border-gray-700">
-                    <h3 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Outstanding Invoices</h3>
+                    <h3 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{{t "ledger.common.outstanding-invoices"}}</h3>
                 </div>
                 <table class="w-full text-sm overflow-hidden">
                     <thead>
                         <tr class="border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
-                            <th class="px-4 py-2 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Invoice</th>
-                            <th class="px-4 py-2 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Customer</th>
-                            <th class="px-4 py-2 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Due Date</th>
-                            <th class="px-4 py-2 text-right text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Balance</th>
-                            <th class="px-4 py-2 text-center text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Bucket</th>
+                            <th class="px-4 py-2 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{{t "resource.invoice"}}</th>
+                            <th class="px-4 py-2 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{{t "column.customer"}}</th>
+                            <th class="px-4 py-2 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{{t "column.due-date"}}</th>
+                            <th class="px-4 py-2 text-right text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{{t "column.balance"}}</th>
+                            <th class="px-4 py-2 text-center text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{{t "ledger.common.bucket"}}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -64,14 +71,14 @@
                                 </td>
                             </tr>
                         {{else}}
-                            <tr><td colspan="5" class="px-4 py-6 text-center text-gray-400 text-sm">No outstanding receivables</td></tr>
+                            <tr><td colspan="5" class="px-4 py-6 text-center text-gray-400 text-sm">{{t "ledger.common.no-outstanding-receivables"}}</td></tr>
                         {{/each}}
                     </tbody>
                 </table>
             </div>
         {{else}}
             <div class="flex flex-col items-center justify-center py-20 text-gray-400">
-                <p class="text-sm">No report data available. Select a date and refresh.</p>
+                <p class="text-sm">{{t "ledger.report.no-report-data-available-select-a"}}</p>
             </div>
         {{/if}}
     </div>

@@ -34,7 +34,7 @@ export default class AccountingAccountsIndexNewController extends Controller {
             yield this.hostRouter.transitionTo('console.ledger.accounting.accounts.index.details', account);
             this.notifications.success(
                 this.intl.t('common.resource-created-success-name', {
-                    resource: 'Account',
+                    resource: this.intl.t('resource.account'),
                     resourceName: account.name,
                 })
             );

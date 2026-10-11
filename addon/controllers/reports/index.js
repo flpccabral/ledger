@@ -6,6 +6,7 @@ import { task } from 'ember-concurrency';
 
 export default class ReportsIndexController extends Controller {
     @service fetch;
+    @service intl;
 
     @tracked activeReport = 'balance-sheet';
     @tracked reportData = null;
@@ -15,10 +16,10 @@ export default class ReportsIndexController extends Controller {
     @tracked asOf = null;
 
     reportTabs = [
-        { id: 'balance-sheet', label: 'Balance Sheet' },
-        { id: 'income-statement', label: 'Income Statement' },
-        { id: 'cash-flow', label: 'Cash Flow' },
-        { id: 'ar-aging', label: 'AR Aging' },
+        { id: 'balance-sheet', label: this.intl.t('menu.balance-sheet') },
+        { id: 'income-statement', label: this.intl.t('menu.income-statement') },
+        { id: 'cash-flow', label: this.intl.t('menu.cash-flow') },
+        { id: 'ar-aging', label: this.intl.t('menu.ar-aging') },
     ];
 
     @task *loadReport() {

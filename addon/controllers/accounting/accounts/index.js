@@ -72,7 +72,8 @@ export default class AccountingAccountsIndexController extends Controller {
             {
                 label: this.intl.t('column.type'),
                 valuePath: 'type',
-                humanize: true,
+                cellComponent: 'table/cell/ledger-label',
+                labelNamespace: 'account-type',
                 resizable: true,
                 sortable: true,
                 filterable: true,
@@ -81,11 +82,11 @@ export default class AccountingAccountsIndexController extends Controller {
                 filterOptionLabel: 'label',
                 filterOptionValue: 'value',
                 filterOptions: [
-                    { label: 'Asset', value: 'asset' },
-                    { label: 'Liability', value: 'liability' },
-                    { label: 'Equity', value: 'equity' },
-                    { label: 'Revenue', value: 'revenue' },
-                    { label: 'Expense', value: 'expense' },
+                    { label: this.intl.t('ledger.common.asset'), value: 'asset' },
+                    { label: this.intl.t('ledger.common.liability'), value: 'liability' },
+                    { label: this.intl.t('ledger.common.equity'), value: 'equity' },
+                    { label: this.intl.t('ledger.common.revenue'), value: 'revenue' },
+                    { label: this.intl.t('ledger.common.expense'), value: 'expense' },
                 ],
             },
             {
@@ -107,15 +108,15 @@ export default class AccountingAccountsIndexController extends Controller {
             {
                 label: this.intl.t('column.status'),
                 valuePath: 'status',
-                cellComponent: 'table/cell/status',
+                cellComponent: 'table/cell/ledger-status',
                 resizable: true,
                 sortable: true,
                 filterable: true,
                 filterParam: 'status',
                 filterComponent: 'filter/select',
                 filterOptions: [
-                    { label: 'Active', value: 'active' },
-                    { label: 'Inactive', value: 'inactive' },
+                    { label: this.intl.t('ledger.common.active'), value: 'active' },
+                    { label: this.intl.t('ledger.common.inactive'), value: 'inactive' },
                 ],
             },
         ];

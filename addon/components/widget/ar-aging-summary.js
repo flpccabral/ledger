@@ -2,10 +2,12 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import { task } from 'ember-concurrency';
+import ledgerLabel from '../../utils/ledger-label';
 
 export default class WidgetArAgingSummaryComponent extends Component {
     @service fetch;
     @service ledgerDashboard;
+    @service intl;
 
     @tracked data = null;
     @tracked error = null;
@@ -23,6 +25,7 @@ export default class WidgetArAgingSummaryComponent extends Component {
     get bucketRows() {
         return this.buckets.map((bucket) => ({
             ...bucket,
+            label: ledgerLabel(this.intl, bucket.key, 'aging-bucket', bucket.label),
             agingClass: `ledger-aging-${bucket.key?.replace(/_/g, '-')}`,
             pct: Math.round(((bucket.total ?? 0) / this.maxTotal) * 100),
         }));
@@ -38,7 +41,7 @@ export default class WidgetArAgingSummaryComponent extends Component {
             this.data = response?.data ?? response;
             this.error = null;
         } catch (error) {
-            this.error = error?.message ?? 'Unable to load AR aging';
+            this.error = error?.message ?? this.intl.t('ledger.dashboard.unable-to-load-ar-aging');
         }
     }
 

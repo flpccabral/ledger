@@ -28,7 +28,7 @@ export default class AccountingAccountsIndexEditController extends Controller {
             yield this.hostRouter.transitionTo('console.ledger.accounting.accounts.index.details', account);
             this.notifications.success(
                 this.intl.t('common.resource-updated-success', {
-                    resource: 'Account',
+                    resource: this.intl.t('resource.account'),
                     resourceName: account.name,
                 })
             );
@@ -59,7 +59,7 @@ export default class AccountingAccountsIndexEditController extends Controller {
     #confirmContinueWithUnsavedChanges(account, options = {}) {
         return this.modalsManager.confirm({
             title: this.intl.t('common.continue-without-saving'),
-            body: this.intl.t('common.continue-without-saving-prompt', { resource: 'Account' }),
+            body: this.intl.t('common.continue-without-saving-prompt', { resource: this.intl.t('resource.account') }),
             acceptButtonText: this.intl.t('common.continue'),
             confirm: async () => {
                 account.rollbackAttributes();

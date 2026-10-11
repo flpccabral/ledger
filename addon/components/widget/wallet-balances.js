@@ -7,6 +7,7 @@ export default class WidgetWalletBalancesComponent extends Component {
     @service fetch;
     @service currentUser;
     @service ledgerDashboard;
+    @service intl;
     @tracked totals = null;
     @tracked topWallets = [];
     @tracked error = null;
@@ -31,7 +32,7 @@ export default class WidgetWalletBalancesComponent extends Component {
         } catch (error) {
             this.totals = null;
             this.topWallets = [];
-            this.error = error?.message ?? 'Unable to load wallet balances';
+            this.error = error?.message ?? this.intl.t('ledger.dashboard.unable-to-load-wallet-balances');
         }
     }
 

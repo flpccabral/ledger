@@ -1,8 +1,8 @@
 <div class="ledger-dashboard-widget flex h-full flex-col rounded-md border bg-white shadow-sm dark:bg-gray-800" ...attributes>
     <div class="ledger-widget-header">
         <div class="min-w-0">
-            <div class="ledger-widget-title">Recent Financial Activity</div>
-            <div class="ledger-widget-subtitle">Latest journal entries posted to the ledger</div>
+            <div class="ledger-widget-title">{{t "ledger.common.recent-financial-activity"}}</div>
+            <div class="ledger-widget-subtitle">{{t "ledger.dashboard.latest-journal-entries-posted-to-the"}}</div>
         </div>
         <button type="button" class="ledger-icon-button" {{on "click" (perform this.loadData)}}><FaIcon @icon="rotate" /></button>
     </div>
@@ -27,7 +27,7 @@
                 {{/each}}
             </div>
         {{else}}
-            <div class="ledger-widget-empty">No recent journal entries.</div>
+            <div class="ledger-widget-empty">{{t "ledger.dashboard.no-recent-journal-entries"}}</div>
         {{/if}}
     </div>
 </div>

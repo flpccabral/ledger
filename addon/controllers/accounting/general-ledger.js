@@ -1,21 +1,22 @@
 import Controller from '@ember/controller';
-import { tracked } from '@glimmer/tracking';
+import { tracked, cached } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { isArray } from '@ember/array';
 import { task } from 'ember-concurrency';
 
 const ACCOUNT_TYPES = [
-    { label: 'All Types', value: null },
-    { label: 'Asset', value: 'asset' },
-    { label: 'Liability', value: 'liability' },
-    { label: 'Equity', value: 'equity' },
-    { label: 'Revenue', value: 'revenue' },
-    { label: 'Expense', value: 'expense' },
+    { labelKey: 'ledger.common.all-types', value: null },
+    { labelKey: 'ledger.common.asset', value: 'asset' },
+    { labelKey: 'ledger.common.liability', value: 'liability' },
+    { labelKey: 'ledger.common.equity', value: 'equity' },
+    { labelKey: 'ledger.common.revenue', value: 'revenue' },
+    { labelKey: 'ledger.common.expense', value: 'expense' },
 ];
 
 export default class AccountingGeneralLedgerController extends Controller {
     @service fetch;
+    @service intl;
 
     @tracked accounts = [];
     @tracked dateRange = null;
@@ -29,12 +30,18 @@ export default class AccountingGeneralLedgerController extends Controller {
      */
     @tracked expandedMap = {};
 
+    /**
+     * Account type options with translated labels. Cached so the select keeps
+     * receiving the same option objects for `selectedType`; it recomputes when
+     * the locale changes.
+     */
+    @cached
     get accountTypes() {
-        return ACCOUNT_TYPES;
+        return ACCOUNT_TYPES.map(({ labelKey, value }) => ({ label: this.intl.t(labelKey), value }));
     }
 
     get selectedType() {
-        return ACCOUNT_TYPES.find((t) => t.value === this.type) ?? ACCOUNT_TYPES[0];
+        return this.accountTypes.find((t) => t.value === this.type) ?? this.accountTypes[0];
     }
 
     get allExpanded() {

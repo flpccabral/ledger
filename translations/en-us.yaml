@@ -39,6 +39,10 @@ ledger:
     partially_refunded: Partially Refunded
     settled: Settled
     seen: Seen
+    archived: Archived
+    accepted: Accepted
+    issued: Issued
+    claimed: Claimed
   environment:
     live: Live
     sandbox: Sandbox
@@ -85,35 +89,95 @@ ledger:
     contact: Contact
     vendor: Vendor
     user: User
+  account-type:
+    asset: Asset
+    liability: Liability
+    equity: Equity
+    revenue: Revenue
+    expense: Expense
+  journal-type:
+    standard: Standard
+    adjusting: Adjusting
+    closing: Closing
+    reversing: Reversing
+    opening: Opening
+    general: General
+    payment: Payment
+    refund: Refund
+    adjustment: Adjustment
+    deposit: Deposit
+    withdrawal: Withdrawal
+    transfer: Transfer
+    transfer_in: Transfer In
+    transfer_out: Transfer Out
+    invoice_payment: Invoice Payment
+    gateway_refund: Gateway Refund
+    manual_entry: Manual Entry
+    earning: Earning
+    fee: Fee
+    payout: Payout
+    wallet_deposit: Wallet Deposit
+    wallet_withdrawal: Wallet Withdrawal
+    wallet_transfer: Wallet Transfer
+  aging-bucket:
+    current: Current
+    '1_30': 1–30 days
+    '31_60': 31–60 days
+    '61_90': 61–90 days
+    over_90: 90+ days
   common:
+    account-code: Account Code
+    account-details: Account Details
+    account-information: Account Information
+    account-name: Account Name
+    account-type: Account Type
+    accounts-receivable-aging: Accounts Receivable Aging
     actions: Actions
     active: Active
     active-gateways: Active gateways
+    active-wallets: Active Wallets
     add-a-gateway: Add a gateway
     add-funds: Add Funds
     add-gateway: Add Gateway
     add-line-item: Add line item
     add-one: Add one
+    adjustment: Adjustment
     after-saving: After Saving
+    all-types: All Types
     allow-partial-payments: Allow Partial Payments
     amount-paid: Amount Paid
     amounts: Amounts
+    april: April
+    ar-aging-risk: AR Aging Risk
+    ar-aging-summary: AR Aging Summary
+    as-of: As of
+    as-of-date: As of date
+    asset: Asset
+    assets: Assets
+    august: August
     auto-apply-wallet-credit: Auto-Apply Wallet Credit
+    auto-post-journal-entries: Auto-Post Journal Entries
     auto-send-on-creation: Auto-Send on Creation
     automation: Automation
     available: Available
     available-on-invoices: Available on invoices
     back: Back
     balance-due: Balance Due
+    balanced: Balanced
     bank-transfer: Bank Transfer
+    base-currency: Base Currency
     bill-to: Bill To
+    bucket: Bucket
     cancel: Cancel
     cancelled: Cancelled
     card: Card
     cash: Cash
+    cash-flow-statement: Cash Flow Statement
+    cash-flow-summary: Cash Flow Summary
     checkout-readiness: Checkout Readiness
     cheque: Cheque
     choose-payment-gateway: Choose Payment Gateway
+    collapse-all: Collapse All
     configuration: Configuration
     configured: Configured
     connect-gateway: Connect gateway
@@ -126,26 +190,46 @@ ledger:
     copy-uri: Copy URI
     copy-webhook-url: Copy Webhook URL
     core-information: Core Information
+    count: Count
     create-a-template: Create a template
     create-gateway: Create Gateway
+    create-journal-entry: Create Journal Entry
+    create-new-account: Create New Account
     create-new-invoice: Create New Invoice
     create-new-wallet: Create New Wallet
     create-test-order: Create Test Order
     credential-test: Credential test
     credentials: Credentials
     credit: Credit
+    credit-account-code: Credit Account Code
     credit-card: Credit Card
+    credit-count: Credit Count
+    credits: Credits
+    current: Current
     current-balance: Current Balance
+    custom-partial-amount: Custom partial amount
+    customer-email: Customer Email
+    customer-example-com: customer@example.com
+    customer-refund-link: Customer Refund Link
+    dashboard-period: Dashboard period
     dates: Dates
+    days-overdue: Days Overdue
     debit: Debit
+    debit-account-code: Debit Account Code
     debit-card: Debit Card
+    debit-count: Debit Count
+    debits: Debits
+    december: December
+    default-accounts: Default Accounts
     default-currency: Default Currency
+    default-expense-account: Default Expense Account
     default-gateway: Default Gateway
     default-invoice-template: Default Invoice Template
     default-invoice-text: Default Invoice Text
     default-notes: Default Notes
     default-payment-gateway: Default Payment Gateway
     default-payment-terms: Default Payment Terms
+    default-revenue-account: Default Revenue Account
     default-template: Default Template
     delete: Delete
     deposit: Deposit
@@ -153,10 +237,12 @@ ledger:
     details: Details
     diagnostics: Diagnostics
     done: Done
+    double-entry: Double-Entry
     draft: Draft
     driver-selected: Driver selected
     due: Due
     due-on-receipt: Due on Receipt
+    e-g-je-0001: e.g. JE-0001
     e-g-main-wallet: e.g. Main Wallet
     e-g-stripe: e.g. stripe
     e-g-taler-sandbox: e.g. taler_sandbox
@@ -165,18 +251,31 @@ ledger:
     edit-settings: Edit Settings
     email: Email
     email-phone: Email / Phone
+    entries: entries
+    entry-date: Entry Date
+    entry-information: Entry Information
+    entry-number: Entry Number
+    equity: Equity
     event-type: Event Type
     exchange-rate: Exchange Rate
+    expand-all: Expand All
+    expense: Expense
+    expenses: Expenses
     external-reference: External reference
     failed: Failed
     failure-code: Failure Code
     failure-information: Failure Information
+    february: February
     fee-amount: Fee Amount
+    financial-reports: Financial Reports
+    financing: Financing
+    financing-activities: Financing Activities
     fleetbase-ledger: Fleetbase Ledger
     freeze: Freeze
     freeze-this-wallet: Freeze this wallet
     freeze-wallet: Freeze Wallet
     from: From
+    full-remaining-amount: Full remaining amount
     gateway-and-payment: Gateway & Payment
     gateway-checkout-readiness: Gateway checkout readiness
     gateway-credentials: Gateway Credentials
@@ -188,26 +287,38 @@ ledger:
     gateway-transaction-id: Gateway Transaction ID
     gateway-transaction-reference: Gateway transaction reference
     gateway-verified: Gateway verified
+    general: General
     gnu-taler-refund: GNU Taler Refund
+    grouped-by-currency: Grouped by currency
     identity: Identity
     inactive: Inactive
     initiated-by: Initiated By
     internal-id: Internal ID
     internal-transfer: Internal transfer
+    investing: Investing
     invoice-details: Invoice Details
     invoice-information: Invoice Information
     invoice-number: Invoice Number
     invoice-number-prefix: Invoice Number Prefix
     invoice-numbering: Invoice Numbering
     invoice-paid: Invoice Paid
+    invoice-pipeline: Invoice Pipeline
     invoice-settings: Invoice Settings
+    invoice-summary: Invoice Summary
     invoice-url: Invoice URL
+    invoices: invoices
     ip-address: IP Address
     issue-refund: Issue Refund
     item-description: Item description
+    january: January
+    journal-entry-behaviour: Journal Entry Behaviour
+    july: July
+    june: June
     last-results: Last Results
     last-updated: Last Updated
     ledger-webhook-url: Ledger webhook URL
+    liabilities: Liabilities
+    liability: Liability
     line-items: Line Items
     live: Live
     live-ready: Live ready
@@ -216,10 +327,15 @@ ledger:
     manage-gateway: Manage gateway
     manual: Manual
     manual-top-up: Manual top-up
+    march: March
     max: Max
+    may: May
+    metric: Metric
     min: Min
     missing: Missing
     mode: Mode
+    month-to-date: Month to date
+    multi: Multi
     need-provisioning-review: Need provisioning review
     needs-setup: Needs Setup
     needs-setup-2: Needs setup
@@ -230,23 +346,42 @@ ledger:
     net-60: Net 60
     net-7: Net 7
     net-90: Net 90
+    net-balance: Net Balance
+    net-cash-change: net cash change
+    net-cash-flow: Net cash flow
+    net-income: Net Income
+    net-loss: Net Loss
     next: Next
     'no': 'No'
     no-due-date: No due date
+    no-expenses-recorded: No expenses recorded
     no-open-warnings: No open warnings
+    no-outstanding-receivables: No outstanding receivables
     no-payment-yet: No payment yet
     no-refund-yet: No refund yet
+    no-revenue-recorded: No revenue recorded
     no-timestamp: No timestamp
+    no-wallet-data: No wallet data
+    no-wallets-found: No wallets found
     not-checked: Not Checked
     not-checked-2: Not checked
     not-registered: not registered
     notes: Notes
     notes-and-terms: Notes & Terms
+    november: November
+    october: October
     online-payment-unavailable: Online Payment Unavailable
     open-in-ledger: Open in Ledger
+    open-invoices: open invoices
+    open-invoices-2: Open Invoices
+    operating: Operating
+    operating-activities: Operating Activities
     order: Order
     other: Other
+    outstanding-ar: Outstanding AR
+    outstanding-invoices: Outstanding Invoices
     overdue: Overdue
+    overdue-ar: Overdue AR
     overview: Overview
     owner-details: Owner Details
     owner-type: Owner Type
@@ -268,12 +403,15 @@ ledger:
     payment-settings: Payment Settings
     payment-summary: Payment Summary
     pending: Pending
+    period-transaction-activity: Period Transaction Activity
     phone: Phone
+    posted: Posted
     powered-by: Powered by
     preview: Preview
     preview-invoice: Preview Invoice
     production-connections: Production connections
     production-payments: Production payments
+    profitable: Profitable
     provider-callback-ready: Provider callback ready
     provider-configuration: Provider Configuration
     provider-credentials: Provider credentials
@@ -286,47 +424,72 @@ ledger:
     qty: Qty
     ready: Ready
     ready-to-verify: Ready to verify
+    reason: Reason
+    reason-for-refund: Reason for refund
+    recent-financial-activity: Recent Financial Activity
     recent-gateway-activity: Recent Gateway Activity
     reconciliation: Reconciliation
     record-info: Record Info
     record-payment: Record Payment
+    ref: 'Ref #'
     reference-id: Reference ID
     refresh: Refresh
     refresh-diagnostics: Refresh Diagnostics
     refund: Refund
+    refund-completed: Refund completed
     refund-issued: Refund Issued
     refund-pending: Refund Pending
+    refund-status: Refund Status
+    refund-type: Refund Type
+    refund-uri-issued: Refund URI issued
     refunded: Refunded
     register-webhook: Register Webhook
     registration-needed: Registration needed
     remove: Remove
     return-url: Return URL
+    revenue: Revenue
+    revenue-chart: Revenue Chart
+    revenue-trend: Revenue Trend
     review: Review
     review-gateway-setup: Review Gateway Setup
     routing: Routing
     routing-and-status: Routing And Status
+    run-report: Run Report
     sandbox: Sandbox
     save-changes: Save Changes
     save-gateway: Save Gateway
     seen: Seen
+    select-account-type: Select account type
+    select-ap-account: Select AP account
+    select-ar-account: Select AR account
+    select-credit-account: Select credit account
     select-currency: Select currency
     select-customer: Select customer
+    select-date-range: Select date range
+    select-debit-account: Select debit account
     select-direction: Select direction
+    select-entry-type: Select entry type
     select-environment: Select environment
+    select-expense-account: Select expense account
     select-option: Select option
     select-order: Select order
     select-owner-type: Select owner type
     select-payment-method: Select payment method
     select-payment-terms: Select payment terms
+    select-period: Select period
+    select-revenue-account: Select revenue account
+    select-start-month: Select start month
     select-status: Select status
     select-type: Select type
     select-wallet-type: Select wallet type
     selected: Selected
     selected-gateway-driver: Selected gateway driver
+    send-email: Send Email
     send-invoice: Send Invoice
     send-payment-receipt: Send Payment Receipt
     sent: Sent
     sent-at: Sent At
+    september: September
     settings: Settings
     settled-amount: Settled Amount
     settled-currency: Settled Currency
@@ -335,6 +498,7 @@ ledger:
     subtotal: Subtotal
     supported-gateways: Supported Gateways
     suspended: Suspended
+    system: System
     tax-amount: Tax Amount
     tax-percent: Tax %
     template: Template
@@ -345,30 +509,76 @@ ledger:
     testing-connections: Testing connections
     the-selected-gateway: the selected gateway
     to-wallet: To Wallet
+    top-wallets: Top Wallets
     total-amount: Total Amount
+    total-assets: Total Assets
+    total-balance: Total Balance
+    total-credits: Total Credits
+    total-debits: Total Debits
+    total-equity: Total Equity
+    total-expenses: Total Expenses
+    total-liabilities: Total Liabilities
+    total-outstanding: Total Outstanding
+    total-revenue: Total Revenue
+    totals: Totals
     transaction-details: Transaction Details
     transaction-information: Transaction Information
     transfer: Transfer
+    unbalanced: Unbalanced
     unfreeze: Unfreeze
     unfreeze-wallet: Unfreeze Wallet
     unit-price: Unit Price
     unnamed-gateway: Unnamed gateway
+    value: Value
     verified: Verified
+    verify-status: Verify Status
     view: View
     view-refunds: View Refunds
     viewed: Viewed
     viewed-at: Viewed At
     void: Void
+    voided: Voided
+    vs-previous-period: vs previous period
+    wallet: wallet
+    wallet-balance: Wallet Balance
+    wallet-balances: Wallet Balances
     wallet-details: Wallet Details
     wallet-information: Wallet Information
     wallet-name: Wallet Name
+    wallet-status: Wallet Status
+    wallet-uri: Wallet URI
     warnings: warnings
     webhook: Webhook
     webhook-events: Webhook Events
     webhook-issues: Webhook issues
     webhook-registration: Webhook registration
     withdraw: Withdraw
+    withdrawal: Withdrawal
     'yes': 'Yes'
+  navigation:
+    assets-liabilities-and-equity: Assets, liabilities, and equity.
+    browse-and-create-double-entry-journal: Browse and create double-entry journal entries.
+    cash-movement-over-the-selected-period: Cash movement over the selected period.
+    chart-of-accounts-journals-and-general: Chart of accounts, journals, and general ledger.
+    configure-accounting-automation-and-posting-behavior: Configure accounting automation and posting behavior.
+    configure-invoice-numbering-defaults-and-templates: Configure invoice numbering, defaults, and templates.
+    configure-payment-defaults-and-gateway-behavior: Configure payment defaults and gateway behavior.
+    configure-payment-gateway-integrations: Configure payment gateway integrations.
+    create-send-and-manage-customer-invoices: Create, send, and manage customer invoices.
+    debit-and-credit-balances-by-account: Debit and credit balances by account.
+    design-reusable-invoice-templates: Design reusable invoice templates.
+    financial-statements-and-operational-reports: Financial statements and operational reports.
+    invoices-and-reusable-invoice-templates: Invoices and reusable invoice templates.
+    ledger-billing-payment-and-accounting-settings: Ledger billing, payment, and accounting settings.
+    ledger-dashboard-and-financial-overview: Ledger dashboard and financial overview.
+    manage-company-customer-and-driver-wallets: Manage company, customer, and driver wallets.
+    manage-the-ledger-account-structure: Manage the ledger account structure.
+    outstanding-receivables-by-age-bucket: Outstanding receivables by age bucket.
+    revenue-expenses-and-net-income: Revenue, expenses, and net income.
+    review-payment-and-wallet-transaction-history: Review payment and wallet transaction history.
+    review-posted-activity-across-accounts: Review posted activity across accounts.
+    transactions-wallets-and-payment-gateways: Transactions, wallets, and payment gateways.
+    wallet-balances-and-activity-summary: Wallet balances and activity summary.
   checkout:
     amount-due: 'Amount due:'
     due: 'Due:'
@@ -397,15 +607,32 @@ ledger:
     this-invoice-is-no-longer-active: This invoice is no longer active and cannot accept payments.
     this-invoice-is-not-yet-available: This invoice is not yet available. Please contact the sender.
   refund:
+    advanced-fallback-for-copying-directly-into: Advanced fallback for copying directly into a GNU Taler wallet.
+    defaults-to-the-invoice-customer-email: Defaults to the invoice customer email when available.
     failed-to-load-refund-please-try: Failed to load refund. Please try again later.
+    gateway-refund-transaction: 'Gateway refund transaction:'
+    gnu-taler-may-return-a-refund: GNU Taler may return a refund URI. Share it with the customer so they can open it with their Taler wallet and accept the refund.
     gnu-taler-refund-qr-code: GNU Taler refund QR code
     loading-refund: Loading refund...
     no-refund-identifier: No refund identifier provided. Please check the link and try again.
+    no-refund-uri-has-been-issued: No refund URI has been issued for this invoice yet.
     open-gnu-taler-wallet: Open GNU Taler Wallet
     open-this-refund-with-your-gnu: Open this refund with your GNU Taler wallet.
+    optional-note-recorded-with-the-gateway: Optional note recorded with the gateway refund and Ledger reversal.
+    reference: 'Reference:'
     refund-for-invoice: This refund is for invoice {number}. If your wallet does not open automatically, scan the QR code or copy the wallet URI.
     refund-not-found-please-check-the: Refund not found. Please check the link and try again.
     refund-uri-copied: Refund URI copied.
+    refunds-are-issued-against-the-original: Refunds are issued against the original successful gateway payment.
+    remaining-refundable: 'Remaining refundable:'
+    select-payment: Select payment...
+    send-this-fleetbase-link-to-the: Send this Fleetbase link to the customer. It opens a Taler wallet handoff page.
+    share-this-refund-uri-with-the: Share this refund URI with the customer so they can open it with their GNU Taler wallet and accept the refund.
+    the-amount-cannot-exceed-the-remaining: The amount cannot exceed the remaining refundable amount.
+    the-refund-was-accepted-by-the: The refund was accepted by the customer wallet and marked complete.
+    this-refund-does-not-expose-a: This refund does not expose a customer refund URI.
+    use-full-for-the-selected-payment: Use full for the selected payment's remaining refundable amount, or custom for a partial refund.
+    used-when-sending-a-refund-uri: Used when sending a refund URI from the rows below.
   invoice:
     add-any-notes-or-payment-instructions: Add any notes or payment instructions for the customer…
     amount-received-defaults-to-the-full: Amount received. Defaults to the full outstanding balance.
@@ -605,6 +832,72 @@ ledger:
   transaction:
     internal-notes: Internal notes...
     short-description-of-this-transaction: Short description of this transaction
+  accounting:
+    create-accounts-in-the-chart-of: Create accounts in the Chart of Accounts to see entries here.
+    delete-journal-entry: Delete Journal Entry?
+    describe-the-purpose-of-this-journal: Describe the purpose of this journal entry...
+    e-g-cash-and-cash-equivalents: e.g. Cash and Cash Equivalents
+    journal-entry-deleted: Journal entry deleted.
+    no-accounts-found: No accounts found.
+    no-entries-for-account: No journal entries for this account.
+    no-entries-for-account-in-period: No journal entries for this account in the selected period.
+    optional-description-of-this-account: Optional description of this account...
+    permanently-delete-this-journal-entry-system: Permanently delete this journal entry. System entries cannot be deleted.
+    this-action-cannot-be-undone: This action cannot be undone.
+  accounting-settings:
+    accounting-settings-saved: Accounting settings saved.
+    applied-to-cost-and-expense-line: Applied to cost and expense line items on bills and purchase transactions.
+    applied-to-income-line-items-on: Applied to income line items on invoices and sales transactions.
+    automatically-post-journal-entries-to-the: Automatically post journal entries to the general ledger when created, without requiring manual approval.
+    currency-and-fiscal-year: Currency & Fiscal Year
+    default-accounts-payable-ap-account: Default Accounts Payable (AP) Account
+    default-accounts-receivable-ar-account: Default Accounts Receivable (AR) Account
+    fiscal-year-start-month: Fiscal Year Start Month
+    the-asset-account-that-tracks-money: The asset account that tracks money owed to your organisation from customers.
+    the-liability-account-that-tracks-money: The liability account that tracks money your organisation owes to vendors.
+    the-month-in-which-your-organisation: The month in which your organisation's fiscal year begins. Affects period-based financial reports.
+    the-reporting-currency-for-all-financial: The reporting currency for all financial statements and the chart of accounts.
+    these-accounts-are-used-automatically-when: These accounts are used automatically when posting transactions unless a specific account is selected on the transaction itself.
+  report:
+    net-change-in-cash: Net Change in Cash
+    net-financing-cash-flow: Net Financing Cash Flow
+    net-operating-cash-flow: Net Operating Cash Flow
+    no-account-data-available: No account data available
+    no-financing-activity-data: No financing activity data
+    no-operating-activity-data: No operating activity data
+    no-report-data-available-select-a: No report data available. Select a date and refresh.
+    no-report-data-available-select-a-2: No report data available. Select a period and refresh.
+    no-section-accounts: No {section} accounts
+    no-transactions-in-this-period: No transactions in this period
+    section-total: Total {section}
+    select-a-report-and-click-run: Select a report and click "Run Report" to generate it.
+    top-wallets-by-balance: Top Wallets by Balance
+    total-liabilities-and-equity: Total Liabilities & Equity
+    wallets-by-owner-type: Wallets by Owner Type
+  dashboard:
+    grouped-by-currency-with-top-active: Grouped by currency with top active wallets
+    invoices-open-balance-tracked-by-status: invoices · open balance tracked by status
+    jump-into-the-source-reports-behind: Jump into the source reports behind the dashboard
+    latest-journal-entries-posted-to-the: Latest journal entries posted to the ledger
+    no-ar-aging-data: No AR aging data.
+    no-cash-flow-data-yet: No cash flow data yet.
+    no-invoice-data: No invoice data.
+    no-invoices-yet: No invoices yet.
+    no-outstanding-receivables: No outstanding receivables.
+    no-recent-journal-entries: No recent journal entries.
+    no-revenue-data-for-this-period: No revenue data for this period.
+    no-revenue-data-yet: No revenue data yet.
+    no-wallet-data: No wallet data.
+    revenue-net-summary: '{revenue} revenue · {net} net'
+    unable-to-load-activity: Unable to load activity
+    unable-to-load-ar-aging: Unable to load AR aging
+    unable-to-load-cash-flow: Unable to load cash flow
+    unable-to-load-invoice-status: Unable to load invoice status
+    unable-to-load-metric: Unable to load metric
+    unable-to-load-revenue-trend: Unable to load revenue trend
+    unable-to-load-wallet-balances: Unable to load wallet balances
+  misc:
+    search-ledger: Search Ledger...
   modals:
     invoice-preview:
       no-content: No preview available.

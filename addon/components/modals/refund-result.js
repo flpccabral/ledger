@@ -1,8 +1,10 @@
 import Component from '@glimmer/component';
+import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
 export default class ModalsRefundResultComponent extends Component {
+    @service intl;
     @tracked email = this.args.options.customerEmail ?? '';
 
     get isCompleted() {
@@ -10,15 +12,15 @@ export default class ModalsRefundResultComponent extends Component {
     }
 
     get statusTitle() {
-        return this.isCompleted ? 'Refund completed' : 'Refund URI issued';
+        return this.isCompleted ? this.intl.t('ledger.common.refund-completed') : this.intl.t('ledger.common.refund-uri-issued');
     }
 
     get statusMessage() {
         if (this.isCompleted) {
-            return 'The refund was accepted by the customer wallet and marked complete.';
+            return this.intl.t('ledger.refund.the-refund-was-accepted-by-the');
         }
 
-        return 'Share this refund URI with the customer so they can open it with their GNU Taler wallet and accept the refund.';
+        return this.intl.t('ledger.refund.share-this-refund-uri-with-the');
     }
 
     @action setEmail(event) {

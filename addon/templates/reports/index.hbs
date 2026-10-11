@@ -1,4 +1,4 @@
-<Layout::Section::Header @title="Reports" @hideActions={{true}} />
+<Layout::Section::Header @title={{t "menu.reports"}} @hideActions={{true}} />
 <Layout::Section::Body>
     <div class="p-4 space-y-4">
         {{! Report selector tabs }}
@@ -20,7 +20,7 @@
             <div class="flex-1"></div>
             <Button @type="primary" @size="sm" {{on "click" this.runReport}}>
                 <FaIcon @icon="play" class="mr-1" />
-                Run Report
+                {{t "ledger.common.run-report"}}
             </Button>
         </div>
 
@@ -40,7 +40,7 @@
         {{else}}
             <div class="flex flex-col items-center justify-center py-16 text-gray-400">
                 <FaIcon @icon="file-contract" class="w-12 h-12 mb-3 opacity-30" />
-                <p class="text-sm">Select a report and click "Run Report" to generate it.</p>
+                <p class="text-sm">{{t "ledger.report.select-a-report-and-click-run"}}</p>
             </div>
         {{/if}}
     </div>

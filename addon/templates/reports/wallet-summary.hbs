@@ -1,4 +1,4 @@
-<Layout::Section::Header @title="Wallet Summary" @actionsWrapperClass="flex flex-row items-center space-x-2">
+<Layout::Section::Header @title={{t "menu.wallet-summary"}} @actionsWrapperClass="flex flex-row items-center space-x-2">
     <div class="flex flex-row items-center space-x-2">
         <DatePicker
             @value={{this.dateRange}}
@@ -6,10 +6,10 @@
             @onSelect={{this.onDateRangeChanged}}
             @autoClose={{true}}
             @buttons={{array "clear"}}
-            @placeholder="Select period"
+            @placeholder={{t "ledger.common.select-period"}}
             class="w-52 form-input form-input-sm"
         />
-        <Button @size="sm" @type="default" @icon="refresh" @helpText="Refresh" {{on "click" this.reload}} />
+        <Button @size="sm" @type="default" @icon="refresh" @helpText={{t "ledger.common.refresh"}} {{on "click" this.reload}} />
     </div>
 </Layout::Section::Header>
 <Layout::Section::Body class="overflow-y-auto h-full">
@@ -19,7 +19,7 @@
         {{else if this.data}}
             <div class="flex items-center justify-between mb-6">
                 <div>
-                    <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Wallet Summary</h2>
+                    <h2 class="text-lg font-semibold text-gray-900 dark:text-white">{{t "menu.wallet-summary"}}</h2>
                     {{#if this.data.period}}
                         <p class="text-sm text-gray-500 mt-0.5">
                             {{this.data.period.from}}
@@ -33,15 +33,15 @@
             {{! Wallet counts by owner type }}
             <div class="mb-6 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
                 <div class="bg-gray-50 dark:bg-gray-800 px-4 py-2 border-b border-gray-200 dark:border-gray-700">
-                    <h3 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Wallets by Owner Type</h3>
+                    <h3 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{{t "ledger.report.wallets-by-owner-type"}}</h3>
                 </div>
                 <table class="w-full text-sm overflow-hidden">
                     <thead>
                         <tr class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
-                            <th class="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Owner Type</th>
-                            <th class="px-4 py-2.5 text-right text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Count</th>
-                            <th class="px-4 py-2.5 text-right text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Total Balance</th>
-                            <th class="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Currency</th>
+                            <th class="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{{t "ledger.common.owner-type"}}</th>
+                            <th class="px-4 py-2.5 text-right text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{{t "ledger.common.count"}}</th>
+                            <th class="px-4 py-2.5 text-right text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{{t "ledger.common.total-balance"}}</th>
+                            <th class="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{{t "column.currency"}}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,7 +57,7 @@
                                 <td class="px-4 py-2 text-gray-500 font-mono text-xs">{{or row.currency "—"}}</td>
                             </tr>
                         {{else}}
-                            <tr><td colspan="4" class="px-4 py-6 text-center text-gray-400 text-sm">No wallet data</td></tr>
+                            <tr><td colspan="4" class="px-4 py-6 text-center text-gray-400 text-sm">{{t "ledger.common.no-wallet-data"}}</td></tr>
                         {{/each}}
                     </tbody>
                 </table>
@@ -67,16 +67,16 @@
             {{#if this.periodStats.length}}
                 <div class="mb-6 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
                     <div class="bg-gray-50 dark:bg-gray-800 px-4 py-2 border-b border-gray-200 dark:border-gray-700">
-                        <h3 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Period Transaction Activity</h3>
+                        <h3 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{{t "ledger.common.period-transaction-activity"}}</h3>
                     </div>
                     <table class="w-full text-sm overflow-hidden">
                         <thead>
                             <tr class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
-                                <th class="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Currency</th>
-                                <th class="px-4 py-2.5 text-right text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Credits</th>
-                                <th class="px-4 py-2.5 text-right text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Credit Count</th>
-                                <th class="px-4 py-2.5 text-right text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Debits</th>
-                                <th class="px-4 py-2.5 text-right text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Debit Count</th>
+                                <th class="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{{t "column.currency"}}</th>
+                                <th class="px-4 py-2.5 text-right text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{{t "ledger.common.credits"}}</th>
+                                <th class="px-4 py-2.5 text-right text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{{t "ledger.common.credit-count"}}</th>
+                                <th class="px-4 py-2.5 text-right text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{{t "ledger.common.debits"}}</th>
+                                <th class="px-4 py-2.5 text-right text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{{t "ledger.common.debit-count"}}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -93,7 +93,7 @@
                                     <td class="px-4 py-2 text-right text-gray-500">{{stat.debit_count}}</td>
                                 </tr>
                             {{else}}
-                                <tr><td colspan="5" class="px-4 py-6 text-center text-gray-400 text-sm">No transactions in this period</td></tr>
+                                <tr><td colspan="5" class="px-4 py-6 text-center text-gray-400 text-sm">{{t "ledger.report.no-transactions-in-this-period"}}</td></tr>
                             {{/each}}
                         </tbody>
                     </table>
@@ -104,15 +104,15 @@
             {{#if this.data.top_wallets}}
                 <div class="mb-6 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
                     <div class="bg-gray-50 dark:bg-gray-800 px-4 py-2 border-b border-gray-200 dark:border-gray-700">
-                        <h3 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Top Wallets by Balance</h3>
+                        <h3 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{{t "ledger.report.top-wallets-by-balance"}}</h3>
                     </div>
                     <table class="w-full text-sm overflow-hidden">
                         <thead>
                             <tr class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
-                                <th class="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Wallet</th>
-                                <th class="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Owner</th>
-                                <th class="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Type</th>
-                                <th class="px-4 py-2.5 text-right text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Balance</th>
+                                <th class="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{{t "resource.wallet"}}</th>
+                                <th class="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{{t "column.owner"}}</th>
+                                <th class="px-4 py-2.5 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{{t "column.type"}}</th>
+                                <th class="px-4 py-2.5 text-right text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{{t "column.balance"}}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -128,7 +128,7 @@
                                     </td>
                                 </tr>
                             {{else}}
-                                <tr><td colspan="4" class="px-4 py-6 text-center text-gray-400 text-sm">No wallets found</td></tr>
+                                <tr><td colspan="4" class="px-4 py-6 text-center text-gray-400 text-sm">{{t "ledger.common.no-wallets-found"}}</td></tr>
                             {{/each}}
                         </tbody>
                     </table>
@@ -136,7 +136,7 @@
             {{/if}}
         {{else}}
             <div class="flex flex-col items-center justify-center py-20 text-gray-400">
-                <p class="text-sm">No report data available. Select a period and refresh.</p>
+                <p class="text-sm">{{t "ledger.report.no-report-data-available-select-a-2"}}</p>
             </div>
         {{/if}}
     </div>

@@ -1,6 +1,6 @@
 <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" ...attributes>
     <div class="flex flex-col gap-1 p-3 rounded-lg bg-gray-50 dark:bg-gray-800">
-        <span class="text-xs text-gray-500 uppercase tracking-wide">Revenue</span>
+        <span class="text-xs text-gray-500 uppercase tracking-wide">{{t "ledger.common.revenue"}}</span>
         <span class="text-xl font-bold text-green-600">
             {{#if this.loadData.isRunning}}
                 <span class="text-gray-300 dark:text-gray-600">—</span>
@@ -10,7 +10,7 @@
         </span>
     </div>
     <div class="flex flex-col gap-1 p-3 rounded-lg bg-gray-50 dark:bg-gray-800">
-        <span class="text-xs text-gray-500 uppercase tracking-wide">Expenses</span>
+        <span class="text-xs text-gray-500 uppercase tracking-wide">{{t "ledger.common.expenses"}}</span>
         <span class="text-xl font-bold text-red-500">
             {{#if this.loadData.isRunning}}
                 <span class="text-gray-300 dark:text-gray-600">—</span>
@@ -20,7 +20,7 @@
         </span>
     </div>
     <div class="flex flex-col gap-1 p-3 rounded-lg bg-gray-50 dark:bg-gray-800">
-        <span class="text-xs text-gray-500 uppercase tracking-wide">Net Income</span>
+        <span class="text-xs text-gray-500 uppercase tracking-wide">{{t "ledger.common.net-income"}}</span>
         <span class="text-xl font-bold text-blue-600">
             {{#if this.loadData.isRunning}}
                 <span class="text-gray-300 dark:text-gray-600">—</span>
@@ -30,7 +30,7 @@
         </span>
     </div>
     <div class="flex flex-col gap-1 p-3 rounded-lg bg-gray-50 dark:bg-gray-800">
-        <span class="text-xs text-gray-500 uppercase tracking-wide">Outstanding AR</span>
+        <span class="text-xs text-gray-500 uppercase tracking-wide">{{t "ledger.common.outstanding-ar"}}</span>
         <span class="text-xl font-bold text-yellow-600">
             {{#if this.loadData.isRunning}}
                 <span class="text-gray-300 dark:text-gray-600">—</span>

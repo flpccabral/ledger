@@ -1,8 +1,8 @@
 <div class="ledger-dashboard-widget flex h-full flex-col rounded-md border bg-white shadow-sm dark:bg-gray-800" ...attributes>
     <div class="ledger-widget-header">
         <div class="min-w-0">
-            <div class="ledger-widget-title">Invoice Pipeline</div>
-            <div class="ledger-widget-subtitle">{{or this.data.total_count 0}} invoices · open balance tracked by status</div>
+            <div class="ledger-widget-title">{{t "ledger.common.invoice-pipeline"}}</div>
+            <div class="ledger-widget-subtitle">{{or this.data.total_count 0}} {{t "ledger.dashboard.invoices-open-balance-tracked-by-status"}}</div>
         </div>
         <button type="button" class="ledger-icon-button" {{on "click" (perform this.load)}}><FaIcon @icon="rotate" /></button>
     </div>
@@ -17,7 +17,7 @@
                 {{#each this.statusRows as |row|}}
                     <div class="ledger-animated-row ledger-status-row">
                         <div class="flex items-center justify-between gap-3 text-xs">
-                            <span class="font-semibold capitalize text-gray-700 dark:text-gray-200">{{row.status}}</span>
+                            <span class="font-semibold text-gray-700 dark:text-gray-200">{{ledger-label row.status}}</span>
                             <span class="text-gray-500 dark:text-gray-400">{{row.count}}</span>
                         </div>
                         <div class="ledger-progress-track">
@@ -27,7 +27,7 @@
                 {{/each}}
             </div>
         {{else}}
-            <div class="ledger-widget-empty">No invoices yet.</div>
+            <div class="ledger-widget-empty">{{t "ledger.dashboard.no-invoices-yet"}}</div>
         {{/if}}
     </div>
 </div>
