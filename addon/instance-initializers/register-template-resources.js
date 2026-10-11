@@ -11,24 +11,29 @@ export function initialize(appInstance) {
     if (!templateBuilder) {
         return;
     }
+    // Labels are translation keys rendered by ember-ui's `translate-label`;
+    // older ember-ui versions show them as-is, so translate them up front there.
+    const intl = appInstance.lookup('service:intl');
+    const label = appInstance.factoryFor('helper:translate-label') ? (key) => key : (key) => intl.t(key);
+
     templateBuilder.registerResourceTypes([
         {
-            label: 'Invoice',
+            label: label('resource.invoice'),
             value: 'Fleetbase\\Ledger\\Models\\Invoice',
             icon: 'file-invoice-dollar',
         },
         {
-            label: 'Transaction',
+            label: label('resource.transaction'),
             value: 'Fleetbase\\Ledger\\Models\\Transaction',
             icon: 'money-bill-transfer',
         },
         {
-            label: 'Account',
+            label: label('resource.account'),
             value: 'Fleetbase\\Ledger\\Models\\Account',
             icon: 'building-columns',
         },
         {
-            label: 'Wallet',
+            label: label('resource.wallet'),
             value: 'Fleetbase\\Ledger\\Models\\Wallet',
             icon: 'wallet',
         },

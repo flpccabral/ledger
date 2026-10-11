@@ -1,5 +1,84 @@
 ledger:
   extension-name: Ledger
+  extension:
+    description: Invoicing, payments, accounting, and real-time financial reporting.
+    shortcuts:
+      invoices:
+        title: Invoices
+        description: Create, send, and manage customer invoices.
+      wallets:
+        title: Wallets
+        description: Manage driver, customer, and company wallets and balances.
+      transactions:
+        title: Transactions
+        description: A chronological record of every transaction.
+      payment-gateways:
+        title: Payment Gateways
+        description: Configure and manage payment gateway integrations.
+      chart-of-accounts:
+        title: Chart of Accounts
+        description: View and manage the full chart of accounts.
+      journal-entries:
+        title: Journal Entries
+        description: Browse and create double-entry journal entries.
+      general-ledger:
+        title: General Ledger
+        description: Review all posted transactions across every account.
+    widgets:
+      kpi-revenue:
+        name: Revenue
+        description: Total revenue for the current period with comparison.
+      kpi-expenses:
+        name: Expenses
+        description: Total expenses for the current period with comparison.
+      kpi-net-income:
+        name: Net Income
+        description: Revenue less expenses for the current period.
+      kpi-outstanding-ar:
+        name: Outstanding AR
+        description: Unpaid receivables balance across open invoices.
+      kpi-overdue-ar:
+        name: Overdue AR
+        description: Overdue receivables requiring collection attention.
+      kpi-open-invoices:
+        name: Open Invoices
+        description: Draft, sent, and overdue invoices still requiring action.
+      kpi-wallet-balance:
+        name: Wallet Balance
+        description: Active wallet balances, grouped by currency when needed.
+      kpi-active-wallets:
+        name: Active Wallets
+        description: Count of active wallets with current balances.
+      revenue-trend:
+        name: Revenue Trend
+        description: Revenue and expense trend over selectable periods.
+      cash-flow-summary:
+        name: Cash Flow Summary
+        description: Operating, financing, and investing cash movement.
+      invoice-status:
+        name: Invoice Pipeline
+        description: Counts and balances by invoice status.
+      ar-aging-summary:
+        name: AR Aging Risk
+        description: Condensed accounts receivable aging buckets.
+      wallet-balances:
+        name: Wallet Balances
+        description: Total wallet balances grouped by currency across all driver and customer wallets.
+      activity-feed:
+        name: Recent Financial Activity
+        description: Live feed of the most recent double-entry journal entries in the ledger.
+      report-shortcuts:
+        name: Financial Reports
+        description: Shortcuts into Ledger financial reports.
+      overview:
+        name: Financial Overview (Legacy)
+        description: Legacy grouped KPI widget. Replaced by individual Ledger KPI tiles.
+      revenue-chart:
+        name: Revenue Chart (Legacy)
+        description: Legacy daily revenue bar widget. Replaced by Revenue Trend.
+      invoice-summary:
+        name: Invoice Summary (Legacy)
+        description: Legacy invoice counts widget. Replaced by Invoice Pipeline.
   status:
     draft: Draft
     sent: Sent

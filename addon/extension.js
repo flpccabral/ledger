@@ -1,7 +1,22 @@
 import { MenuItem, Widget, ExtensionComponent } from '@fleetbase/ember-core/contracts';
 
+/**
+ * Header menu items and widgets are registered with translation keys, which
+ * ember-ui's `translate-label` translates when they render. Consoles running an
+ * ember-ui without that helper render the value as-is, so translate up front.
+ */
+function labelResolver(app) {
+    if (app.factoryFor('helper:translate-label')) {
+        return (key) => key;
+    }
+
+    const intl = app.lookup('service:intl');
+    return (key) => intl.t(key);
+}
+
 export default {
     setupExtension(app, universe) {
+        const label = labelResolver(app);
         const menuService = universe.getService('universe/menu-service');
         const widgetService = universe.getService('universe/widget-service');
 
@@ -9,47 +24,54 @@ export default {
         menuService.registerHeaderMenuItem('Ledger', 'console.ledger', {
             icon: 'calculator',
             priority: 4,
-            description: 'Invoicing, payments, accounting, and real-time financial reporting.',
+            description: label('ledger.extension.description'),
             shortcuts: [
                 {
-                    title: 'Invoices',
-                    description: 'Create, send, and manage customer invoices.',
+                    id: 'ledger-sc-invoices',
+                    title: label('ledger.extension.shortcuts.invoices.title'),
+                    description: label('ledger.extension.shortcuts.invoices.description'),
                     icon: 'file-invoice-dollar',
                     route: 'console.ledger.billing.invoices',
                 },
                 {
-                    title: 'Wallets',
-                    description: 'Manage driver, customer, and company wallets and balances.',
+                    id: 'ledger-sc-wallets',
+                    title: label('ledger.extension.shortcuts.wallets.title'),
+                    description: label('ledger.extension.shortcuts.wallets.description'),
                     icon: 'wallet',
                     route: 'console.ledger.payments.wallets',
                 },
                 {
-                    title: 'Transactions',
-                    description: 'A chronological record of every transaction.',
+                    id: 'ledger-sc-transactions',
+                    title: label('ledger.extension.shortcuts.transactions.title'),
+                    description: label('ledger.extension.shortcuts.transactions.description'),
                     icon: 'money-bill-transfer',
                     route: 'console.ledger.payments.transactions',
                 },
                 {
-                    title: 'Payment Gateways',
-                    description: 'Configure and manage payment gateway integrations.',
+                    id: 'ledger-sc-payment-gateways',
+                    title: label('ledger.extension.shortcuts.payment-gateways.title'),
+                    description: label('ledger.extension.shortcuts.payment-gateways.description'),
                     icon: 'credit-card',
                     route: 'console.ledger.payments.gateways',
                 },
                 {
-                    title: 'Chart of Accounts',
-                    description: 'View and manage the full chart of accounts.',
+                    id: 'ledger-sc-chart-of-accounts',
+                    title: label('ledger.extension.shortcuts.chart-of-accounts.title'),
+                    description: label('ledger.extension.shortcuts.chart-of-accounts.description'),
                     icon: 'sitemap',
                     route: 'console.ledger.accounting.accounts',
                 },
                 {
-                    title: 'Journal Entries',
-                    description: 'Browse and create double-entry journal entries.',
+                    id: 'ledger-sc-journal-entries',
+                    title: label('ledger.extension.shortcuts.journal-entries.title'),
+                    description: label('ledger.extension.shortcuts.journal-entries.description'),
                     icon: 'book',
                     route: 'console.ledger.accounting.journal',
                 },
                 {
-                    title: 'General Ledger',
-                    description: 'Review all posted transactions across every account.',
+                    id: 'ledger-sc-general-ledger',
+                    title: label('ledger.extension.shortcuts.general-ledger.title'),
+                    description: label('ledger.extension.shortcuts.general-ledger.description'),
                     icon: 'book-open',
                     route: 'console.ledger.accounting.general-ledger',
                 },
@@ -132,15 +154,15 @@ export default {
         );
 
         // Register dashboard and widgets
-        this.registerWidgets(widgetService);
+        this.registerWidgets(widgetService, label);
     },
 
-    registerWidgets(widgetService) {
+    registerWidgets(widgetService, label) {
         const widgets = [
             new Widget({
                 id: 'ledger-kpi-revenue',
-                name: 'Revenue',
-                description: 'Total revenue for the current period with comparison.',
+                name: label('ledger.extension.widgets.kpi-revenue.name'),
+                description: label('ledger.extension.widgets.kpi-revenue.description'),
                 icon: 'sack-dollar',
                 component: new ExtensionComponent('@fleetbase/ledger-engine', 'widget/kpi-revenue'),
                 grid_options: { w: 3, h: 4, minW: 3, minH: 4 },
@@ -149,8 +171,8 @@ export default {
             }),
             new Widget({
                 id: 'ledger-kpi-expenses',
-                name: 'Expenses',
-                description: 'Total expenses for the current period with comparison.',
+                name: label('ledger.extension.widgets.kpi-expenses.name'),
+                description: label('ledger.extension.widgets.kpi-expenses.description'),
                 icon: 'receipt',
                 component: new ExtensionComponent('@fleetbase/ledger-engine', 'widget/kpi-expenses'),
                 grid_options: { w: 3, h: 4, minW: 3, minH: 4 },
@@ -159,8 +181,8 @@ export default {
             }),
             new Widget({
                 id: 'ledger-kpi-net-income',
-                name: 'Net Income',
-                description: 'Revenue less expenses for the current period.',
+                name: label('ledger.extension.widgets.kpi-net-income.name'),
+                description: label('ledger.extension.widgets.kpi-net-income.description'),
                 icon: 'chart-line',
                 component: new ExtensionComponent('@fleetbase/ledger-engine', 'widget/kpi-net-income'),
                 grid_options: { w: 3, h: 4, minW: 3, minH: 4 },
@@ -169,8 +191,8 @@ export default {
             }),
             new Widget({
                 id: 'ledger-kpi-outstanding-ar',
-                name: 'Outstanding AR',
-                description: 'Unpaid receivables balance across open invoices.',
+                name: label('ledger.extension.widgets.kpi-outstanding-ar.name'),
+                description: label('ledger.extension.widgets.kpi-outstanding-ar.description'),
                 icon: 'file-invoice-dollar',
                 component: new ExtensionComponent('@fleetbase/ledger-engine', 'widget/kpi-outstanding-ar'),
                 grid_options: { w: 3, h: 4, minW: 3, minH: 4 },
@@ -179,8 +201,8 @@ export default {
             }),
             new Widget({
                 id: 'ledger-kpi-overdue-ar',
-                name: 'Overdue AR',
-                description: 'Overdue receivables requiring collection attention.',
+                name: label('ledger.extension.widgets.kpi-overdue-ar.name'),
+                description: label('ledger.extension.widgets.kpi-overdue-ar.description'),
                 icon: 'clock',
                 component: new ExtensionComponent('@fleetbase/ledger-engine', 'widget/kpi-overdue-ar'),
                 grid_options: { w: 3, h: 4, minW: 3, minH: 4 },
@@ -189,8 +211,8 @@ export default {
             }),
             new Widget({
                 id: 'ledger-kpi-open-invoices',
-                name: 'Open Invoices',
-                description: 'Draft, sent, and overdue invoices still requiring action.',
+                name: label('ledger.extension.widgets.kpi-open-invoices.name'),
+                description: label('ledger.extension.widgets.kpi-open-invoices.description'),
                 icon: 'file-circle-exclamation',
                 component: new ExtensionComponent('@fleetbase/ledger-engine', 'widget/kpi-open-invoices'),
                 grid_options: { w: 3, h: 4, minW: 3, minH: 4 },
@@ -199,8 +221,8 @@ export default {
             }),
             new Widget({
                 id: 'ledger-kpi-wallet-balance',
-                name: 'Wallet Balance',
-                description: 'Active wallet balances, grouped by currency when needed.',
+                name: label('ledger.extension.widgets.kpi-wallet-balance.name'),
+                description: label('ledger.extension.widgets.kpi-wallet-balance.description'),
                 icon: 'wallet',
                 component: new ExtensionComponent('@fleetbase/ledger-engine', 'widget/kpi-wallet-balance'),
                 grid_options: { w: 3, h: 4, minW: 3, minH: 4 },
@@ -209,8 +231,8 @@ export default {
             }),
             new Widget({
                 id: 'ledger-kpi-active-wallets',
-                name: 'Active Wallets',
-                description: 'Count of active wallets with current balances.',
+                name: label('ledger.extension.widgets.kpi-active-wallets.name'),
+                description: label('ledger.extension.widgets.kpi-active-wallets.description'),
                 icon: 'wallet',
                 component: new ExtensionComponent('@fleetbase/ledger-engine', 'widget/kpi-active-wallets'),
                 grid_options: { w: 3, h: 4, minW: 3, minH: 4 },
@@ -220,8 +242,8 @@ export default {
 
             new Widget({
                 id: 'ledger-revenue-trend',
-                name: 'Revenue Trend',
-                description: 'Revenue and expense trend over selectable periods.',
+                name: label('ledger.extension.widgets.revenue-trend.name'),
+                description: label('ledger.extension.widgets.revenue-trend.description'),
                 icon: 'chart-line',
                 component: new ExtensionComponent('@fleetbase/ledger-engine', 'widget/revenue-trend'),
                 grid_options: { w: 6, h: 9, minW: 5, minH: 8 },
@@ -230,8 +252,8 @@ export default {
             }),
             new Widget({
                 id: 'ledger-cash-flow-summary',
-                name: 'Cash Flow Summary',
-                description: 'Operating, financing, and investing cash movement.',
+                name: label('ledger.extension.widgets.cash-flow-summary.name'),
+                description: label('ledger.extension.widgets.cash-flow-summary.description'),
                 icon: 'money-bill-transfer',
                 component: new ExtensionComponent('@fleetbase/ledger-engine', 'widget/cash-flow-summary'),
                 grid_options: { w: 6, h: 9, minW: 5, minH: 8 },
@@ -240,8 +262,8 @@ export default {
             }),
             new Widget({
                 id: 'ledger-invoice-status',
-                name: 'Invoice Pipeline',
-                description: 'Counts and balances by invoice status.',
+                name: label('ledger.extension.widgets.invoice-status.name'),
+                description: label('ledger.extension.widgets.invoice-status.description'),
                 icon: 'file-invoice-dollar',
                 component: new ExtensionComponent('@fleetbase/ledger-engine', 'widget/invoice-status'),
                 grid_options: { w: 4, h: 8, minW: 4, minH: 7 },
@@ -250,8 +272,8 @@ export default {
             }),
             new Widget({
                 id: 'ledger-ar-aging-summary',
-                name: 'AR Aging Risk',
-                description: 'Condensed accounts receivable aging buckets.',
+                name: label('ledger.extension.widgets.ar-aging-summary.name'),
+                description: label('ledger.extension.widgets.ar-aging-summary.description'),
                 icon: 'clock',
                 component: new ExtensionComponent('@fleetbase/ledger-engine', 'widget/ar-aging-summary'),
                 grid_options: { w: 4, h: 8, minW: 4, minH: 7 },
@@ -260,8 +282,8 @@ export default {
             }),
             new Widget({
                 id: 'ledger-wallet-balances',
-                name: 'Wallet Balances',
-                description: 'Total wallet balances grouped by currency across all driver and customer wallets.',
+                name: label('ledger.extension.widgets.wallet-balances.name'),
+                description: label('ledger.extension.widgets.wallet-balances.description'),
                 icon: 'wallet',
                 component: new ExtensionComponent('@fleetbase/ledger-engine', 'widget/wallet-balances'),
                 grid_options: { w: 4, h: 8, minW: 4, minH: 7 },
@@ -270,8 +292,8 @@ export default {
             }),
             new Widget({
                 id: 'ledger-activity-feed',
-                name: 'Recent Financial Activity',
-                description: 'Live feed of the most recent double-entry journal entries in the ledger.',
+                name: label('ledger.extension.widgets.activity-feed.name'),
+                description: label('ledger.extension.widgets.activity-feed.description'),
                 icon: 'book',
                 component: new ExtensionComponent('@fleetbase/ledger-engine', 'widget/activity-feed'),
                 grid_options: { w: 8, h: 10, minW: 6, minH: 8 },
@@ -280,8 +302,8 @@ export default {
             }),
             new Widget({
                 id: 'ledger-report-shortcuts',
-                name: 'Financial Reports',
-                description: 'Shortcuts into Ledger financial reports.',
+                name: label('ledger.extension.widgets.report-shortcuts.name'),
+                description: label('ledger.extension.widgets.report-shortcuts.description'),
                 icon: 'file-lines',
                 component: new ExtensionComponent('@fleetbase/ledger-engine', 'widget/report-shortcuts'),
                 grid_options: { w: 4, h: 10, minW: 4, minH: 7 },
@@ -291,8 +313,8 @@ export default {
 
             new Widget({
                 id: 'ledger-overview',
-                name: 'Financial Overview (Legacy)',
-                description: 'Legacy grouped KPI widget. Replaced by individual Ledger KPI tiles.',
+                name: label('ledger.extension.widgets.overview.name'),
+                description: label('ledger.extension.widgets.overview.description'),
                 icon: 'gauge-high',
                 component: new ExtensionComponent('@fleetbase/ledger-engine', 'widget/overview'),
                 grid_options: { w: 12, h: 4, minW: 8, minH: 4 },
@@ -302,8 +324,8 @@ export default {
             }),
             new Widget({
                 id: 'ledger-revenue-chart',
-                name: 'Revenue Chart (Legacy)',
-                description: 'Legacy daily revenue bar widget. Replaced by Revenue Trend.',
+                name: label('ledger.extension.widgets.revenue-chart.name'),
+                description: label('ledger.extension.widgets.revenue-chart.description'),
                 icon: 'chart-line',
                 component: new ExtensionComponent('@fleetbase/ledger-engine', 'widget/revenue-chart'),
                 grid_options: { w: 8, h: 6, minW: 6, minH: 6 },
@@ -313,8 +335,8 @@ export default {
             }),
             new Widget({
                 id: 'ledger-invoice-summary',
-                name: 'Invoice Summary (Legacy)',
-                description: 'Legacy invoice counts widget. Replaced by Invoice Pipeline.',
+                name: label('ledger.extension.widgets.invoice-summary.name'),
+                description: label('ledger.extension.widgets.invoice-summary.description'),
                 icon: 'file-invoice-dollar',
                 component: new ExtensionComponent('@fleetbase/ledger-engine', 'widget/invoice-summary'),
                 grid_options: { w: 4, h: 6, minW: 3, minH: 5 },

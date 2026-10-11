@@ -1,5 +1,84 @@
 ledger:
   extension-name: Ledger
+  extension:
+    description: Faturamento, pagamentos, contabilidade e relatórios financeiros em tempo real.
+    shortcuts:
+      invoices:
+        title: Faturas
+        description: Crie, envie e gerencie as faturas dos clientes.
+      wallets:
+        title: Carteiras
+        description: Gerencie as carteiras e os saldos de motoristas, clientes e da empresa.
+      transactions:
+        title: Transações
+        description: Registro cronológico de todas as transações.
+      payment-gateways:
+        title: Gateways de Pagamento
+        description: Configure e gerencie as integrações com gateways de pagamento.
+      chart-of-accounts:
+        title: Plano de Contas
+        description: Consulte e gerencie o plano de contas completo.
+      journal-entries:
+        title: Lançamentos Contábeis
+        description: Consulte e crie lançamentos contábeis por partidas dobradas.
+      general-ledger:
+        title: Razão Geral
+        description: Consulte todos os lançamentos registrados em todas as contas.
+    widgets:
+      kpi-revenue:
+        name: Receita
+        description: Receita total do período atual, com comparação.
+      kpi-expenses:
+        name: Despesas
+        description: Despesas totais do período atual, com comparação.
+      kpi-net-income:
+        name: Lucro Líquido
+        description: Receitas menos despesas no período atual.
+      kpi-outstanding-ar:
+        name: Contas a Receber em Aberto
+        description: Saldo a receber das faturas em aberto.
+      kpi-overdue-ar:
+        name: Contas a Receber Vencidas
+        description: Valores a receber vencidos que exigem cobrança.
+      kpi-open-invoices:
+        name: Faturas em Aberto
+        description: Faturas em rascunho, enviadas e vencidas que ainda exigem ação.
+      kpi-wallet-balance:
+        name: Saldo das Carteiras
+        description: Saldos das carteiras ativas, agrupados por moeda quando necessário.
+      kpi-active-wallets:
+        name: Carteiras Ativas
+        description: Quantidade de carteiras ativas com saldo atual.
+      revenue-trend:
+        name: Tendência de Receita
+        description: Tendência de receitas e despesas em períodos selecionáveis.
+      cash-flow-summary:
+        name: Resumo do Fluxo de Caixa
+        description: Movimentação de caixa operacional, de financiamento e de investimento.
+      invoice-status:
+        name: Funil de Faturas
+        description: Quantidades e saldos por status de fatura.
+      ar-aging-summary:
+        name: Risco de Contas a Receber
+        description: Faixas de vencimento das contas a receber, de forma resumida.
+      wallet-balances:
+        name: Saldos das Carteiras
+        description: Saldos totais das carteiras agrupados por moeda, de todos os motoristas e clientes.
+      activity-feed:
+        name: Atividade Financeira Recente
+        description: Feed em tempo real dos lançamentos contábeis mais recentes do razão.
+      report-shortcuts:
+        name: Relatórios Financeiros
+        description: Atalhos para os relatórios financeiros do Ledger.
+      overview:
+        name: Visão Geral Financeira (Legado)
+        description: Widget legado de indicadores agrupados. Substituído pelos indicadores individuais do Ledger.
+      revenue-chart:
+        name: Gráfico de Receita (Legado)
+        description: Widget legado de receita diária em barras. Substituído pela Tendência de Receita.
+      invoice-summary:
+        name: Resumo de Faturas (Legado)
+        description: Widget legado de contagem de faturas. Substituído pelo Funil de Faturas.
   status:
     draft: Rascunho
     sent: Enviada
