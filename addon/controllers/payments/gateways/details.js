@@ -7,6 +7,7 @@ export default class PaymentsGatewaysDetailsController extends Controller {
     @service notifications;
     @service modalsManager;
     @service hostRouter;
+    @service intl;
 
     @tracked overlay = null;
 
@@ -14,10 +15,10 @@ export default class PaymentsGatewaysDetailsController extends Controller {
         const currentRouteName = this.hostRouter.currentRouteName;
 
         return [
-            { label: 'Overview', route: 'payments.gateways.details.index' },
-            { label: 'Setup', route: 'payments.gateways.details.setup' },
-            { label: 'Diagnostics', route: 'payments.gateways.details.diagnostics' },
-            { label: 'Transactions', route: 'payments.gateways.details.webhooks' },
+            { label: this.intl.t('ledger.common.overview'), route: 'payments.gateways.details.index' },
+            { label: this.intl.t('ledger.common.setup'), route: 'payments.gateways.details.setup' },
+            { label: this.intl.t('ledger.common.diagnostics'), route: 'payments.gateways.details.diagnostics' },
+            { label: this.intl.t('resource.transactions'), route: 'payments.gateways.details.webhooks' },
         ].map((tab) => ({
             ...tab,
             active: currentRouteName === tab.route || currentRouteName?.endsWith(`.${tab.route}`),
@@ -32,8 +33,14 @@ export default class PaymentsGatewaysDetailsController extends Controller {
 
     get actionButtons() {
         return [
-            { label: 'Edit', icon: 'pencil', helpText: 'Edit this payment gateway configuration.', onClick: this.editGateway },
-            { label: 'Delete', icon: 'trash', type: 'danger', helpText: 'Permanently remove this payment gateway. This cannot be undone.', onClick: this.deleteGateway },
+            { label: this.intl.t('ledger.common.edit'), icon: 'pencil', helpText: this.intl.t('ledger.gateway.edit-this-payment-gateway-configuration'), onClick: this.editGateway },
+            {
+                label: this.intl.t('ledger.common.delete'),
+                icon: 'trash',
+                type: 'danger',
+                helpText: this.intl.t('ledger.gateway.permanently-remove-this-payment-gateway-this'),
+                onClick: this.deleteGateway,
+            },
         ];
     }
 
@@ -49,7 +56,7 @@ export default class PaymentsGatewaysDetailsController extends Controller {
     }
 
     get statusLabel() {
-        return this.model?.status === 'active' ? 'Active' : 'Inactive';
+        return this.model?.status === 'active' ? this.intl.t('ledger.common.active') : this.intl.t('ledger.common.inactive');
     }
 
     @action editGateway() {
@@ -60,13 +67,13 @@ export default class PaymentsGatewaysDetailsController extends Controller {
     @action async deleteGateway() {
         const gateway = this.model;
         this.modalsManager.confirm({
-            title: `Delete Gateway ${gateway.name}?`,
-            body: 'This action cannot be undone.',
+            title: this.intl.t('ledger.gateway.delete-gateway-title', { name: gateway.name }),
+            body: this.intl.t('ledger.gateway.this-action-cannot-be-undone'),
             confirm: async (modal) => {
                 modal.startLoading();
                 try {
                     await gateway.destroyRecord();
-                    this.notifications.success('Gateway deleted.');
+                    this.notifications.success(this.intl.t('ledger.gateway.gateway-deleted'));
                     this.hostRouter.transitionTo('console.ledger.payments.gateways.index');
                     modal.done();
                 } catch (error) {

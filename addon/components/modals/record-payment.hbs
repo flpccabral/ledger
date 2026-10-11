@@ -12,19 +12,19 @@
                         {{format-currency invoice.total invoice.currency}}
                     </span>
                     <span class="text-xs text-gray-500">
-                        Balance:
+                        {{t "ledger.invoice.balance"}}
                         {{format-currency invoice.balance invoice.currency}}
                     </span>
                 </div>
             </div>
 
             {{! Amount }}
-            <InputGroup @name="Amount" @helpText="Amount received. Defaults to the full outstanding balance.">
+            <InputGroup @name={{t "column.amount"}} @helpText={{t "ledger.invoice.amount-received-defaults-to-the-full"}}>
                 <MoneyInput class="w-full" @value={{@options.amount}} @currency={{invoice.currency}} @onChange={{@options.setAmount}} />
             </InputGroup>
 
             {{! Payment method }}
-            <InputGroup @name="Payment Method" @helpText="How the payment was received.">
+            <InputGroup @name={{t "column.payment-method"}} @helpText={{t "ledger.invoice.how-the-payment-was-received"}}>
                 <Select
                     class="w-full"
                     @value={{@options.paymentMethod}}
@@ -32,13 +32,19 @@
                     @optionLabel="label"
                     @optionValue="value"
                     @onChange={{@options.setPaymentMethod}}
-                    @placeholder="Select payment method..."
+                    @placeholder={{t "ledger.invoice.select-payment-method"}}
                 />
             </InputGroup>
 
             {{! Reference / note }}
-            <InputGroup @name="Reference" @helpText="Optional reference number or note for this payment.">
-                <Input @value={{@options.reference}} @type="text" class="w-full form-input" placeholder="e.g. bank transfer ref, cheque number" {{on "input" @options.setReference}} />
+            <InputGroup @name={{t "column.reference"}} @helpText={{t "ledger.invoice.optional-reference-number-or-note-for"}}>
+                <Input
+                    @value={{@options.reference}}
+                    @type="text"
+                    class="w-full form-input"
+                    placeholder={{t "ledger.invoice.e-g-bank-transfer-ref-cheque"}}
+                    {{on "input" @options.setReference}}
+                />
             </InputGroup>
         {{/let}}
     </div>

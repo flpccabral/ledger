@@ -8,6 +8,7 @@ import copyToClipboard from '@fleetbase/ember-core/utils/copy-to-clipboard';
 export default class GatewayFormComponent extends Component {
     @service fetch;
     @service notifications;
+    @service intl;
 
     @tracked availableDrivers = [];
     @tracked activeStep = 0;
@@ -22,13 +23,13 @@ export default class GatewayFormComponent extends Component {
 
     get setupSteps() {
         const steps = [
-            { icon: 'key', label: 'Credentials', complete: this.hasRequiredConfig },
-            { icon: 'route', label: 'Routing', complete: Boolean(this.args.resource?.environment && this.args.resource?.status) },
-            { icon: 'circle-check', label: 'Review', complete: Boolean(this.args.resource?.name && this.args.resource?.driver) },
+            { icon: 'key', label: this.intl.t('ledger.common.credentials'), complete: this.hasRequiredConfig },
+            { icon: 'route', label: this.intl.t('ledger.common.routing'), complete: Boolean(this.args.resource?.environment && this.args.resource?.status) },
+            { icon: 'circle-check', label: this.intl.t('ledger.common.review'), complete: Boolean(this.args.resource?.name && this.args.resource?.driver) },
         ];
 
         if (this.canSelectDriver) {
-            steps.unshift({ icon: 'plug', label: 'Gateway', complete: Boolean(this.selectedDriver) });
+            steps.unshift({ icon: 'plug', label: this.intl.t('resource.gateway'), complete: Boolean(this.selectedDriver) });
         }
 
         return steps.map((step, index) => ({
@@ -88,26 +89,26 @@ export default class GatewayFormComponent extends Component {
     get connectionStateTitle() {
         switch (this.connectionState) {
             case 'testing':
-                return 'Testing gateway credentials...';
+                return this.intl.t('ledger.gateway.testing-gateway-credentials');
             case 'success':
-                return 'Gateway verified';
+                return this.intl.t('ledger.common.gateway-verified');
             case 'failed':
-                return 'Gateway test failed';
+                return this.intl.t('ledger.common.gateway-test-failed');
             default:
-                return this.canTestCredentials ? 'Ready to verify' : 'Complete credentials to verify';
+                return this.canTestCredentials ? this.intl.t('ledger.common.ready-to-verify') : this.intl.t('ledger.gateway.complete-credentials-to-verify');
         }
     }
 
     get connectionStateMessage() {
         if (this.connectionState === 'idle') {
-            return this.args.resource?.id ? 'Run a credential test before using this gateway for invoice payments.' : 'Test the entered provider credentials before creating this gateway.';
+            return this.args.resource?.id ? this.intl.t('ledger.gateway.run-a-credential-test-before-using') : this.intl.t('ledger.gateway.test-the-entered-provider-credentials-before');
         }
 
         if (this.connectionState === 'testing') {
-            return 'Ledger is checking the configured credentials with the payment provider.';
+            return this.intl.t('ledger.gateway.ledger-is-checking-the-configured-credentials');
         }
 
-        return this.connectionTestResult?.message ?? 'The gateway credential check completed.';
+        return this.connectionTestResult?.message ?? this.intl.t('ledger.gateway.the-gateway-credential-check-completed');
     }
 
     get canTestCredentials() {
@@ -143,7 +144,7 @@ export default class GatewayFormComponent extends Component {
                 }
             }
         } catch (err) {
-            this.notifications.warning('Could not load available payment drivers.');
+            this.notifications.warning(this.intl.t('ledger.gateway.could-not-load-available-payment-drivers'));
         }
     }
 
@@ -224,7 +225,7 @@ export default class GatewayFormComponent extends Component {
 
     @task *testCredentials() {
         if (!this.canTestCredentials) {
-            this.notifications.info('Choose a gateway and complete the required credentials before testing.');
+            this.notifications.info(this.intl.t('ledger.gateway.choose-a-gateway-and-complete-the'));
             return;
         }
 
@@ -242,7 +243,7 @@ export default class GatewayFormComponent extends Component {
         } catch (error) {
             this.connectionTestResult = {
                 success: false,
-                message: error.message ?? 'Gateway credential test failed.',
+                message: error.message ?? this.intl.t('ledger.gateway.gateway-credential-test-failed'),
                 metadata: {},
             };
             this.notifications.serverError(error);
@@ -277,22 +278,22 @@ export default class GatewayFormComponent extends Component {
     @action copyWebhookUrl() {
         const url = this.args.resource?.system_webhook_url ?? this.args.resource?.webhook_url;
         if (!url) {
-            return this.notifications.warning('No webhook URL is available yet.');
+            return this.notifications.warning(this.intl.t('ledger.gateway.no-webhook-url-is-available-yet'));
         }
 
         copyToClipboard(url)
-            .then(() => this.notifications.success('Webhook URL copied.'))
-            .catch(() => this.notifications.error('Unable to copy webhook URL.'));
+            .then(() => this.notifications.success(this.intl.t('ledger.gateway.webhook-url-copied')))
+            .catch(() => this.notifications.error(this.intl.t('ledger.gateway.unable-to-copy-webhook-url')));
     }
 
     driverCategory(code) {
         return (
             {
-                taler: 'Wallet payment',
-                stripe: 'Cards and wallets',
-                cash: 'Manual payment',
-                qpay: 'Regional payment',
-            }[code] ?? 'Payment gateway'
+                taler: this.intl.t('ledger.gateway.driver-type-wallet'),
+                stripe: this.intl.t('ledger.gateway.driver-type-cards'),
+                cash: this.intl.t('ledger.gateway.driver-type-manual'),
+                qpay: this.intl.t('ledger.gateway.driver-type-regional'),
+            }[code] ?? this.intl.t('ledger.common.payment-gateway')
         );
     }
 

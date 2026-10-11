@@ -28,7 +28,7 @@ export default class PaymentsWalletsIndexEditController extends Controller {
             yield this.hostRouter.transitionTo('console.ledger.payments.wallets.index.details', wallet);
             this.notifications.success(
                 this.intl.t('common.resource-updated-success', {
-                    resource: 'Wallet',
+                    resource: this.intl.t('resource.wallet'),
                     resourceName: wallet.name,
                 })
             );
@@ -59,7 +59,7 @@ export default class PaymentsWalletsIndexEditController extends Controller {
     #confirmContinueWithUnsavedChanges(wallet, options = {}) {
         return this.modalsManager.confirm({
             title: this.intl.t('common.continue-without-saving'),
-            body: this.intl.t('common.continue-without-saving-prompt', { resource: 'Wallet' }),
+            body: this.intl.t('common.continue-without-saving-prompt', { resource: this.intl.t('resource.wallet') }),
             acceptButtonText: this.intl.t('common.continue'),
             confirm: async () => {
                 wallet.rollbackAttributes();

@@ -4,22 +4,22 @@
             {{! Source wallet context header }}
             <div class="flex items-start justify-between mb-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
                 <div class="flex flex-col">
-                    <span class="text-xs text-gray-500 uppercase tracking-wide mb-0.5">From</span>
+                    <span class="text-xs text-gray-500 uppercase tracking-wide mb-0.5">{{t "ledger.common.from"}}</span>
                     <span class="text-sm font-semibold text-gray-900 dark:text-white">{{n-a wallet.name}}</span>
                     <span class="text-xs text-gray-500">{{n-a wallet.subject.name}}</span>
                 </div>
                 <div class="flex flex-col items-end">
                     <span class="text-sm font-bold text-gray-900 dark:text-white">{{format-currency wallet.balance wallet.currency}}</span>
-                    <span class="text-xs text-gray-500">Available</span>
+                    <span class="text-xs text-gray-500">{{t "ledger.common.available"}}</span>
                 </div>
             </div>
 
             {{! Destination wallet selector }}
-            <InputGroup @name="To Wallet" @helpText="Select the destination wallet to transfer funds into.">
+            <InputGroup @name={{t "ledger.common.to-wallet"}} @helpText={{t "ledger.wallet.select-the-destination-wallet-to-transfer"}}>
                 <ModelSelect
                     @modelName="ledger-wallet"
                     @selectedModel={{@options.toWallet}}
-                    @placeholder="Search wallets..."
+                    @placeholder={{t "ledger.wallet.search-wallets"}}
                     @triggerClass="form-select form-input"
                     @infiniteScroll={{false}}
                     @renderInPlace={{true}}
@@ -37,13 +37,13 @@
             </InputGroup>
 
             {{! Amount input }}
-            <InputGroup @name="Amount" @helpText="Amount to transfer.">
+            <InputGroup @name={{t "column.amount"}} @helpText={{t "ledger.wallet.amount-to-transfer"}}>
                 <MoneyInput class="w-full" @value={{@options.amount}} @currency={{wallet.currency}} @onChange={{@options.setAmount}} />
             </InputGroup>
 
             {{! Description input }}
-            <InputGroup @name="Description" @helpText="Optional note for this transfer.">
-                <Input @value={{@options.description}} @type="text" class="w-full form-input" placeholder="Internal transfer" {{on "input" @options.setDescription}} />
+            <InputGroup @name={{t "column.description"}} @helpText={{t "ledger.wallet.optional-note-for-this-transfer"}}>
+                <Input @value={{@options.description}} @type="text" class="w-full form-input" placeholder={{t "ledger.common.internal-transfer"}} {{on "input" @options.setDescription}} />
             </InputGroup>
         {{/let}}
     </div>

@@ -22,6 +22,7 @@ export default class CustomerInvoiceComponent extends Component {
     @service urlSearchParams;
     @service notifications;
     @service fetch;
+    @service intl;
 
     @tracked invoice = null;
     @tracked gateways = [];
@@ -115,14 +116,14 @@ export default class CustomerInvoiceComponent extends Component {
         // Detect Stripe redirect-back
         const paymentParam = this.urlSearchParams.get('payment');
         if (paymentParam === 'success') {
-            this.successMessage = 'Your payment was completed successfully. Thank you!';
+            this.successMessage = this.intl.t('ledger.checkout.payment-completed');
             this.showPaymentForm = false;
         } else if (paymentParam === 'cancelled') {
-            this.error = 'Payment was cancelled. You can try again below.';
+            this.error = this.intl.t('ledger.checkout.payment-cancelled');
         }
 
         if (!id) {
-            this.error = 'No invoice identifier provided. Please check the link and try again.';
+            this.error = this.intl.t('ledger.checkout.no-invoice-identifier');
             return;
         }
 
@@ -145,13 +146,13 @@ export default class CustomerInvoiceComponent extends Component {
         } catch (err) {
             const status = err?.status ?? err?.response?.status;
             if (status === 404) {
-                this.error = 'Invoice not found. Please check the link and try again.';
+                this.error = this.intl.t('ledger.checkout.invoice-not-found');
             } else if (status === 403) {
                 // The invoice exists but is in draft status and not yet available
                 // to the customer. Show the server-provided message if present.
-                this.error = err?.payload?.error ?? err?.message ?? 'This invoice is not yet available. Please contact the sender.';
+                this.error = err?.payload?.error ?? err?.message ?? this.intl.t('ledger.checkout.this-invoice-is-not-yet-available');
             } else {
-                this.error = err?.message ?? 'Failed to load invoice. Please try again later.';
+                this.error = err?.message ?? this.intl.t('ledger.checkout.failed-to-load-invoice-please-try');
             }
         }
     }
@@ -170,7 +171,7 @@ export default class CustomerInvoiceComponent extends Component {
         this.error = null;
 
         if (!this.selectedGatewayId) {
-            this.error = 'Online payment is not available for this invoice.';
+            this.error = this.intl.t('ledger.checkout.online-payment-not-available');
             return;
         }
 
@@ -191,30 +192,30 @@ export default class CustomerInvoiceComponent extends Component {
             if (this.isTalerUri(paymentUrl)) {
                 this.talerPaymentUri = paymentUrl;
                 this.isRedirectingToCheckout = false;
-                this.pendingMessage = data?.message ?? 'Payment started. Open your GNU Taler wallet to complete it.';
+                this.pendingMessage = data?.message ?? this.intl.t('ledger.checkout.payment-started-open-your-gnu-taler');
                 return;
             }
 
             // Redirect payment sessions — Stripe Checkout, QPay app link, etc.
             if (paymentUrl) {
                 this.isRedirectingToCheckout = true;
-                this.pendingMessage = data?.message ?? 'Redirecting to payment provider...';
+                this.pendingMessage = data?.message ?? this.intl.t('ledger.checkout.redirecting-to-payment-provider');
                 window.location.href = paymentUrl;
                 return;
             }
 
             if (data?.payment_status === 'pending') {
-                this.pendingMessage = data?.message ?? 'Payment started. Complete it in your payment app, then refresh this invoice.';
+                this.pendingMessage = data?.message ?? this.intl.t('ledger.checkout.payment-started-complete-it-in-your');
                 this.showPaymentForm = false;
                 return;
             }
 
             // Immediate payment recorded (cash, bank transfer, etc.)
             this.invoice = data?.invoice ?? data;
-            this.successMessage = 'Your payment has been recorded successfully. Thank you!';
+            this.successMessage = this.intl.t('ledger.checkout.payment-recorded');
             this.showPaymentForm = false;
         } catch (err) {
-            this.error = err?.message ?? 'Payment failed. Please try again.';
+            this.error = err?.message ?? this.intl.t('ledger.checkout.payment-failed-please-try-again');
         }
     }
 

@@ -20,21 +20,21 @@
                             {{/if}}
                         </div>
                         <div class="mt-2 flex flex-wrap gap-2 text-xs text-gray-500 dark:text-gray-300">
-                            <span>Webhook: {{if @model.webhook_url "configured" "not registered"}}</span>
-                            <span>Created: {{n-a @model.createdAtShort}}</span>
-                            <span>Updated: {{n-a @model.updatedAtShort}}</span>
+                            <span>{{t "ledger.gateway.webhook"}} {{if @model.webhook_url "configured" (t "ledger.common.not-registered")}}</span>
+                            <span>{{t "ledger.gateway.created"}} {{n-a @model.createdAtShort}}</span>
+                            <span>{{t "ledger.gateway.updated"}} {{n-a @model.updatedAtShort}}</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="flex flex-shrink-0 flex-nowrap items-center gap-2 whitespace-nowrap">
-                    <Button @icon="arrow-left" @text="Back" @size="xs" @onClick={{transition-to "payments.gateways.index"}} />
-                    <Button @icon="cog" @text="Settings" @size="xs" @onClick={{this.editGateway}} />
-                    <Button @icon="trash" @text="Delete" @type="danger" @size="xs" @onClick={{this.deleteGateway}} />
+                    <Button @icon="arrow-left" @text={{t "ledger.common.back"}} @size="xs" @onClick={{transition-to "payments.gateways.index"}} />
+                    <Button @icon="cog" @text={{t "ledger.common.settings"}} @size="xs" @onClick={{this.editGateway}} />
+                    <Button @icon="trash" @text={{t "ledger.common.delete"}} @type="danger" @size="xs" @onClick={{this.deleteGateway}} />
                 </div>
             </div>
 
-            <nav class="mt-4 flex w-full gap-1 overflow-x-auto border-b border-gray-200 text-sm dark:border-gray-700" aria-label="Gateway sections">
+            <nav class="mt-4 flex w-full gap-1 overflow-x-auto border-b border-gray-200 text-sm dark:border-gray-700" aria-label={{t "ledger.common.gateway-sections"}}>
                 {{#each this.tabs as |tab|}}
                     <LinkTo
                         @route={{tab.route}}

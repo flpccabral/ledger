@@ -22,8 +22,8 @@
             {{#if (eq this.currentStep "gateway")}}
                 <section class="rounded-md border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800">
                     <div class="mb-3">
-                        <h2 class="text-sm font-bold text-gray-900 dark:text-gray-100">Choose Payment Gateway</h2>
-                        <p class="text-xs leading-5 text-gray-500 dark:text-gray-300">Select the provider Ledger should use for invoice checkout, payment confirmation, refunds, and settlement tracking.</p>
+                        <h2 class="text-sm font-bold text-gray-900 dark:text-gray-100">{{t "ledger.common.choose-payment-gateway"}}</h2>
+                        <p class="text-xs leading-5 text-gray-500 dark:text-gray-300">{{t "ledger.gateway.select-the-provider-ledger-should-use"}}</p>
                     </div>
 
                     {{#if this.loadDrivers.isRunning}}
@@ -43,7 +43,7 @@
                                             </div>
                                         </div>
                                         {{#if driver.selected}}
-                                            <Badge @status="success" @hideStatusDot={{true}}>Selected</Badge>
+                                            <Badge @status="success" @hideStatusDot={{true}}>{{t "ledger.common.selected"}}</Badge>
                                         {{/if}}
                                     </div>
                                     <p class="mt-3 line-clamp-2 flex-1 text-xs leading-5 text-gray-500 dark:text-gray-300">{{driver.description}}</p>
@@ -61,8 +61,8 @@
                 <section class="grid grid-cols-1 gap-4 lg:grid-cols-3">
                     <div class="rounded-md border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 lg:col-span-2">
                         <div class="mb-3">
-                            <h2 class="text-sm font-bold text-gray-900 dark:text-gray-100">Gateway Credentials</h2>
-                            <p class="text-xs leading-5 text-gray-500 dark:text-gray-300">Enter the provider configuration Ledger stores on this gateway. Tokens are saved on the gateway record and are never shown in invoice checkout.</p>
+                            <h2 class="text-sm font-bold text-gray-900 dark:text-gray-100">{{t "ledger.common.gateway-credentials"}}</h2>
+                            <p class="text-xs leading-5 text-gray-500 dark:text-gray-300">{{t "ledger.gateway.enter-the-provider-configuration-ledger-stores"}}</p>
                         </div>
 
                         {{#if this.selectedDriver}}
@@ -76,7 +76,7 @@
                                                         @options={{field.options}}
                                                         @selected={{find-by "value" (get this.configValues field.key) field.options}}
                                                         @onChange={{fn this.updateConfigField field.key}}
-                                                        @placeholder="Select option"
+                                                        @placeholder={{t "ledger.common.select-option"}}
                                                         @triggerClass="form-select form-input"
                                                         @disabled={{cannot-write @resource}}
                                                         as |option|
@@ -108,18 +108,18 @@
                                 </div>
                             {{else}}
                                 <div class="rounded-md border border-dashed border-gray-300 p-6 text-center text-xs text-gray-500 dark:border-gray-700 dark:text-gray-300">
-                                    This gateway does not require provider credentials.
+                                    {{t "ledger.gateway.this-gateway-does-not-require-provider"}}
                                 </div>
                             {{/if}}
                         {{else}}
                             <div class="rounded-md border border-dashed border-gray-300 p-6 text-center text-xs text-gray-500 dark:border-gray-700 dark:text-gray-300">
-                                Choose a payment gateway before entering credentials.
+                                {{t "ledger.gateway.choose-a-payment-gateway-before-entering"}}
                             </div>
                         {{/if}}
                     </div>
 
                     {{#if this.selectedDriver}}
-                        <aside class="rounded-md border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800" aria-label="Selected gateway driver">
+                        <aside class="rounded-md border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800" aria-label={{t "ledger.common.selected-gateway-driver"}}>
                             <div class="flex items-start gap-3">
                                 <div class="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-md bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-300">
                                     <FaIcon @icon={{this.selectedDriverIcon}} />
@@ -141,26 +141,26 @@
                 <section class="grid grid-cols-1 gap-4 lg:grid-cols-3">
                     <div class="rounded-md border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 lg:col-span-2">
                         <div class="mb-3">
-                            <h2 class="text-sm font-bold text-gray-900 dark:text-gray-100">Routing And Status</h2>
-                            <p class="text-xs leading-5 text-gray-500 dark:text-gray-300">Name the gateway, choose the environment, and configure where customers and providers return payment events.</p>
+                            <h2 class="text-sm font-bold text-gray-900 dark:text-gray-100">{{t "ledger.common.routing-and-status"}}</h2>
+                            <p class="text-xs leading-5 text-gray-500 dark:text-gray-300">{{t "ledger.gateway.name-the-gateway-choose-the-environment"}}</p>
                         </div>
 
                         <div class="grid grid-cols-1 gap-2 lg:grid-cols-2 no-input-group-padding text-xs">
-                            <InputGroup @name="Gateway name">
-                                <Input @value={{@resource.name}} @type="text" class="w-full form-input" placeholder="e.g. GNU Taler Sandbox" disabled={{cannot-write @resource}} />
+                            <InputGroup @name={{t "ledger.common.gateway-name"}}>
+                                <Input @value={{@resource.name}} @type="text" class="w-full form-input" placeholder={{t "ledger.gateway.e-g-gnu-taler-sandbox"}} disabled={{cannot-write @resource}} />
                             </InputGroup>
 
-                            <InputGroup @name="Code">
-                                <Input @value={{@resource.code}} @type="text" class="w-full form-input" placeholder="e.g. taler_sandbox" disabled={{cannot-write @resource}} />
+                            <InputGroup @name={{t "column.code"}}>
+                                <Input @value={{@resource.code}} @type="text" class="w-full form-input" placeholder={{t "ledger.common.e-g-taler-sandbox"}} disabled={{cannot-write @resource}} />
                             </InputGroup>
 
-                            <InputGroup @name="Environment">
+                            <InputGroup @name={{t "column.environment"}}>
                                 <div class="fleetbase-model-select fleetbase-power-select ember-model-select">
                                     <PowerSelect
                                         @options={{array "sandbox" "live"}}
                                         @selected={{@resource.environment}}
                                         @onChange={{fn this.setResourceField "environment"}}
-                                        @placeholder="Select environment"
+                                        @placeholder={{t "ledger.common.select-environment"}}
                                         @triggerClass="form-select form-input"
                                         @disabled={{cannot-write @resource}}
                                         as |option|
@@ -170,13 +170,13 @@
                                 </div>
                             </InputGroup>
 
-                            <InputGroup @name="Status">
+                            <InputGroup @name={{t "column.status"}}>
                                 <div class="fleetbase-model-select fleetbase-power-select ember-model-select">
                                     <PowerSelect
                                         @options={{array "active" "inactive"}}
                                         @selected={{@resource.status}}
                                         @onChange={{fn this.setResourceField "status"}}
-                                        @placeholder="Select status"
+                                        @placeholder={{t "ledger.common.select-status"}}
                                         @triggerClass="form-select form-input"
                                         @disabled={{cannot-write @resource}}
                                         as |option|
@@ -186,39 +186,39 @@
                                 </div>
                             </InputGroup>
 
-                            <InputGroup @name="Return URL" @helpText="The URL the customer is redirected to after payment." @wrapperClass="lg:col-span-2">
+                            <InputGroup @name={{t "ledger.common.return-url"}} @helpText={{t "ledger.gateway.the-url-the-customer-is-redirected"}} @wrapperClass="lg:col-span-2">
                                 <Input @value={{@resource.return_url}} @type="url" class="w-full form-input" placeholder="https://yourapp.com/payment/success" disabled={{cannot-write @resource}} />
                             </InputGroup>
 
-                            <InputGroup @name="Webhook / Callback URL" @helpText="The registered provider webhook endpoint for this gateway." @wrapperClass="lg:col-span-2">
+                            <InputGroup @name={{t "ledger.gateway.webhook-callback-url"}} @helpText={{t "ledger.gateway.the-registered-provider-webhook-endpoint-for"}} @wrapperClass="lg:col-span-2">
                                 <Input @value={{@resource.webhook_url}} @type="url" class="w-full form-input" placeholder="https://api.example.com/ledger/webhooks/taler" disabled={{cannot-write @resource}} />
                                 {{#if @resource.system_webhook_url}}
                                     <div class="mt-2 flex flex-col gap-2 rounded-md border border-gray-200 bg-gray-50 p-2 text-[11px] dark:border-gray-700 dark:bg-gray-900 sm:flex-row sm:items-center sm:justify-between">
                                         <span class="min-w-0 break-all font-mono text-gray-600 dark:text-gray-300">{{@resource.system_webhook_url}}</span>
-                                        <Button @icon="copy" @text="Copy" @size="xs" @onClick={{this.copyWebhookUrl}} />
+                                        <Button @icon="copy" @text={{t "ledger.common.copy"}} @size="xs" @onClick={{this.copyWebhookUrl}} />
                                     </div>
                                 {{/if}}
                             </InputGroup>
 
-                            <InputGroup @name="Description" @wrapperClass="lg:col-span-2">
-                                <Textarea @value={{@resource.description}} class="w-full form-input" rows="2" placeholder="Optional operating notes for this gateway." disabled={{cannot-write @resource}} />
+                            <InputGroup @name={{t "column.description"}} @wrapperClass="lg:col-span-2">
+                                <Textarea @value={{@resource.description}} class="w-full form-input" rows="2" placeholder={{t "ledger.gateway.optional-operating-notes-for-this-gateway"}} disabled={{cannot-write @resource}} />
                             </InputGroup>
                         </div>
                     </div>
 
-                    <aside class="rounded-md border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800" aria-label="Gateway checkout readiness">
-                        <h3 class="text-sm font-bold text-gray-900 dark:text-gray-100">Checkout Readiness</h3>
+                    <aside class="rounded-md border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800" aria-label={{t "ledger.common.gateway-checkout-readiness"}}>
+                        <h3 class="text-sm font-bold text-gray-900 dark:text-gray-100">{{t "ledger.common.checkout-readiness"}}</h3>
                         <div class="mt-3 space-y-2 text-xs">
                             <div class="flex items-center justify-between gap-3 rounded-md border border-gray-200 p-2 dark:border-gray-700">
-                                <span class="text-gray-500 dark:text-gray-300">Driver selected</span>
-                                <Badge @status={{if @resource.driver "success" "warning"}} @hideStatusDot={{true}}>{{if @resource.driver "Ready" "Missing"}}</Badge>
+                                <span class="text-gray-500 dark:text-gray-300">{{t "ledger.common.driver-selected"}}</span>
+                                <Badge @status={{if @resource.driver "success" "warning"}} @hideStatusDot={{true}}>{{if @resource.driver (t "ledger.common.ready") (t "ledger.common.missing")}}</Badge>
                             </div>
                             <div class="flex items-center justify-between gap-3 rounded-md border border-gray-200 p-2 dark:border-gray-700">
-                                <span class="text-gray-500 dark:text-gray-300">Credentials</span>
-                                <Badge @status={{if this.hasRequiredConfig "success" "warning"}} @hideStatusDot={{true}}>{{if this.hasRequiredConfig "Ready" "Review"}}</Badge>
+                                <span class="text-gray-500 dark:text-gray-300">{{t "ledger.common.credentials"}}</span>
+                                <Badge @status={{if this.hasRequiredConfig "success" "warning"}} @hideStatusDot={{true}}>{{if this.hasRequiredConfig (t "ledger.common.ready") (t "ledger.common.review")}}</Badge>
                             </div>
                             <div class="flex items-center justify-between gap-3 rounded-md border border-gray-200 p-2 dark:border-gray-700">
-                                <span class="text-gray-500 dark:text-gray-300">Environment</span>
+                                <span class="text-gray-500 dark:text-gray-300">{{t "column.environment"}}</span>
                                 <span class="font-semibold capitalize text-gray-900 dark:text-gray-100">{{or @resource.environment "sandbox"}}</span>
                             </div>
                         </div>
@@ -228,18 +228,18 @@
                 <section class="grid grid-cols-1 gap-4 lg:grid-cols-3">
                     <div class="rounded-md border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 lg:col-span-2">
                         <div class="mb-3">
-                            <h2 class="text-sm font-bold text-gray-900 dark:text-gray-100">Review Gateway Setup</h2>
-                            <p class="text-xs leading-5 text-gray-500 dark:text-gray-300">Confirm the configuration before saving. Existing gateways can run a live credential check from here.</p>
+                            <h2 class="text-sm font-bold text-gray-900 dark:text-gray-100">{{t "ledger.common.review-gateway-setup"}}</h2>
+                            <p class="text-xs leading-5 text-gray-500 dark:text-gray-300">{{t "ledger.gateway.confirm-the-configuration-before-saving-existing"}}</p>
                         </div>
 
                         <div class="grid grid-cols-1 gap-3 md:grid-cols-2">
                             <div class="rounded-md border border-gray-200 p-3 dark:border-gray-700">
-                                <div class="text-[11px] font-semibold uppercase text-gray-400 dark:text-gray-500">Gateway</div>
-                                <div class="mt-2 text-sm font-bold text-gray-900 dark:text-gray-100">{{or @resource.name "Unnamed gateway"}}</div>
+                                <div class="text-[11px] font-semibold uppercase text-gray-400 dark:text-gray-500">{{t "resource.gateway"}}</div>
+                                <div class="mt-2 text-sm font-bold text-gray-900 dark:text-gray-100">{{or @resource.name (t "ledger.common.unnamed-gateway")}}</div>
                                 <div class="mt-1 text-xs text-gray-500 dark:text-gray-300">{{or this.selectedDriver.name @resource.driver}}</div>
                             </div>
                             <div class="rounded-md border border-gray-200 p-3 dark:border-gray-700">
-                                <div class="text-[11px] font-semibold uppercase text-gray-400 dark:text-gray-500">Mode</div>
+                                <div class="text-[11px] font-semibold uppercase text-gray-400 dark:text-gray-500">{{t "ledger.common.mode"}}</div>
                                 <div class="mt-2 text-sm font-bold capitalize text-gray-900 dark:text-gray-100">{{or @resource.environment "sandbox"}}</div>
                                 <div class="mt-1 text-xs capitalize text-gray-500 dark:text-gray-300">{{or @resource.status "active"}}</div>
                             </div>
@@ -281,7 +281,7 @@
                                 <div class="flex flex-shrink-0 justify-end">
                                     <Button
                                         @icon="plug"
-                                        @text={{if (eq this.connectionState "success") "Test Again" "Test Credentials"}}
+                                        @text={{if (eq this.connectionState "success") (t "ledger.common.test-again") (t "ledger.common.test-credentials")}}
                                         @size="xs"
                                         @isLoading={{this.testCredentials.isRunning}}
                                         @disabled={{or this.testCredentials.isRunning (not this.canTestCredentials)}}
@@ -293,11 +293,11 @@
                         </div>
                     </div>
 
-                    <aside class="rounded-md border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800" aria-label="Gateway after saving steps">
-                        <h3 class="text-sm font-bold text-gray-900 dark:text-gray-100">After Saving</h3>
+                    <aside class="rounded-md border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800" aria-label={{t "ledger.gateway.gateway-after-saving-steps"}}>
+                        <h3 class="text-sm font-bold text-gray-900 dark:text-gray-100">{{t "ledger.common.after-saving"}}</h3>
                         <div class="mt-3 space-y-3 text-xs leading-5 text-gray-500 dark:text-gray-300">
-                            <p>Use the gateway details screen to register webhooks, create test orders, and inspect diagnostics.</p>
-                            <p>For GNU Taler, sandbox gateways can use the hosted Fleetbase Merchant Backend URL when no backend URL is supplied, but API tokens must still be configured.</p>
+                            <p>{{t "ledger.gateway.use-the-gateway-details-screen-to"}}</p>
+                            <p>{{t "ledger.gateway.for-gnu-taler-sandbox-gateways-can"}}</p>
                         </div>
                     </aside>
                 </section>
@@ -308,13 +308,13 @@
     <div class="flex flex-shrink-0 items-center justify-between border-t border-gray-200 bg-white px-4 py-3 dark:border-gray-700 dark:bg-gray-900 md:px-6">
         <div class="text-xs text-gray-500 dark:text-gray-300">{{@footerHelp}}</div>
         <div class="flex items-center gap-2">
-            <Button @icon="arrow-left" @text="Back" @size="sm" @disabled={{eq this.activeStep 0}} @onClick={{this.previousStep}} />
+            <Button @icon="arrow-left" @text={{t "ledger.common.back"}} @size="sm" @disabled={{eq this.activeStep 0}} @onClick={{this.previousStep}} />
             {{#if (eq this.currentStep "review")}}
                 <Button @icon="save" @text={{@saveLabel}} @type="primary" @size="sm" @isLoading={{@isSaving}} @disabled={{@isSaving}} @onClick={{@onSave}} />
             {{else}}
-                <Button @icon="arrow-right" @text="Next" @type="primary" @size="sm" @onClick={{this.nextStep}} />
+                <Button @icon="arrow-right" @text={{t "ledger.common.next"}} @type="primary" @size="sm" @onClick={{this.nextStep}} />
             {{/if}}
-            <Button @icon="times" @text="Cancel" @size="sm" @onClick={{@onCancel}} />
+            <Button @icon="times" @text={{t "ledger.common.cancel"}} @size="sm" @onClick={{@onCancel}} />
         </div>
     </div>
 </div>

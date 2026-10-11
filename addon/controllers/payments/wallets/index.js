@@ -88,10 +88,10 @@ export default class PaymentsWalletsIndexController extends Controller {
                 filterOptionLabel: 'label',
                 filterOptionValue: 'value',
                 filterOptions: [
-                    { label: 'Company', value: 'company' },
-                    { label: 'Driver', value: 'driver' },
-                    { label: 'Customer', value: 'customer' },
-                    { label: 'User', value: 'user' },
+                    { label: this.intl.t('ledger.common.company'), value: 'company' },
+                    { label: this.intl.t('column.driver'), value: 'driver' },
+                    { label: this.intl.t('column.customer'), value: 'customer' },
+                    { label: this.intl.t('ledger.common.user'), value: 'user' },
                 ],
             },
             {
@@ -127,10 +127,10 @@ export default class PaymentsWalletsIndexController extends Controller {
                 filterOptionLabel: 'label',
                 filterOptionValue: 'value',
                 filterOptions: [
-                    { label: 'Active', value: 'active' },
-                    { label: 'Inactive', value: 'inactive' },
-                    { label: 'Frozen', value: 'frozen' },
-                    { label: 'Suspended', value: 'suspended' },
+                    { label: this.intl.t('ledger.common.active'), value: 'active' },
+                    { label: this.intl.t('ledger.common.inactive'), value: 'inactive' },
+                    { label: this.intl.t('column.frozen'), value: 'frozen' },
+                    { label: this.intl.t('ledger.common.suspended'), value: 'suspended' },
                 ],
             },
             {
@@ -179,8 +179,8 @@ export default class PaymentsWalletsIndexController extends Controller {
                 filterOptionLabel: 'label',
                 filterOptionValue: 'value',
                 filterOptions: [
-                    { label: 'Yes', value: 'true' },
-                    { label: 'No', value: 'false' },
+                    { label: this.intl.t('ledger.common.yes'), value: 'true' },
+                    { label: this.intl.t('ledger.common.no'), value: 'false' },
                 ],
             },
             {

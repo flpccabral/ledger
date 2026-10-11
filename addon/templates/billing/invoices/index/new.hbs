@@ -2,7 +2,7 @@
     <Layout::Resource::Panel
         @resource={{this.invoice}}
         @controller={{this}}
-        @headerTitle="Create New Invoice"
+        @headerTitle={{t "ledger.common.create-new-invoice"}}
         @actionButtons={{this.actionButtons}}
         @saveTask={{this.save}}
         @onPressCancel={{transition-to "billing.invoices.index"}}

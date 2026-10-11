@@ -102,8 +102,8 @@ export default class PaymentsGatewaysIndexController extends Controller {
                 filterOptionLabel: 'label',
                 filterOptionValue: 'value',
                 filterOptions: [
-                    { label: 'Live', value: 'live' },
-                    { label: 'Sandbox', value: 'sandbox' },
+                    { label: this.intl.t('ledger.common.live'), value: 'live' },
+                    { label: this.intl.t('ledger.common.sandbox'), value: 'sandbox' },
                 ],
             },
             {
@@ -119,8 +119,8 @@ export default class PaymentsGatewaysIndexController extends Controller {
                 filterOptionLabel: 'label',
                 filterOptionValue: 'value',
                 filterOptions: [
-                    { label: 'Active', value: 'active' },
-                    { label: 'Inactive', value: 'inactive' },
+                    { label: this.intl.t('ledger.common.active'), value: 'active' },
+                    { label: this.intl.t('ledger.common.inactive'), value: 'inactive' },
                 ],
             },
             {

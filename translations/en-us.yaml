@@ -1,5 +1,533 @@
 ledger:
   extension-name: Ledger
+  common:
+    actions: Actions
+    active: Active
+    active-gateways: Active gateways
+    add-a-gateway: Add a gateway
+    add-funds: Add Funds
+    add-gateway: Add Gateway
+    add-line-item: Add line item
+    add-one: Add one
+    after-saving: After Saving
+    allow-partial-payments: Allow Partial Payments
+    amount-paid: Amount Paid
+    amounts: Amounts
+    auto-apply-wallet-credit: Auto-Apply Wallet Credit
+    auto-send-on-creation: Auto-Send on Creation
+    automation: Automation
+    available: Available
+    available-on-invoices: Available on invoices
+    back: Back
+    balance-due: Balance Due
+    bank-transfer: Bank Transfer
+    bill-to: Bill To
+    cancel: Cancel
+    cancelled: Cancelled
+    card: Card
+    cash: Cash
+    checkout-readiness: Checkout Readiness
+    cheque: Cheque
+    choose-payment-gateway: Choose Payment Gateway
+    company: Company
+    configuration: Configuration
+    configured: Configured
+    connect-gateway: Connect gateway
+    connect-payment-gateway: Connect Payment Gateway
+    connected: Connected
+    connected-gateways: Connected Gateways
+    connection: Connection
+    continue-to-payment: Continue to Payment
+    copy: Copy
+    copy-uri: Copy URI
+    copy-webhook-url: Copy Webhook URL
+    core-information: Core Information
+    create-a-template: Create a template
+    create-gateway: Create Gateway
+    create-new-invoice: Create New Invoice
+    create-new-wallet: Create New Wallet
+    create-test-order: Create Test Order
+    credential-test: Credential test
+    credentials: Credentials
+    credit: Credit
+    credit-card: Credit Card
+    current-balance: Current Balance
+    dates: Dates
+    debit: Debit
+    debit-card: Debit Card
+    default-currency: Default Currency
+    default-gateway: Default Gateway
+    default-invoice-template: Default Invoice Template
+    default-invoice-text: Default Invoice Text
+    default-notes: Default Notes
+    default-payment-gateway: Default Payment Gateway
+    default-payment-terms: Default Payment Terms
+    default-template: Default Template
+    delete: Delete
+    deposit: Deposit
+    description-and-notes: Description & Notes
+    details: Details
+    diagnostics: Diagnostics
+    done: Done
+    draft: Draft
+    driver-selected: Driver selected
+    due: Due
+    due-on-receipt: Due on Receipt
+    e-g-main-wallet: e.g. Main Wallet
+    e-g-stripe: e.g. stripe
+    e-g-taler-sandbox: e.g. taler_sandbox
+    edit: Edit
+    edit-gateway: Edit Gateway
+    edit-settings: Edit Settings
+    email: Email
+    email-phone: Email / Phone
+    event-type: Event Type
+    exchange-rate: Exchange Rate
+    external-reference: External reference
+    failed: Failed
+    failure-code: Failure Code
+    failure-information: Failure Information
+    fee-amount: Fee Amount
+    fleetbase-ledger: Fleetbase Ledger
+    freeze: Freeze
+    freeze-this-wallet: Freeze this wallet
+    freeze-wallet: Freeze Wallet
+    from: From
+    gateway-and-payment: Gateway & Payment
+    gateway-checkout-readiness: Gateway checkout readiness
+    gateway-credentials: Gateway Credentials
+    gateway-name: Gateway name
+    gateway-ref: Gateway Ref
+    gateway-sections: Gateway sections
+    gateway-setup: Gateway Setup
+    gateway-test-failed: Gateway test failed
+    gateway-transaction-id: Gateway Transaction ID
+    gateway-transaction-reference: Gateway transaction reference
+    gateway-verified: Gateway verified
+    gnu-taler-refund: GNU Taler Refund
+    identity: Identity
+    inactive: Inactive
+    initiated-by: Initiated By
+    internal-id: Internal ID
+    internal-transfer: Internal transfer
+    invoice-details: Invoice Details
+    invoice-information: Invoice Information
+    invoice-number: Invoice Number
+    invoice-number-prefix: Invoice Number Prefix
+    invoice-numbering: Invoice Numbering
+    invoice-paid: Invoice Paid
+    invoice-settings: Invoice Settings
+    invoice-url: Invoice URL
+    ip-address: IP Address
+    issue-refund: Issue Refund
+    item-description: Item description
+    last-results: Last Results
+    last-updated: Last Updated
+    ledger-webhook-url: Ledger webhook URL
+    line-items: Line Items
+    live: Live
+    live-ready: Live ready
+    loading-gateway-status: Loading gateway status
+    loading-invoice: Loading invoice…
+    manage-gateway: Manage gateway
+    manual: Manual
+    manual-top-up: Manual top-up
+    max: Max
+    min: Min
+    missing: Missing
+    mode: Mode
+    need-provisioning-review: Need provisioning review
+    needs-setup: Needs Setup
+    needs-setup-2: Needs setup
+    net-14: Net 14
+    net-15: Net 15
+    net-30: Net 30
+    net-45: Net 45
+    net-60: Net 60
+    net-7: Net 7
+    net-90: Net 90
+    next: Next
+    'no': 'No'
+    no-due-date: No due date
+    no-open-warnings: No open warnings
+    no-payment-yet: No payment yet
+    no-refund-yet: No refund yet
+    no-timestamp: No timestamp
+    not-checked: Not Checked
+    not-checked-2: Not checked
+    not-registered: not registered
+    notes: Notes
+    notes-and-terms: Notes & Terms
+    online-payment-unavailable: Online Payment Unavailable
+    open-in-ledger: Open in Ledger
+    order: Order
+    other: Other
+    overdue: Overdue
+    overview: Overview
+    owner-details: Owner Details
+    owner-type: Owner Type
+    owner-uuid: Owner UUID
+    paid: Paid
+    paid-at: Paid At
+    partial: Partial
+    partial-refund-pending: Partial Refund Pending
+    parties: Parties
+    pay-now: Pay Now
+    pay-this-invoice: Pay This Invoice
+    pay-with-stripe: Pay with Stripe
+    payment: Payment
+    payment-behaviour: Payment Behaviour
+    payment-gateway: Payment gateway
+    payment-gateway-setup: Payment gateway setup
+    payment-gateways: Payment Gateways
+    payment-notifications: Payment Notifications
+    payment-settings: Payment Settings
+    payment-summary: Payment Summary
+    pending: Pending
+    phone: Phone
+    powered-by: Powered by
+    preview: Preview
+    preview-invoice: Preview Invoice
+    production-connections: Production connections
+    production-payments: Production payments
+    provider-callback-ready: Provider callback ready
+    provider-configuration: Provider Configuration
+    provider-credentials: Provider credentials
+    provider-registered-callback: Provider registered callback
+    provider-status: Provider status
+    provider-status-2: Provider Status
+    provider-tool-results: Provider tool results
+    provider-tools: Provider Tools
+    public-id: Public ID
+    qty: Qty
+    ready: Ready
+    ready-to-verify: Ready to verify
+    recent-gateway-activity: Recent Gateway Activity
+    reconciliation: Reconciliation
+    record-info: Record Info
+    record-payment: Record Payment
+    reference-id: Reference ID
+    refresh: Refresh
+    refresh-diagnostics: Refresh Diagnostics
+    refund: Refund
+    refund-issued: Refund Issued
+    refund-pending: Refund Pending
+    refunded: Refunded
+    register-webhook: Register Webhook
+    registration-needed: Registration needed
+    remove: Remove
+    return-url: Return URL
+    review: Review
+    review-gateway-setup: Review Gateway Setup
+    routing: Routing
+    routing-and-status: Routing And Status
+    sandbox: Sandbox
+    save-changes: Save Changes
+    save-gateway: Save Gateway
+    seen: Seen
+    select-currency: Select currency
+    select-customer: Select customer
+    select-direction: Select direction
+    select-environment: Select environment
+    select-option: Select option
+    select-order: Select order
+    select-owner-type: Select owner type
+    select-payment-method: Select payment method
+    select-payment-terms: Select payment terms
+    select-status: Select status
+    select-type: Select type
+    select-wallet-type: Select wallet type
+    selected: Selected
+    selected-gateway-driver: Selected gateway driver
+    send-invoice: Send Invoice
+    send-payment-receipt: Send Payment Receipt
+    sent: Sent
+    sent-at: Sent At
+    settings: Settings
+    settled-amount: Settled Amount
+    settled-currency: Settled Currency
+    settlement: Settlement
+    setup: Setup
+    subtotal: Subtotal
+    supported-gateways: Supported Gateways
+    suspended: Suspended
+    tax-amount: Tax Amount
+    tax-percent: Tax %
+    template: Template
+    terms: Terms
+    test-again: Test Again
+    test-credentials: Test Credentials
+    test-order: Test order
+    testing-connections: Testing connections
+    the-selected-gateway: the selected gateway
+    to-wallet: To Wallet
+    total-amount: Total Amount
+    transaction-details: Transaction Details
+    transaction-information: Transaction Information
+    transfer: Transfer
+    unfreeze: Unfreeze
+    unfreeze-wallet: Unfreeze Wallet
+    unit-price: Unit Price
+    unnamed-gateway: Unnamed gateway
+    user: User
+    verified: Verified
+    view: View
+    view-refunds: View Refunds
+    viewed: Viewed
+    viewed-at: Viewed At
+    void: Void
+    wallet-details: Wallet Details
+    wallet-information: Wallet Information
+    wallet-name: Wallet Name
+    warnings: warnings
+    webhook: Webhook
+    webhook-events: Webhook Events
+    webhook-issues: Webhook issues
+    webhook-registration: Webhook registration
+    withdraw: Withdraw
+    'yes': 'Yes'
+  checkout:
+    amount-due: 'Amount due:'
+    due: 'Due:'
+    e-g-bank-transfer-ref-12345: 'e.g. Bank transfer ref #12345'
+    failed-to-load-invoice-please-try: Failed to load invoice. Please try again later.
+    gnu-taler-payment-qr-code: GNU Taler payment QR code
+    gnu-taler-payment-ready: GNU Taler payment ready
+    invoice-not-found: Invoice not found. Please check the link and try again.
+    no-invoice-identifier: No invoice identifier provided. Please check the link and try again.
+    online-payment-is-not-available-for: Online payment is not available for this invoice. Please contact the sender for payment instructions.
+    online-payment-not-available: Online payment is not available for this invoice.
+    open-gnu-taler-wallet: Open GNU Taler Wallet
+    open-your-taler-wallet-from-this: Open your Taler wallet from this browser, or copy the payment URI into a wallet.
+    open-your-taler-wallet-or-scan: Open your Taler wallet or scan the QR code with a wallet on another device.
+    payment-cancelled: Payment was cancelled. You can try again below.
+    payment-completed: Your payment was completed successfully. Thank you!
+    payment-failed-please-try-again: Payment failed. Please try again.
+    payment-recorded: Your payment has been recorded successfully. Thank you!
+    payment-started-complete-it-in-your: Payment started. Complete it in your payment app, then refresh this invoice.
+    payment-started-open-your-gnu-taler: Payment started. Open your GNU Taler wallet to complete it.
+    processing: Processing...
+    qr-code-unavailable-for-this-payment: QR code unavailable for this payment response.
+    redirecting-to-payment-provider: Redirecting to payment provider...
+    reference-note-optional: Reference / Note (optional)
+    this-invoice-has-been-fully-paid: This invoice has been fully paid. Thank you for your payment.
+    this-invoice-is-no-longer-active: This invoice is no longer active and cannot accept payments.
+    this-invoice-is-not-yet-available: This invoice is not yet available. Please contact the sender.
+  refund:
+    failed-to-load-refund-please-try: Failed to load refund. Please try again later.
+    gnu-taler-refund-qr-code: GNU Taler refund QR code
+    loading-refund: Loading refund...
+    no-refund-identifier: No refund identifier provided. Please check the link and try again.
+    open-gnu-taler-wallet: Open GNU Taler Wallet
+    open-this-refund-with-your-gnu: Open this refund with your GNU Taler wallet.
+    refund-for-invoice: This refund is for invoice {number}. If your wallet does not open automatically, scan the QR code or copy the wallet URI.
+    refund-not-found-please-check-the: Refund not found. Please check the link and try again.
+    refund-uri-copied: Refund URI copied.
+  invoice:
+    add-any-notes-or-payment-instructions: Add any notes or payment instructions for the customer…
+    amount-received-defaults-to-the-full: Amount received. Defaults to the full outstanding balance.
+    an-invoice-is-generated-automatically-when: An invoice is generated automatically when a service rate is purchased.
+    auto-generated-if-left-blank: Auto-generated if left blank
+    balance: 'Balance:'
+    confirm-refund-body: Issue a {amount} refund through {gateway}? This will create a gateway refund and Ledger reversal.
+    confirm-refund-title: Confirm Refund {number}
+    e-g-bank-transfer-ref-cheque: e.g. bank transfer ref, cheque number
+    enter-a-refund-amount-greater-than: Enter a refund amount greater than zero.
+    gnu-taler-may-return-a-refund: GNU Taler may return a refund URI that must be shared with the customer wallet.
+    how-the-payment-was-received: How the payment was received.
+    invoice-sent-successfully: Invoice sent successfully.
+    invoice-voided: Invoice voided.
+    issue-refund-title: Issue Refund {number}
+    line-items-missing-description: '{count} line items are missing a description.'
+    no-invoice-found-for-this-order: No invoice found for this order.
+    no-line-items-recorded: No line items recorded.
+    no-line-items-yet: No line items yet.
+    one-line-item-is-missing-a: One line item is missing a description.
+    open-full-invoice-in-ledger: Open full invoice in Ledger
+    optional-reference-number-or-note-for: Optional reference number or note for this payment.
+    payment-recorded-successfully: Payment recorded successfully.
+    payment-terms-e-g-net-30: Payment terms, e.g. Net 30…
+    please-enter-a-valid-payment-amount: Please enter a valid payment amount greater than zero.
+    refund-amount-exceeds-the-selected-payment: Refund amount exceeds the selected payment remaining amount.
+    refund-issued-successfully: Refund issued successfully.
+    refund-status-verified: Refund status verified.
+    refund-uri-sent-to-customer: Refund URI sent to customer.
+    refunds-title: Refunds {number}
+    search-contacts-or-vendors: Search contacts or vendors…
+    select-a-refundable-payment: Select a refundable payment.
+    select-a-template-optional: Select a template (optional)
+    select-payment-method: Select payment method...
+    this-invoice-has-no-refundable-gateway: This invoice has no refundable gateway payments.
+    this-will-mark-the-invoice-as: This will mark the invoice as void and cannot be undone.
+    unable-to-resolve-the-refund-transaction: Unable to resolve the refund transaction.
+    void-invoice-title: Void Invoice {number}?
+  invoice-template:
+    template-created: Invoice template "{name}" created successfully.
+    template-saved: Invoice template "{name}" saved.
+  invoice-settings:
+    automatically-email-the-invoice-to-the: Automatically email the invoice to the customer when it is created.
+    currency-and-payment-terms: Currency & Payment Terms
+    default-currency-placeholder: 'Default: {currency}'
+    default-terms-and-conditions: Default Terms & Conditions
+    e-g-payment-is-due-within: e.g. Payment is due within 30 days of the invoice date.
+    e-g-thank-you-for-your: e.g. Thank you for your business!
+    invoice-settings-saved: Invoice settings saved.
+    no-invoice-templates-found: No invoice templates found.
+    number-of-days-after-the-invoice: Number of days after the invoice date that payment is due.
+    select-an-invoice-template: Select an invoice template
+    selected: 'Selected:'
+    standard-terms-pre-filled-on-every: Standard terms pre-filled on every new invoice.
+    the-currency-applied-to-new-invoices: The currency applied to new invoices unless overridden on the invoice itself.
+    the-invoice-template-applied-to-all: The invoice template applied to all new invoices, including those auto-generated from Fleet-Ops orders. Leave blank to use the system default.
+    these-notes-appear-at-the-bottom: These notes appear at the bottom of every new invoice. You can override them per invoice.
+    this-prefix-is-prepended-to-every: This prefix is prepended to every new invoice number, e.g. "INV-000001".
+    to-enable-custom-invoice-branding: to enable custom invoice branding.
+    using-organisation-default-currency: Using organisation default ({currency}). Select a currency above to override.
+  payment-settings:
+    allow-customers-to-pay-a-portion: Allow customers to pay a portion of the invoice amount rather than the full balance.
+    automatically-apply-available-wallet-balance-toward: Automatically apply available wallet balance toward invoice payments before charging the gateway.
+    email-a-payment-receipt-to-the: Email a payment receipt to the customer automatically after a successful payment.
+    no-active-gateways-found: No active gateways found.
+    payment-settings-saved: Payment settings saved.
+    select-a-payment-gateway: Select a payment gateway
+    selected: 'Selected:'
+    the-gateway-used-for-all-invoice: The gateway used for all invoice payments unless overridden on the individual invoice. Only active gateways are listed.
+    to-enable-online-payments: to enable online payments.
+  gateway:
+    after-saving-open-diagnostics-to-test: After saving, open diagnostics to test credentials, register webhooks, and create a test order.
+    change-the-gateway-name-credentials-routing: Change the gateway name, credentials, routing, status, or environment.
+    changes-affect-future-invoice-checkout-refunds: Changes affect future invoice checkout, refunds, webhook routing, and diagnostics.
+    checks-whether-ledger-can-authenticate-against: Checks whether Ledger can authenticate against the configured Taler Merchant Backend.
+    choose-a-gateway-and-complete-the: Choose a gateway and complete the required credentials before testing.
+    choose-a-payment-gateway-before-entering: Choose a payment gateway before entering credentials.
+    choose-a-supported-provider-enter-credentials: Choose a supported provider, enter credentials, configure checkout routing, and prepare the gateway for invoice payments.
+    complete-credentials-to-verify: Complete credentials to verify
+    configuration-ledger-uses-for-routing-provider: Configuration Ledger uses for routing, provider setup, and checkout availability.
+    configure-checkout-providers-manual-methods-webhooks: Configure checkout providers, manual methods, webhooks, refunds, and settlement readiness from one workflow.
+    confirm-the-configuration-before-saving-existing: Confirm the configuration before saving. Existing gateways can run a live credential check from here.
+    connect-supported-gateway-drivers-or-manage: Connect supported gateway drivers or manage existing configured accounts.
+    copies-the-ledger-callback-url-for: Copies the Ledger callback URL for manual provider setup.
+    could-not-load-available-payment-drivers: Could not load available payment drivers.
+    create-taler-test-order-body: Ledger will create a test order in the configured Taler Merchant Backend. No customer invoice is changed.
+    create-taler-test-order-title: Create Taler test order?
+    created: 'Created:'
+    creates-a-provider-test-order-and: Creates a provider test order and records its order id.
+    creates-a-small-sandbox-order-to: Creates a small sandbox order to verify order creation and wallet redirect behavior.
+    creates-or-updates-the-taler-webhook: Creates or updates the Taler webhook so payment events route back to this exact gateway.
+    delete-gateway-title: Delete Gateway {name}?
+    driver-description-cash: Record offline or in-person payments without external webhook provisioning.
+    driver-description-qpay: Regional gateway support for QR and local payment collection flows.
+    driver-description-stripe: Card and digital wallet processing with webhook confirmation and refund support.
+    driver-description-taler: Privacy-preserving wallet payments, QR checkout, webhook confirmation, refunds, and settlement verification.
+    driver-type-cards: Cards and wallets
+    driver-type-manual: Manual payment
+    driver-type-regional: Regional payment
+    driver-type-wallet: Wallet payment
+    e-g-gnu-taler-sandbox: e.g. GNU Taler Sandbox
+    edit-this-payment-gateway-configuration: Edit this payment gateway configuration.
+    enter-the-provider-configuration-ledger-stores: Enter the provider configuration Ledger stores on this gateway. Tokens are saved on the gateway record and are never shown in invoice checkout.
+    expected-result: 'Expected result:'
+    for-gnu-taler-sandbox-gateways-can: For GNU Taler, sandbox gateways can use the hosted Fleetbase Merchant Backend URL when no backend URL is supplied, but API tokens must still be configured.
+    gateway-after-saving-steps: Gateway after saving steps
+    gateway-credential-test-failed: Gateway credential test failed.
+    gateway-deleted: Gateway deleted.
+    gateway-removed: Gateway removed.
+    last-order: Last order {order}
+    last-provider-auth-test: Last provider auth test
+    latest-webhook-payment-refund-and-settlement: Latest webhook, payment, refund, and settlement records for this gateway.
+    ledger-is-checking-the-configured-credentials: Ledger is checking the configured credentials with the payment provider.
+    name-the-gateway-choose-the-environment: Name the gateway, choose the environment, and configure where customers and providers return payment events.
+    no-credential-test-has-been-run: No credential test has been run.
+    no-gateway-activity-has-been-recorded: No gateway activity has been recorded yet.
+    no-provider-mutation-refreshes-this-screen: No provider mutation; refreshes this screen only.
+    no-provider-webhook-registration-stored: No provider webhook registration stored.
+    no-system-webhook-url-is-available: No system webhook URL is available yet.
+    no-test-order-has-been-created: No test order has been created.
+    no-webhook-events-recorded: No webhook events recorded
+    no-webhook-url-is-available-yet: No webhook URL is available yet.
+    not-used-at-checkout: Not used at checkout
+    opens-the-gateway-setup-wizard-for: Opens the gateway setup wizard for this existing gateway.
+    optional-operating-notes-for-this-gateway: Optional operating notes for this gateway.
+    permanently-remove-this-payment-gateway-this: Permanently remove this payment gateway. This cannot be undone.
+    provider-operations-an-operator-is-likely: Provider operations an operator is likely to need next.
+    provider-webhook-registration-completed: Provider webhook registration completed.
+    ready-to-collect-payments: Ready to collect payments
+    register-taler-webhook-body: Ledger will create or update the webhook in the Taler Merchant Backend for this gateway.
+    register-taler-webhook-title: Register Taler webhook?
+    reload-diagnostics-without-changing-the-provider: Reload diagnostics without changing the provider.
+    reloads-the-latest-credential-webhook-payment: Reloads the latest credential, webhook, payment, refund, and settlement diagnostic data from Ledger.
+    remove-gateway-body: This will remove "{name}". Any active integrations using this gateway will stop working.
+    remove-payment-gateway: Remove Payment Gateway?
+    review-configured-providers-checkout-availability-environments: Review configured providers, checkout availability, environments, and operational status.
+    review-provider-credentials-routing-status-webhook: Review provider credentials, routing, status, webhook details, and operational readiness for this gateway.
+    run-a-credential-test-before-using: Run a credential test before using this gateway for invoice payments.
+    run-a-provider-check: Run a provider check
+    run-provider-facing-checks-and-provisioning: Run provider-facing checks and provisioning actions with a clear expected result.
+    same-as-ledger-webhook-url: Same as Ledger webhook URL
+    select-the-provider-ledger-should-use: Select the provider Ledger should use for invoice checkout, payment confirmation, refunds, and settlement tracking.
+    stored-encrypted-and-hidden: Stored encrypted and hidden
+    stores-the-registered-webhook-url-and: Stores the registered webhook URL and routing payload.
+    system-webhook-url-copied: System webhook URL copied.
+    taler-credentials-accepted: Taler credentials accepted.
+    taler-test-order-created: Taler test order created.
+    taler-webhook-registered: Taler webhook registered.
+    test-the-entered-provider-credentials-before: Test the entered provider credentials before creating this gateway.
+    testing-and-sandbox-use: Testing and sandbox use
+    testing-gateway-credentials: Testing gateway credentials...
+    the-gateway-credential-check-completed: The gateway credential check completed.
+    the-provider-posts-events-to-the: The provider posts events to the Ledger webhook URL above.
+    the-registered-provider-webhook-endpoint-for: The registered provider webhook endpoint for this gateway.
+    the-url-the-customer-is-redirected: The URL the customer is redirected to after payment.
+    this-action-cannot-be-undone: This action cannot be undone.
+    this-gateway-does-not-require-provider: This gateway does not require provider credentials.
+    this-gateway-driver-does-not-expose: This gateway driver does not expose provider diagnostics.
+    unable-to-copy-webhook-url: Unable to copy webhook URL.
+    updated: 'Updated:'
+    updates-credential-status-and-last-checked: Updates credential status and last checked time.
+    usability-signals-at-a-glance: Usability signals at a glance.
+    use-the-gateway-details-screen-to: Use the gateway details screen to register webhooks, create test orders, and inspect diagnostics.
+    use-this-when-provider-webhook-registration: Use this when provider webhook registration is handled outside Ledger.
+    webhook: 'Webhook:'
+    webhook-callback-url: Webhook / Callback URL
+    webhook-url-copied: Webhook URL copied.
+    webhook-url-is-configured-but-no: Webhook URL is configured, but no registration action has been recorded.
+    webhook-url-unavailable-until-this-gateway: Webhook URL unavailable until this gateway has a driver.
+  wallet:
+    add-funds-title: Add Funds — {name}
+    add-funds-to-this-wallet-balance: Add funds to this wallet balance.
+    amount-to-add-to-this-wallet: Amount to add to this wallet.
+    amount-to-transfer: Amount to transfer.
+    cannot-transfer-funds-to-the-same: Cannot transfer funds to the same wallet.
+    freeze-this-wallet-to-block-all: Freeze this wallet to block all debits.
+    freeze-title: Freeze {name}?
+    freezing-this-wallet-will-block-all: Freezing this wallet will block all debit transactions. Credits will still be accepted. You can unfreeze it at any time.
+    frozen-success: '{name} has been frozen.'
+    frozen-wallets-cannot-send-or-receive: Frozen wallets cannot send or receive funds.
+    funds-added: Funds added to {name}.
+    funds-transferred: Funds transferred to {name}.
+    optional-note-for-this-transaction: Optional note for this transaction.
+    optional-note-for-this-transfer: Optional note for this transfer.
+    please-enter-a-valid-amount-greater: Please enter a valid amount greater than zero.
+    please-select-a-destination-wallet: Please select a destination wallet.
+    search-wallets: Search wallets...
+    select-the-destination-wallet-to-transfer: Select the destination wallet to transfer funds into.
+    transfer-funds-from-this-wallet-to: Transfer funds from this wallet to another wallet.
+    transfer-funds-title: Transfer Funds — {name}
+    unfreeze-this-wallet-to-allow-debits: Unfreeze this wallet to allow debits.
+    unfreeze-title: Unfreeze {name}?
+    unfreezing-this-wallet-will-restore-normal: Unfreezing this wallet will restore normal operation and allow debit transactions.
+    unfrozen-success: '{name} has been unfrozen.'
+    wallet-frozen: Wallet frozen.
+    wallet-unfrozen: Wallet unfrozen.
+  transaction:
+    internal-notes: Internal notes...
+    short-description-of-this-transaction: Short description of this transaction
+  modals:
+    invoice-preview:
+      no-content: No preview available.
+    template-preview:
+      no-content: No preview available.
+      title: Template Preview
 
 common:
   ledger: Ledger

@@ -7,18 +7,19 @@ export default class SettingsGatewaysIndexDetailsController extends Controller {
     @service modalsManager;
     @service hostRouter;
     @service fetch;
+    @service intl;
 
     get tabs() {
         return [
-            { label: 'Configuration', route: 'console.ledger.settings.gateways.index.details.index' },
-            { label: 'Webhook Events', route: 'console.ledger.settings.gateways.index.details.webhooks' },
+            { label: this.intl.t('ledger.common.configuration'), route: 'console.ledger.settings.gateways.index.details.index' },
+            { label: this.intl.t('ledger.common.webhook-events'), route: 'console.ledger.settings.gateways.index.details.webhooks' },
         ];
     }
 
     get actionButtons() {
         return [
-            { label: 'Edit', icon: 'pencil', type: 'default', onClick: this.editGateway },
-            { label: 'Remove', icon: 'trash', type: 'danger', onClick: this.deleteGateway },
+            { label: this.intl.t('ledger.common.edit'), icon: 'pencil', type: 'default', onClick: this.editGateway },
+            { label: this.intl.t('ledger.common.remove'), icon: 'trash', type: 'danger', onClick: this.deleteGateway },
         ];
     }
 
@@ -28,13 +29,13 @@ export default class SettingsGatewaysIndexDetailsController extends Controller {
 
     @action async deleteGateway() {
         this.modalsManager.confirm({
-            title: 'Remove Payment Gateway?',
-            body: `This will remove "${this.model.name}". Any active integrations using this gateway will stop working.`,
+            title: this.intl.t('ledger.gateway.remove-payment-gateway'),
+            body: this.intl.t('ledger.gateway.remove-gateway-body', { name: this.model.name }),
             confirm: async (modal) => {
                 modal.startLoading();
                 try {
                     await this.model.destroyRecord();
-                    this.notifications.success('Gateway removed.');
+                    this.notifications.success(this.intl.t('ledger.gateway.gateway-removed'));
                     this.hostRouter.transitionTo('console.ledger.payments.gateways.index');
                     modal.done();
                 } catch (error) {

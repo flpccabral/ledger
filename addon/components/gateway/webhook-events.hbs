@@ -5,13 +5,13 @@
         <table class="w-full text-sm">
             <thead>
                 <tr class="border-b border-gray-200 dark:border-gray-700">
-                    <th class="text-left py-2 text-xs font-medium text-gray-500 uppercase">Date</th>
-                    <th class="text-left py-2 text-xs font-medium text-gray-500 uppercase">Event Type</th>
-                    <th class="text-left py-2 text-xs font-medium text-gray-500 uppercase">Gateway Ref</th>
-                    <th class="text-right py-2 text-xs font-medium text-gray-500 uppercase">Amount</th>
-                    <th class="text-left py-2 text-xs font-medium text-gray-500 uppercase">Status</th>
-                    <th class="text-left py-2 text-xs font-medium text-gray-500 uppercase">Refund</th>
-                    <th class="text-left py-2 text-xs font-medium text-gray-500 uppercase">Reconciliation</th>
+                    <th class="text-left py-2 text-xs font-medium text-gray-500 uppercase">{{t "column.date"}}</th>
+                    <th class="text-left py-2 text-xs font-medium text-gray-500 uppercase">{{t "ledger.common.event-type"}}</th>
+                    <th class="text-left py-2 text-xs font-medium text-gray-500 uppercase">{{t "ledger.common.gateway-ref"}}</th>
+                    <th class="text-right py-2 text-xs font-medium text-gray-500 uppercase">{{t "column.amount"}}</th>
+                    <th class="text-left py-2 text-xs font-medium text-gray-500 uppercase">{{t "column.status"}}</th>
+                    <th class="text-left py-2 text-xs font-medium text-gray-500 uppercase">{{t "ledger.common.refund"}}</th>
+                    <th class="text-left py-2 text-xs font-medium text-gray-500 uppercase">{{t "ledger.common.reconciliation"}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,7 +31,7 @@
                     </tr>
                 {{else}}
                     <tr>
-                        <td colspan="7" class="py-4 text-center text-gray-400 text-xs">No webhook events recorded</td>
+                        <td colspan="7" class="py-4 text-center text-gray-400 text-xs">{{t "ledger.gateway.no-webhook-events-recorded"}}</td>
                     </tr>
                 {{/each}}
             </tbody>

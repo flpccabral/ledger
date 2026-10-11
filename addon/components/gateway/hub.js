@@ -7,31 +7,32 @@ const DRIVER_COPY = {
     taler: {
         name: 'GNU Taler',
         icon: 'wallet',
-        type: 'Wallet payment',
-        description: 'Privacy-preserving wallet payments, QR checkout, webhook confirmation, refunds, and settlement verification.',
+        typeKey: 'ledger.gateway.driver-type-wallet',
+        descriptionKey: 'ledger.gateway.driver-description-taler',
     },
     stripe: {
         name: 'Stripe',
         icon: 'credit-card',
-        type: 'Cards and wallets',
-        description: 'Card and digital wallet processing with webhook confirmation and refund support.',
+        typeKey: 'ledger.gateway.driver-type-cards',
+        descriptionKey: 'ledger.gateway.driver-description-stripe',
     },
     cash: {
-        name: 'Cash',
+        nameKey: 'ledger.common.cash',
         icon: 'money-bill-wave',
-        type: 'Manual payment',
-        description: 'Record offline or in-person payments without external webhook provisioning.',
+        typeKey: 'ledger.gateway.driver-type-manual',
+        descriptionKey: 'ledger.gateway.driver-description-cash',
     },
     qpay: {
         name: 'QPay',
         icon: 'qrcode',
-        type: 'Regional payment',
-        description: 'Regional gateway support for QR and local payment collection flows.',
+        typeKey: 'ledger.gateway.driver-type-regional',
+        descriptionKey: 'ledger.gateway.driver-description-qpay',
     },
 };
 
 export default class GatewayHubComponent extends Component {
     @service gatewayActions;
+    @service intl;
     @tracked table;
 
     get gateways() {
@@ -63,10 +64,10 @@ export default class GatewayHubComponent extends Component {
 
             return {
                 code,
-                name: manifest.name ?? copy.name,
+                name: manifest.name ?? copy.name ?? this.intl.t(copy.nameKey),
                 icon: copy.icon,
-                type: copy.type,
-                description: copy.description,
+                type: this.intl.t(copy.typeKey),
+                description: this.intl.t(copy.descriptionKey),
                 capabilities: manifest.capabilities ?? [],
                 configuredCount: configured.length,
                 activeCount: active.length,
@@ -87,30 +88,30 @@ export default class GatewayHubComponent extends Component {
     get statusTiles() {
         return [
             {
-                label: 'Active gateways',
+                label: this.intl.t('ledger.common.active-gateways'),
                 value: this.summary.active_gateways ?? 0,
-                caption: 'Ready to collect payments',
+                caption: this.intl.t('ledger.gateway.ready-to-collect-payments'),
                 icon: 'plug',
                 accentClass: Number(this.summary.active_gateways ?? 0) > 0 ? 'ledger-gateway-kpi-accent-green' : 'ledger-gateway-kpi-accent-blue',
             },
             {
-                label: 'Live ready',
+                label: this.intl.t('ledger.common.live-ready'),
                 value: this.summary.live_gateways ?? 0,
-                caption: 'Production connections',
+                caption: this.intl.t('ledger.common.production-connections'),
                 icon: 'bolt',
                 accentClass: Number(this.summary.live_gateways ?? 0) > 0 ? 'ledger-gateway-kpi-accent-blue' : 'ledger-gateway-kpi-accent-slate',
             },
             {
-                label: 'Webhook issues',
+                label: this.intl.t('ledger.common.webhook-issues'),
                 value: this.warningCount,
-                caption: this.warningCount > 0 ? 'Need provisioning review' : 'No open warnings',
+                caption: this.warningCount > 0 ? this.intl.t('ledger.common.need-provisioning-review') : this.intl.t('ledger.common.no-open-warnings'),
                 icon: 'link',
                 accentClass: this.warningCount > 0 ? 'ledger-gateway-kpi-accent-amber' : 'ledger-gateway-kpi-accent-green',
             },
             {
-                label: 'Sandbox',
+                label: this.intl.t('ledger.common.sandbox'),
                 value: this.summary.sandbox_gateways ?? 0,
-                caption: 'Testing connections',
+                caption: this.intl.t('ledger.common.testing-connections'),
                 icon: 'flask',
                 accentClass: Number(this.summary.sandbox_gateways ?? 0) > 0 ? 'ledger-gateway-kpi-accent-amber' : 'ledger-gateway-kpi-accent-slate',
             },

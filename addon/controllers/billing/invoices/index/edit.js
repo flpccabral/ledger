@@ -40,7 +40,7 @@ export default class BillingInvoicesIndexEditController extends Controller {
             yield this.hostRouter.transitionTo('console.ledger.billing.invoices.index.details', invoice);
             this.notifications.success(
                 this.intl.t('common.resource-updated-success', {
-                    resource: 'Invoice',
+                    resource: this.intl.t('resource.invoice'),
                     resourceName: invoice.number,
                 })
             );
@@ -71,7 +71,7 @@ export default class BillingInvoicesIndexEditController extends Controller {
     #confirmContinueWithUnsavedChanges(invoice, options = {}) {
         return this.modalsManager.confirm({
             title: this.intl.t('common.continue-without-saving'),
-            body: this.intl.t('common.continue-without-saving-prompt', { resource: 'Invoice' }),
+            body: this.intl.t('common.continue-without-saving-prompt', { resource: this.intl.t('resource.invoice') }),
             acceptButtonText: this.intl.t('common.continue'),
             confirm: async () => {
                 invoice.rollbackAttributes();

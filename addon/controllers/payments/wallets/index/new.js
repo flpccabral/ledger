@@ -35,7 +35,7 @@ export default class PaymentsWalletsIndexNewController extends Controller {
             yield this.hostRouter.transitionTo('console.ledger.payments.wallets.index.details', wallet);
             this.notifications.success(
                 this.intl.t('common.resource-created-success-name', {
-                    resource: 'Wallet',
+                    resource: this.intl.t('resource.wallet'),
                     resourceName: wallet.name,
                 })
             );

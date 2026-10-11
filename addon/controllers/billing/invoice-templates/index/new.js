@@ -41,7 +41,7 @@ export default class BillingInvoiceTemplatesIndexNewController extends Controlle
     #confirmContinueWithUnsavedChanges(template, options = {}) {
         return this.modalsManager.confirm({
             title: this.intl.t('common.continue-without-saving'),
-            body: this.intl.t('common.continue-without-saving-prompt', { resource: 'Invoice Template' }),
+            body: this.intl.t('common.continue-without-saving-prompt', { resource: this.intl.t('resource.invoice-template') }),
             acceptButtonText: this.intl.t('common.continue'),
             confirm: async () => {
                 if (template?.isNew) {
@@ -75,7 +75,7 @@ export default class BillingInvoiceTemplatesIndexNewController extends Controlle
             // the app (e.g. the index list) reflects the new template.
             const saved = this.store.push(this.store.normalize('template', response.template ?? response));
 
-            this.notifications.success(`Invoice template "${saved.name}" created successfully.`);
+            this.notifications.success(this.intl.t('ledger.invoice-template.template-created', { name: saved.name }));
             yield this.hostRouter.transitionTo('console.ledger.billing.invoice-templates.index');
         } catch (err) {
             this.notifications.serverError(err);

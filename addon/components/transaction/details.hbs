@@ -1,51 +1,51 @@
 <div class="details-wrapper" ...attributes>
     {{! TRANSACTION DETAILS }}
-    <ContentPanel @title="Transaction Details" @open={{true}} @wrapperClass="bordered-top">
+    <ContentPanel @title={{t "ledger.common.transaction-details"}} @open={{true}} @wrapperClass="bordered-top">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 text-xs dark:text-gray-100">
 
             <div class="col-span-2 text-[11px] uppercase tracking-wide text-gray-500 font-semibold mt-1">
-                Transaction Information
+                {{t "ledger.common.transaction-information"}}
             </div>
 
             <div class="field-info-container">
-                <div class="field-name">Reference ID</div>
+                <div class="field-name">{{t "ledger.common.reference-id"}}</div>
                 <div class="field-value font-mono">{{n-a @resource.public_id}}</div>
             </div>
 
             <div class="field-info-container">
-                <div class="field-name">Status</div>
+                <div class="field-name">{{t "column.status"}}</div>
                 <div class="field-value">
                     <Badge @status={{@resource.status}} @color={{@resource.status_badge_color}}>{{@resource.status}}</Badge>
                 </div>
             </div>
 
             <div class="field-info-container">
-                <div class="field-name">Type</div>
+                <div class="field-name">{{t "column.type"}}</div>
                 <div class="field-value capitalize">{{n-a @resource.type}}</div>
             </div>
 
             <div class="field-info-container">
-                <div class="field-name">Direction</div>
+                <div class="field-name">{{t "column.direction"}}</div>
                 <div class="field-value capitalize">{{n-a @resource.direction}}</div>
             </div>
 
             <div class="field-info-container">
-                <div class="field-name">Gateway</div>
+                <div class="field-name">{{t "resource.gateway"}}</div>
                 <div class="field-value">{{n-a @resource.gateway}}</div>
             </div>
 
             <div class="field-info-container">
-                <div class="field-name">Gateway Transaction ID</div>
+                <div class="field-name">{{t "ledger.common.gateway-transaction-id"}}</div>
                 <div class="field-value font-mono">{{n-a @resource.gateway_transaction_id}}</div>
             </div>
 
             <div class="field-info-container">
-                <div class="field-name">Payment Method</div>
+                <div class="field-name">{{t "column.payment-method"}}</div>
                 <div class="field-value capitalize">{{n-a @resource.payment_method}}</div>
             </div>
 
             <div class="field-info-container">
-                <div class="field-name">Card</div>
+                <div class="field-name">{{t "ledger.common.card"}}</div>
                 <div class="field-value">
                     {{#if @resource.payment_method_brand}}
                         {{@resource.payment_method_brand}}
@@ -58,71 +58,71 @@
             </div>
 
             <div class="field-info-container">
-                <div class="field-name">Reference</div>
+                <div class="field-name">{{t "column.reference"}}</div>
                 <div class="field-value font-mono">{{n-a @resource.reference}}</div>
             </div>
 
             <div class="field-info-container">
-                <div class="field-name">Date</div>
+                <div class="field-name">{{t "column.date"}}</div>
                 <div class="field-value">{{n-a @resource.createdAt}}</div>
             </div>
 
             <div class="col-span-2 text-[11px] uppercase tracking-wide text-gray-500 font-semibold mt-3">
-                Amounts
+                {{t "ledger.common.amounts"}}
             </div>
 
             <div class="field-info-container">
-                <div class="field-name">Amount</div>
+                <div class="field-name">{{t "column.amount"}}</div>
                 <div class="field-value font-semibold">{{format-currency @resource.amount @resource.currency}}</div>
             </div>
 
             <div class="field-info-container">
-                <div class="field-name">Currency</div>
+                <div class="field-name">{{t "column.currency"}}</div>
                 <div class="field-value">{{n-a @resource.currency}}</div>
             </div>
 
             <div class="field-info-container">
-                <div class="field-name">Fee</div>
+                <div class="field-name">{{t "column.fee"}}</div>
                 <div class="field-value">{{format-currency @resource.fee @resource.currency}}</div>
             </div>
 
             <div class="field-info-container">
-                <div class="field-name">Tax</div>
+                <div class="field-name">{{t "column.tax"}}</div>
                 <div class="field-value">{{format-currency @resource.tax @resource.currency}}</div>
             </div>
 
             <div class="field-info-container">
-                <div class="field-name">Net Amount</div>
+                <div class="field-name">{{t "column.net-amount"}}</div>
                 <div class="field-value font-semibold">{{format-currency @resource.net @resource.currency}}</div>
             </div>
 
             <div class="field-info-container">
-                <div class="field-name">Balance After</div>
+                <div class="field-name">{{t "column.balance-after"}}</div>
                 <div class="field-value">{{format-currency @resource.balance_after @resource.currency}}</div>
             </div>
 
             {{#if @resource.exchange_rate}}
                 <div class="col-span-2 text-[11px] uppercase tracking-wide text-gray-500 font-semibold mt-3">
-                    Settlement
+                    {{t "ledger.common.settlement"}}
                 </div>
 
                 <div class="field-info-container">
-                    <div class="field-name">Exchange Rate</div>
+                    <div class="field-name">{{t "ledger.common.exchange-rate"}}</div>
                     <div class="field-value">{{n-a @resource.exchange_rate}}</div>
                 </div>
 
                 <div class="field-info-container">
-                    <div class="field-name">Settled Currency</div>
+                    <div class="field-name">{{t "ledger.common.settled-currency"}}</div>
                     <div class="field-value">{{n-a @resource.settled_currency}}</div>
                 </div>
 
                 <div class="field-info-container">
-                    <div class="field-name">Settled Amount</div>
+                    <div class="field-name">{{t "ledger.common.settled-amount"}}</div>
                     <div class="field-value">{{format-currency @resource.settled_amount @resource.settled_currency}}</div>
                 </div>
 
                 <div class="field-info-container">
-                    <div class="field-name">Settled At</div>
+                    <div class="field-name">{{t "column.settled-at"}}</div>
                     <div class="field-value">{{n-a @resource.settledAt}}</div>
                 </div>
             {{/if}}
@@ -131,26 +131,26 @@
     </ContentPanel>
 
     {{! PARTIES }}
-    <ContentPanel @title="Parties" @open={{true}} @wrapperClass="bordered-top">
+    <ContentPanel @title={{t "ledger.common.parties"}} @open={{true}} @wrapperClass="bordered-top">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 text-xs dark:text-gray-100">
 
             <div class="field-info-container">
-                <div class="field-name">Payer</div>
+                <div class="field-name">{{t "column.payer"}}</div>
                 <div class="field-value">{{n-a @resource.payer_name}}</div>
             </div>
 
             <div class="field-info-container">
-                <div class="field-name">Payee</div>
+                <div class="field-name">{{t "column.payee"}}</div>
                 <div class="field-value">{{n-a @resource.payee_name}}</div>
             </div>
 
             <div class="field-info-container">
-                <div class="field-name">Initiated By</div>
+                <div class="field-name">{{t "ledger.common.initiated-by"}}</div>
                 <div class="field-value">{{n-a @resource.initiator_name}}</div>
             </div>
 
             <div class="field-info-container">
-                <div class="field-name">IP Address</div>
+                <div class="field-name">{{t "ledger.common.ip-address"}}</div>
                 <div class="field-value font-mono">{{n-a @resource.ip_address}}</div>
             </div>
 
@@ -159,16 +159,16 @@
 
     {{! FAILURE INFO }}
     {{#if @resource.failure_reason}}
-        <ContentPanel @title="Failure Information" @open={{true}} @wrapperClass="bordered-top">
+        <ContentPanel @title={{t "ledger.common.failure-information"}} @open={{true}} @wrapperClass="bordered-top">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 text-xs dark:text-gray-100">
 
                 <div class="field-info-container">
-                    <div class="field-name">Failure Code</div>
+                    <div class="field-name">{{t "ledger.common.failure-code"}}</div>
                     <div class="field-value font-mono text-red-600">{{n-a @resource.failure_code}}</div>
                 </div>
 
                 <div class="field-info-container col-span-2">
-                    <div class="field-name">Failure Reason</div>
+                    <div class="field-name">{{t "column.failure-reason"}}</div>
                     <div class="field-value text-red-600">{{n-a @resource.failure_reason}}</div>
                 </div>
 
@@ -178,19 +178,19 @@
 
     {{! DESCRIPTION & NOTES }}
     {{#if (or @resource.description @resource.notes)}}
-        <ContentPanel @title="Description & Notes" @open={{true}} @wrapperClass="bordered-top">
+        <ContentPanel @title={{t "ledger.common.description-and-notes"}} @open={{true}} @wrapperClass="bordered-top">
             <div class="grid grid-cols-1 gap-2 text-xs dark:text-gray-100">
 
                 {{#if @resource.description}}
                     <div class="field-info-container">
-                        <div class="field-name">Description</div>
+                        <div class="field-name">{{t "column.description"}}</div>
                         <div class="field-value">{{@resource.description}}</div>
                     </div>
                 {{/if}}
 
                 {{#if @resource.notes}}
                     <div class="field-info-container">
-                        <div class="field-name">Notes</div>
+                        <div class="field-name">{{t "ledger.common.notes"}}</div>
                         <div class="field-value">{{@resource.notes}}</div>
                     </div>
                 {{/if}}
@@ -200,16 +200,16 @@
     {{/if}}
 
     {{! RECORD INFO }}
-    <ContentPanel @title="Record Info" @open={{true}} @wrapperClass="bordered-top">
+    <ContentPanel @title={{t "ledger.common.record-info"}} @open={{true}} @wrapperClass="bordered-top">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 text-xs dark:text-gray-100">
 
             <div class="field-info-container">
-                <div class="field-name">Created</div>
+                <div class="field-name">{{t "column.created-at"}}</div>
                 <div class="field-value">{{n-a @resource.createdAt}}</div>
             </div>
 
             <div class="field-info-container">
-                <div class="field-name">Last Updated</div>
+                <div class="field-name">{{t "ledger.common.last-updated"}}</div>
                 <div class="field-value">{{n-a @resource.updatedAt}}</div>
             </div>
 

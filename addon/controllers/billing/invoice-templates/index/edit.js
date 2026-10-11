@@ -32,7 +32,7 @@ export default class BillingInvoiceTemplatesIndexEditController extends Controll
     #confirmContinueWithUnsavedChanges(template, options = {}) {
         return this.modalsManager.confirm({
             title: this.intl.t('common.continue-without-saving'),
-            body: this.intl.t('common.continue-without-saving-prompt', { resource: 'Invoice Template' }),
+            body: this.intl.t('common.continue-without-saving-prompt', { resource: this.intl.t('resource.invoice-template') }),
             acceptButtonText: this.intl.t('common.continue'),
             confirm: async () => {
                 template.rollbackAttributes();
@@ -66,7 +66,7 @@ export default class BillingInvoiceTemplatesIndexEditController extends Controll
             // (including the builder's @template arg) reflect the latest state.
             this.store.push(this.store.normalize('template', response.template ?? response));
 
-            this.notifications.success(`Invoice template "${template.name}" saved.`);
+            this.notifications.success(this.intl.t('ledger.invoice-template.template-saved', { name: template.name }));
         } catch (err) {
             this.notifications.serverError(err);
         }

@@ -1,20 +1,20 @@
 <div class="form-wrapper" ...attributes>
     {{! TRANSACTION DETAILS }}
-    <ContentPanel @title="Transaction Details" @open={{true}} @wrapperClass="bordered-top">
+    <ContentPanel @title={{t "ledger.common.transaction-details"}} @open={{true}} @wrapperClass="bordered-top">
         <div class="grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-2 no-input-group-padding text-xs">
 
             {{! Core Fields }}
             <div class="col-span-1 lg:col-span-2 text-[11px] uppercase tracking-wide text-gray-500 font-semibold mt-1">
-                Core Information
+                {{t "ledger.common.core-information"}}
             </div>
 
-            <InputGroup @name="Type">
+            <InputGroup @name={{t "column.type"}}>
                 <div class="fleetbase-model-select fleetbase-power-select ember-model-select">
                     <PowerSelect
                         @options={{array "wallet_deposit" "wallet_withdrawal" "wallet_transfer" "gateway_charge" "gateway_refund" "gateway_payout" "adjustment" "earning" "fee"}}
                         @selected={{@resource.type}}
                         @onChange={{fn (mut @resource.type)}}
-                        @placeholder="Select type"
+                        @placeholder={{t "ledger.common.select-type"}}
                         @triggerClass="form-select form-input"
                         @disabled={{cannot-write @resource}}
                         as |option|
@@ -24,13 +24,13 @@
                 </div>
             </InputGroup>
 
-            <InputGroup @name="Direction">
+            <InputGroup @name={{t "column.direction"}}>
                 <div class="fleetbase-model-select fleetbase-power-select ember-model-select">
                     <PowerSelect
                         @options={{array "credit" "debit"}}
                         @selected={{@resource.direction}}
                         @onChange={{fn (mut @resource.direction)}}
-                        @placeholder="Select direction"
+                        @placeholder={{t "ledger.common.select-direction"}}
                         @triggerClass="form-select form-input"
                         @disabled={{cannot-write @resource}}
                         as |option|
@@ -40,13 +40,13 @@
                 </div>
             </InputGroup>
 
-            <InputGroup @name="Status">
+            <InputGroup @name={{t "column.status"}}>
                 <div class="fleetbase-model-select fleetbase-power-select ember-model-select">
                     <PowerSelect
                         @options={{array "pending" "succeeded" "failed" "refunded" "voided" "reversed" "expired"}}
                         @selected={{@resource.status}}
                         @onChange={{fn (mut @resource.status)}}
-                        @placeholder="Select status"
+                        @placeholder={{t "ledger.common.select-status"}}
                         @triggerClass="form-select form-input"
                         @disabled={{cannot-write @resource}}
                         as |option|
@@ -56,7 +56,7 @@
                 </div>
             </InputGroup>
 
-            <InputGroup @name="Currency">
+            <InputGroup @name={{t "column.currency"}}>
                 <div class="fleetbase-model-select fleetbase-power-select ember-model-select">
                     <PowerSelect
                         @options={{array
@@ -98,7 +98,7 @@
                         }}
                         @selected={{@resource.currency}}
                         @onChange={{fn (mut @resource.currency)}}
-                        @placeholder="Select currency"
+                        @placeholder={{t "ledger.common.select-currency"}}
                         @triggerClass="form-select form-input"
                         @disabled={{cannot-write @resource}}
                         as |option|
@@ -110,45 +110,51 @@
 
             {{! Amounts }}
             <div class="col-span-1 lg:col-span-2 text-[11px] uppercase tracking-wide text-gray-500 font-semibold mt-3">
-                Amounts
+                {{t "ledger.common.amounts"}}
             </div>
 
-            <InputGroup @name="Amount">
+            <InputGroup @name={{t "column.amount"}}>
                 <Input @value={{@resource.amount}} @type="number" class="w-full form-input" placeholder="0.00" disabled={{cannot-write @resource}} />
             </InputGroup>
 
-            <InputGroup @name="Fee Amount">
+            <InputGroup @name={{t "ledger.common.fee-amount"}}>
                 <Input @value={{@resource.fee_amount}} @type="number" class="w-full form-input" placeholder="0.00" disabled={{cannot-write @resource}} />
             </InputGroup>
 
-            <InputGroup @name="Tax Amount">
+            <InputGroup @name={{t "ledger.common.tax-amount"}}>
                 <Input @value={{@resource.tax_amount}} @type="number" class="w-full form-input" placeholder="0.00" disabled={{cannot-write @resource}} />
             </InputGroup>
 
-            <InputGroup @name="Net Amount">
+            <InputGroup @name={{t "column.net-amount"}}>
                 <Input @value={{@resource.net_amount}} @type="number" class="w-full form-input" placeholder="0.00" disabled={{cannot-write @resource}} />
             </InputGroup>
 
             {{! Gateway & Payment }}
             <div class="col-span-1 lg:col-span-2 text-[11px] uppercase tracking-wide text-gray-500 font-semibold mt-3">
-                Gateway & Payment
+                {{t "ledger.common.gateway-and-payment"}}
             </div>
 
-            <InputGroup @name="Gateway">
-                <Input @value={{@resource.gateway}} @type="text" class="w-full form-input" placeholder="e.g. stripe" disabled={{cannot-write @resource}} />
+            <InputGroup @name={{t "resource.gateway"}}>
+                <Input @value={{@resource.gateway}} @type="text" class="w-full form-input" placeholder={{t "ledger.common.e-g-stripe"}} disabled={{cannot-write @resource}} />
             </InputGroup>
 
-            <InputGroup @name="Gateway Transaction ID">
-                <Input @value={{@resource.gateway_transaction_id}} @type="text" class="w-full form-input" placeholder="Gateway transaction reference" disabled={{cannot-write @resource}} />
+            <InputGroup @name={{t "ledger.common.gateway-transaction-id"}}>
+                <Input
+                    @value={{@resource.gateway_transaction_id}}
+                    @type="text"
+                    class="w-full form-input"
+                    placeholder={{t "ledger.common.gateway-transaction-reference"}}
+                    disabled={{cannot-write @resource}}
+                />
             </InputGroup>
 
-            <InputGroup @name="Payment Method">
+            <InputGroup @name={{t "column.payment-method"}}>
                 <div class="fleetbase-model-select fleetbase-power-select ember-model-select">
                     <PowerSelect
                         @options={{array "card" "bank_transfer" "wallet" "cash"}}
                         @selected={{@resource.payment_method}}
                         @onChange={{fn (mut @resource.payment_method)}}
-                        @placeholder="Select payment method"
+                        @placeholder={{t "ledger.common.select-payment-method"}}
                         @triggerClass="form-select form-input"
                         @disabled={{cannot-write @resource}}
                         as |option|
@@ -158,21 +164,27 @@
                 </div>
             </InputGroup>
 
-            <InputGroup @name="Reference">
-                <Input @value={{@resource.reference}} @type="text" class="w-full form-input" placeholder="External reference" disabled={{cannot-write @resource}} />
+            <InputGroup @name={{t "column.reference"}}>
+                <Input @value={{@resource.reference}} @type="text" class="w-full form-input" placeholder={{t "ledger.common.external-reference"}} disabled={{cannot-write @resource}} />
             </InputGroup>
 
             {{! Description & Notes }}
             <div class="col-span-1 lg:col-span-2 text-[11px] uppercase tracking-wide text-gray-500 font-semibold mt-3">
-                Description & Notes
+                {{t "ledger.common.description-and-notes"}}
             </div>
 
-            <InputGroup @name="Description" @wrapperClass="col-span-2">
-                <Input @value={{@resource.description}} @type="text" class="w-full form-input" placeholder="Short description of this transaction" disabled={{cannot-write @resource}} />
+            <InputGroup @name={{t "column.description"}} @wrapperClass="col-span-2">
+                <Input
+                    @value={{@resource.description}}
+                    @type="text"
+                    class="w-full form-input"
+                    placeholder={{t "ledger.transaction.short-description-of-this-transaction"}}
+                    disabled={{cannot-write @resource}}
+                />
             </InputGroup>
 
-            <InputGroup @name="Notes" @wrapperClass="col-span-2">
-                <Textarea @value={{@resource.notes}} class="w-full form-input" rows="3" placeholder="Internal notes..." disabled={{cannot-write @resource}} />
+            <InputGroup @name={{t "ledger.common.notes"}} @wrapperClass="col-span-2">
+                <Textarea @value={{@resource.notes}} class="w-full form-input" rows="3" placeholder={{t "ledger.transaction.internal-notes"}} disabled={{cannot-write @resource}} />
             </InputGroup>
 
         </div>

@@ -18,7 +18,7 @@ export default class PaymentsGatewaysEditController extends Controller {
             yield this.hostRouter.transitionTo('console.ledger.payments.gateways.details', gateway);
             this.notifications.success(
                 this.intl.t('common.resource-updated-success', {
-                    resource: 'Gateway',
+                    resource: this.intl.t('resource.gateway'),
                     resourceName: gateway.name,
                 })
             );
@@ -49,7 +49,7 @@ export default class PaymentsGatewaysEditController extends Controller {
     #confirmContinueWithUnsavedChanges(gateway, options = {}) {
         return this.modalsManager.confirm({
             title: this.intl.t('common.continue-without-saving'),
-            body: this.intl.t('common.continue-without-saving-prompt', { resource: 'Gateway' }),
+            body: this.intl.t('common.continue-without-saving-prompt', { resource: this.intl.t('resource.gateway') }),
             acceptButtonText: this.intl.t('common.continue'),
             confirm: async () => {
                 gateway.rollbackAttributes();

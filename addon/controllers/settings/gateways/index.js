@@ -9,20 +9,21 @@ export default class SettingsGatewaysIndexController extends Controller {
     @service notifications;
     @service modalsManager;
     @service fetch;
+    @service intl;
 
     @tracked query = null;
     @tracked table = null;
     @tracked availableDrivers = [];
 
     columns = [
-        { label: 'Name', valuePath: 'name', width: '180px' },
-        { label: 'Driver', valuePath: 'driver_label', width: '120px' },
-        { label: 'Environment', valuePath: 'environment', width: '100px' },
-        { label: 'Status', valuePath: 'status_label', width: '90px', cellComponent: 'table/cell/status' },
+        { label: this.intl.t('column.name'), valuePath: 'name', width: '180px' },
+        { label: this.intl.t('column.driver'), valuePath: 'driver_label', width: '120px' },
+        { label: this.intl.t('column.environment'), valuePath: 'environment', width: '100px' },
+        { label: this.intl.t('column.status'), valuePath: 'status_label', width: '90px', cellComponent: 'table/cell/status' },
     ];
 
     get actionButtons() {
-        return [{ label: 'Add Gateway', icon: 'plus', type: 'primary', onClick: this.addGateway }];
+        return [{ label: this.intl.t('ledger.common.add-gateway'), icon: 'plus', type: 'primary', onClick: this.addGateway }];
     }
 
     @task({ restartable: true }) *search(query) {
@@ -44,13 +45,13 @@ export default class SettingsGatewaysIndexController extends Controller {
 
     @action async deleteGateway(gateway) {
         this.modalsManager.confirm({
-            title: 'Remove Payment Gateway?',
-            body: `This will remove "${gateway.name}". Any active integrations using this gateway will stop working.`,
+            title: this.intl.t('ledger.gateway.remove-payment-gateway'),
+            body: this.intl.t('ledger.gateway.remove-gateway-body', { name: gateway.name }),
             confirm: async (modal) => {
                 modal.startLoading();
                 try {
                     await gateway.destroyRecord();
-                    this.notifications.success('Gateway removed.');
+                    this.notifications.success(this.intl.t('ledger.gateway.gateway-removed'));
                     this.hostRouter.refresh();
                     modal.done();
                 } catch (error) {

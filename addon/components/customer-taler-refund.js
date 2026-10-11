@@ -8,6 +8,7 @@ export default class CustomerTalerRefundComponent extends Component {
     @service fetch;
     @service notifications;
     @service urlSearchParams;
+    @service intl;
 
     @tracked refund = null;
     @tracked error = null;
@@ -50,7 +51,7 @@ export default class CustomerTalerRefundComponent extends Component {
         this.error = null;
 
         if (!this.refundId) {
-            this.error = 'No refund identifier provided. Please check the link and try again.';
+            this.error = this.intl.t('ledger.refund.no-refund-identifier');
             return;
         }
 
@@ -60,7 +61,7 @@ export default class CustomerTalerRefundComponent extends Component {
             this.updateTalerUriMeta();
         } catch (error) {
             const status = error?.status ?? error?.response?.status;
-            this.error = status === 404 ? 'Refund not found. Please check the link and try again.' : error?.message ?? 'Failed to load refund. Please try again later.';
+            this.error = status === 404 ? this.intl.t('ledger.refund.refund-not-found-please-check-the') : error?.message ?? this.intl.t('ledger.refund.failed-to-load-refund-please-try');
         }
     }
 
@@ -70,7 +71,7 @@ export default class CustomerTalerRefundComponent extends Component {
         }
 
         navigator.clipboard?.writeText(this.talerRefundUri);
-        this.notifications.success('Refund URI copied.');
+        this.notifications.success(this.intl.t('ledger.refund.refund-uri-copied'));
     }
 
     installTalerSupportMeta() {

@@ -6,6 +6,7 @@ import { task } from 'ember-concurrency';
 
 export default class BillingTransactionsIndexController extends Controller {
     @service hostRouter;
+    @service intl;
 
     queryParams = ['page', 'limit', 'sort', 'query', 'status'];
 
@@ -17,12 +18,12 @@ export default class BillingTransactionsIndexController extends Controller {
     @tracked table = null;
 
     columns = [
-        { label: 'Date', valuePath: 'created_at', width: '140px', sortable: true, component: 'table/cell/date' },
-        { label: 'Reference', valuePath: 'gateway_transaction_id', width: '200px' },
-        { label: 'Gateway', valuePath: 'gateway_code', width: '120px' },
-        { label: 'Customer', valuePath: 'customer_name', width: '160px' },
-        { label: 'Amount', valuePath: 'formatted_amount', width: '120px', sortable: true },
-        { label: 'Status', valuePath: 'status', width: '100px', component: 'table/cell/status' },
+        { label: this.intl.t('column.date'), valuePath: 'created_at', width: '140px', sortable: true, component: 'table/cell/date' },
+        { label: this.intl.t('column.reference'), valuePath: 'gateway_transaction_id', width: '200px' },
+        { label: this.intl.t('resource.gateway'), valuePath: 'gateway_code', width: '120px' },
+        { label: this.intl.t('column.customer'), valuePath: 'customer_name', width: '160px' },
+        { label: this.intl.t('column.amount'), valuePath: 'formatted_amount', width: '120px', sortable: true },
+        { label: this.intl.t('column.status'), valuePath: 'status', width: '100px', component: 'table/cell/status' },
     ];
 
     get actionButtons() {

@@ -9,6 +9,7 @@ export default class WalletsIndexController extends Controller {
     @service notifications;
     @service modalsManager;
     @service fetch;
+    @service intl;
 
     queryParams = ['page', 'limit', 'sort', 'query', 'type'];
 
@@ -20,11 +21,11 @@ export default class WalletsIndexController extends Controller {
     @tracked table = null;
 
     columns = [
-        { label: 'Name', valuePath: 'name', width: '200px', sortable: true },
-        { label: 'Type', valuePath: 'type_label', width: '100px' },
-        { label: 'Currency', valuePath: 'currency', width: '80px' },
-        { label: 'Balance', valuePath: 'formatted_balance', width: '140px', sortable: true },
-        { label: 'Status', valuePath: 'status_label', width: '100px', component: 'table/cell/status' },
+        { label: this.intl.t('column.name'), valuePath: 'name', width: '200px', sortable: true },
+        { label: this.intl.t('column.type'), valuePath: 'type_label', width: '100px' },
+        { label: this.intl.t('column.currency'), valuePath: 'currency', width: '80px' },
+        { label: this.intl.t('column.balance'), valuePath: 'formatted_balance', width: '140px', sortable: true },
+        { label: this.intl.t('column.status'), valuePath: 'status_label', width: '100px', component: 'table/cell/status' },
     ];
 
     get actionButtons() {
@@ -47,7 +48,7 @@ export default class WalletsIndexController extends Controller {
     @action async freezeWallet(wallet) {
         try {
             await this.fetch.post(`wallets/${wallet.id}/freeze`, {}, { namespace: 'ledger/int/v1' });
-            this.notifications.success('Wallet frozen.');
+            this.notifications.success(this.intl.t('ledger.wallet.wallet-frozen'));
             this.hostRouter.refresh();
         } catch (error) {
             this.notifications.serverError(error);
@@ -57,7 +58,7 @@ export default class WalletsIndexController extends Controller {
     @action async unfreezeWallet(wallet) {
         try {
             await this.fetch.post(`wallets/${wallet.id}/unfreeze`, {}, { namespace: 'ledger/int/v1' });
-            this.notifications.success('Wallet unfrozen.');
+            this.notifications.success(this.intl.t('ledger.wallet.wallet-unfrozen'));
             this.hostRouter.refresh();
         } catch (error) {
             this.notifications.serverError(error);

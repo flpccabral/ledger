@@ -8,6 +8,7 @@ export default class SettingsPaymentController extends Controller {
     @service fetch;
     @service notifications;
     @service store;
+    @service intl;
 
     // ── Tracked settings fields ───────────────────────────────────────────────
     @tracked default_gateway_uuid = null;
@@ -70,7 +71,7 @@ export default class SettingsPaymentController extends Controller {
                 },
                 { namespace: 'ledger/int/v1' }
             );
-            this.notifications.success('Payment settings saved.');
+            this.notifications.success(this.intl.t('ledger.payment-settings.payment-settings-saved'));
         } catch (error) {
             this.notifications.serverError(error);
         }

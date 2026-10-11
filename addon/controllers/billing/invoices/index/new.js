@@ -86,7 +86,7 @@ export default class BillingInvoicesIndexNewController extends Controller {
             yield this.hostRouter.transitionTo('console.ledger.billing.invoices.index.details', invoice);
             this.notifications.success(
                 this.intl.t('common.resource-created-success-name', {
-                    resource: 'Invoice',
+                    resource: this.intl.t('resource.invoice'),
                     resourceName: invoice.number,
                 })
             );

@@ -1,5 +1,533 @@
 ledger:
   extension-name: Ledger
+  common:
+    actions: Ações
+    active: Ativo
+    active-gateways: Gateways ativos
+    add-a-gateway: Adicione um gateway
+    add-funds: Adicionar Saldo
+    add-gateway: Adicionar Gateway
+    add-line-item: Adicionar item
+    add-one: Adicionar um
+    after-saving: Depois de Salvar
+    allow-partial-payments: Permitir Pagamentos Parciais
+    amount-paid: Valor Pago
+    amounts: Valores
+    auto-apply-wallet-credit: Aplicar Saldo da Carteira Automaticamente
+    auto-send-on-creation: Enviar Automaticamente ao Criar
+    automation: Automação
+    available: Disponível
+    available-on-invoices: Disponível nas faturas
+    back: Voltar
+    balance-due: Saldo Devedor
+    bank-transfer: Transferência Bancária
+    bill-to: Cobrar de
+    cancel: Cancelar
+    cancelled: Cancelada
+    card: Cartão
+    cash: Dinheiro
+    checkout-readiness: Prontidão para Pagamento
+    cheque: Cheque
+    choose-payment-gateway: Escolher Gateway de Pagamento
+    company: Empresa
+    configuration: Configuração
+    configured: Configurado
+    connect-gateway: Conectar gateway
+    connect-payment-gateway: Conectar Gateway de Pagamento
+    connected: Conectado
+    connected-gateways: Gateways Conectados
+    connection: Conexão
+    continue-to-payment: Continuar para o Pagamento
+    copy: Copiar
+    copy-uri: Copiar URI
+    copy-webhook-url: Copiar URL do Webhook
+    core-information: Informações Principais
+    create-a-template: Crie um modelo
+    create-gateway: Criar Gateway
+    create-new-invoice: Criar Nova Fatura
+    create-new-wallet: Criar Nova Carteira
+    create-test-order: Criar Pedido de Teste
+    credential-test: Teste de credenciais
+    credentials: Credenciais
+    credit: Crédito
+    credit-card: Cartão de Crédito
+    current-balance: Saldo Atual
+    dates: Datas
+    debit: Débito
+    debit-card: Cartão de Débito
+    default-currency: Moeda Padrão
+    default-gateway: Gateway Padrão
+    default-invoice-template: Modelo de Fatura Padrão
+    default-invoice-text: Textos Padrão da Fatura
+    default-notes: Observações Padrão
+    default-payment-gateway: Gateway de Pagamento Padrão
+    default-payment-terms: Prazo de Pagamento Padrão
+    default-template: Modelo Padrão
+    delete: Excluir
+    deposit: Depositar
+    description-and-notes: Descrição e Observações
+    details: Detalhes
+    diagnostics: Diagnóstico
+    done: Concluído
+    draft: Rascunho
+    driver-selected: Provedor selecionado
+    due: Vencimento
+    due-on-receipt: À vista
+    e-g-main-wallet: 'ex.: Carteira Principal'
+    e-g-stripe: 'ex.: stripe'
+    e-g-taler-sandbox: 'ex.: taler_sandbox'
+    edit: Editar
+    edit-gateway: Editar Gateway
+    edit-settings: Editar Configurações
+    email: E-mail
+    email-phone: E-mail / Telefone
+    event-type: Tipo de Evento
+    exchange-rate: Taxa de Câmbio
+    external-reference: Referência externa
+    failed: Falhou
+    failure-code: Código da Falha
+    failure-information: Informações da Falha
+    fee-amount: Valor da Taxa
+    fleetbase-ledger: Fleetbase Ledger
+    freeze: Bloquear
+    freeze-this-wallet: Bloquear esta carteira
+    freeze-wallet: Bloquear Carteira
+    from: De
+    gateway-and-payment: Gateway e Pagamento
+    gateway-checkout-readiness: Prontidão do gateway para pagamento
+    gateway-credentials: Credenciais do Gateway
+    gateway-name: Nome do gateway
+    gateway-ref: Ref. do Gateway
+    gateway-sections: Seções do gateway
+    gateway-setup: Configuração do Gateway
+    gateway-test-failed: Teste do gateway falhou
+    gateway-transaction-id: ID da Transação no Gateway
+    gateway-transaction-reference: Referência da transação no gateway
+    gateway-verified: Gateway verificado
+    gnu-taler-refund: Reembolso GNU Taler
+    identity: Identificação
+    inactive: Inativo
+    initiated-by: Iniciado Por
+    internal-id: ID Interno
+    internal-transfer: Transferência interna
+    invoice-details: Detalhes da Fatura
+    invoice-information: Informações da Fatura
+    invoice-number: Número da Fatura
+    invoice-number-prefix: Prefixo do Número da Fatura
+    invoice-numbering: Numeração das Faturas
+    invoice-paid: Fatura Paga
+    invoice-settings: Configurações de Fatura
+    invoice-url: URL da Fatura
+    ip-address: Endereço IP
+    issue-refund: Emitir Reembolso
+    item-description: Descrição do item
+    last-results: Últimos Resultados
+    last-updated: Última Atualização
+    ledger-webhook-url: URL do webhook do Ledger
+    line-items: Itens
+    live: Produção
+    live-ready: Prontos para produção
+    loading-gateway-status: Carregando status dos gateways
+    loading-invoice: Carregando fatura…
+    manage-gateway: Gerenciar gateway
+    manual: Manual
+    manual-top-up: Recarga manual
+    max: Máx.
+    min: Mín.
+    missing: Pendente
+    mode: Modo
+    need-provisioning-review: Precisam de revisão de configuração
+    needs-setup: Requer Configuração
+    needs-setup-2: Requer configuração
+    net-14: 14 dias
+    net-15: 15 dias
+    net-30: 30 dias
+    net-45: 45 dias
+    net-60: 60 dias
+    net-7: 7 dias
+    net-90: 90 dias
+    next: Próximo
+    'no': Não
+    no-due-date: Sem vencimento
+    no-open-warnings: Nenhum aviso pendente
+    no-payment-yet: Nenhum pagamento ainda
+    no-refund-yet: Nenhum reembolso ainda
+    no-timestamp: Sem data
+    not-checked: Não Verificado
+    not-checked-2: Não verificado
+    not-registered: não registrado
+    notes: Observações
+    notes-and-terms: Observações e Condições
+    online-payment-unavailable: Pagamento Online Indisponível
+    open-in-ledger: Abrir no Ledger
+    order: Pedido
+    other: Outro
+    overdue: Vencida
+    overview: Visão Geral
+    owner-details: Dados do Titular
+    owner-type: Tipo de Titular
+    owner-uuid: UUID do Titular
+    paid: Paga
+    paid-at: Pago em
+    partial: Parcial
+    partial-refund-pending: Reembolso Parcial Pendente
+    parties: Partes
+    pay-now: Pagar Agora
+    pay-this-invoice: Pagar Esta Fatura
+    pay-with-stripe: Pagar com Stripe
+    payment: Pagamento
+    payment-behaviour: Comportamento do Pagamento
+    payment-gateway: Gateway de pagamento
+    payment-gateway-setup: Configuração de gateway de pagamento
+    payment-gateways: Gateways de Pagamento
+    payment-notifications: Notificações de Pagamento
+    payment-settings: Configurações de Pagamento
+    payment-summary: Resumo do Pagamento
+    pending: Pendente
+    phone: Telefone
+    powered-by: Desenvolvido com
+    preview: Pré-visualizar
+    preview-invoice: Pré-visualizar Fatura
+    production-connections: Conexões de produção
+    production-payments: Pagamentos reais
+    provider-callback-ready: Retorno do provedor pronto
+    provider-configuration: Configuração do Provedor
+    provider-credentials: Credenciais do provedor
+    provider-registered-callback: Retorno registrado no provedor
+    provider-status: Status do provedor
+    provider-status-2: Status do Provedor
+    provider-tool-results: Resultados das ferramentas do provedor
+    provider-tools: Ferramentas do Provedor
+    public-id: ID Público
+    qty: Qtd.
+    ready: Pronto
+    ready-to-verify: Pronto para verificar
+    recent-gateway-activity: Atividade Recente do Gateway
+    reconciliation: Conciliação
+    record-info: Informações do Registro
+    record-payment: Registrar Pagamento
+    reference-id: ID de Referência
+    refresh: Atualizar
+    refresh-diagnostics: Atualizar Diagnóstico
+    refund: Reembolso
+    refund-issued: Reembolso Emitido
+    refund-pending: Reembolso Pendente
+    refunded: Reembolsada
+    register-webhook: Registrar Webhook
+    registration-needed: Registro necessário
+    remove: Remover
+    return-url: URL de Retorno
+    review: Revisar
+    review-gateway-setup: Revisar Configuração do Gateway
+    routing: Roteamento
+    routing-and-status: Roteamento e Status
+    sandbox: Sandbox
+    save-changes: Salvar Alterações
+    save-gateway: Salvar Gateway
+    seen: Recebido
+    select-currency: Selecione a moeda
+    select-customer: Selecione o cliente
+    select-direction: Selecione a direção
+    select-environment: Selecione o ambiente
+    select-option: Selecione uma opção
+    select-order: Selecione o pedido
+    select-owner-type: Selecione o tipo de titular
+    select-payment-method: Selecione a forma de pagamento
+    select-payment-terms: Selecione o prazo de pagamento
+    select-status: Selecione o status
+    select-type: Selecione o tipo
+    select-wallet-type: Selecione o tipo de carteira
+    selected: Selecionado
+    selected-gateway-driver: Provedor de gateway selecionado
+    send-invoice: Enviar Fatura
+    send-payment-receipt: Enviar Comprovante de Pagamento
+    sent: Enviada
+    sent-at: Enviada em
+    settings: Configurações
+    settled-amount: Valor Liquidado
+    settled-currency: Moeda de Liquidação
+    settlement: Liquidação
+    setup: Configuração
+    subtotal: Subtotal
+    supported-gateways: Gateways Suportados
+    suspended: Suspensa
+    tax-amount: Valor do Imposto
+    tax-percent: Imposto %
+    template: Modelo
+    terms: Condições
+    test-again: Testar Novamente
+    test-credentials: Testar Credenciais
+    test-order: Pedido de teste
+    testing-connections: Conexões de teste
+    the-selected-gateway: o gateway selecionado
+    to-wallet: Carteira de Destino
+    total-amount: Valor Total
+    transaction-details: Detalhes da Transação
+    transaction-information: Informações da Transação
+    transfer: Transferir
+    unfreeze: Desbloquear
+    unfreeze-wallet: Desbloquear Carteira
+    unit-price: Preço Unitário
+    unnamed-gateway: Gateway sem nome
+    user: Usuário
+    verified: Verificado
+    view: Ver
+    view-refunds: Ver Reembolsos
+    viewed: Visualizada
+    viewed-at: Visualizada em
+    void: Anulada
+    wallet-details: Detalhes da Carteira
+    wallet-information: Informações da Carteira
+    wallet-name: Nome da Carteira
+    warnings: avisos
+    webhook: Webhook
+    webhook-events: Eventos de Webhook
+    webhook-issues: Problemas de webhook
+    webhook-registration: Registro do webhook
+    withdraw: Sacar
+    'yes': Sim
+  checkout:
+    amount-due: 'Valor devido:'
+    due: 'Vencimento:'
+    e-g-bank-transfer-ref-12345: 'ex.: Ref. da transferência nº 12345'
+    failed-to-load-invoice-please-try: Falha ao carregar a fatura. Tente novamente mais tarde.
+    gnu-taler-payment-qr-code: QR code de pagamento GNU Taler
+    gnu-taler-payment-ready: Pagamento GNU Taler pronto
+    invoice-not-found: Fatura não encontrada. Verifique o link e tente novamente.
+    no-invoice-identifier: Nenhum identificador de fatura informado. Verifique o link e tente novamente.
+    online-payment-is-not-available-for: O pagamento online não está disponível para esta fatura. Entre em contato com o emissor para obter as instruções de pagamento.
+    online-payment-not-available: O pagamento online não está disponível para esta fatura.
+    open-gnu-taler-wallet: Abrir Carteira GNU Taler
+    open-your-taler-wallet-from-this: Abra sua carteira Taler neste navegador ou copie a URI de pagamento para uma carteira.
+    open-your-taler-wallet-or-scan: Abra sua carteira Taler ou escaneie o QR code com uma carteira em outro dispositivo.
+    payment-cancelled: O pagamento foi cancelado. Você pode tentar novamente abaixo.
+    payment-completed: Seu pagamento foi concluído com sucesso. Obrigado!
+    payment-failed-please-try-again: Falha no pagamento. Tente novamente.
+    payment-recorded: Seu pagamento foi registrado com sucesso. Obrigado!
+    payment-started-complete-it-in-your: Pagamento iniciado. Conclua-o no seu aplicativo de pagamento e depois atualize esta fatura.
+    payment-started-open-your-gnu-taler: Pagamento iniciado. Abra sua carteira GNU Taler para concluí-lo.
+    processing: Processando...
+    qr-code-unavailable-for-this-payment: QR code indisponível para esta resposta de pagamento.
+    redirecting-to-payment-provider: Redirecionando para o provedor de pagamento...
+    reference-note-optional: Referência / Observação (opcional)
+    this-invoice-has-been-fully-paid: Esta fatura foi paga integralmente. Obrigado pelo seu pagamento.
+    this-invoice-is-no-longer-active: Esta fatura não está mais ativa e não pode receber pagamentos.
+    this-invoice-is-not-yet-available: Esta fatura ainda não está disponível. Entre em contato com o emissor.
+  refund:
+    failed-to-load-refund-please-try: Falha ao carregar o reembolso. Tente novamente mais tarde.
+    gnu-taler-refund-qr-code: QR code do reembolso GNU Taler
+    loading-refund: Carregando reembolso...
+    no-refund-identifier: Nenhum identificador de reembolso informado. Verifique o link e tente novamente.
+    open-gnu-taler-wallet: Abrir Carteira GNU Taler
+    open-this-refund-with-your-gnu: Abra este reembolso com sua carteira GNU Taler.
+    refund-for-invoice: Este reembolso é referente à fatura {number}. Se sua carteira não abrir automaticamente, escaneie o QR code ou copie a URI da carteira.
+    refund-not-found-please-check-the: Reembolso não encontrado. Verifique o link e tente novamente.
+    refund-uri-copied: URI de reembolso copiada.
+  invoice:
+    add-any-notes-or-payment-instructions: Adicione observações ou instruções de pagamento para o cliente…
+    amount-received-defaults-to-the-full: Valor recebido. Por padrão, o saldo devedor total.
+    an-invoice-is-generated-automatically-when: Uma fatura é gerada automaticamente quando uma tarifa de serviço é contratada.
+    auto-generated-if-left-blank: Gerado automaticamente se ficar em branco
+    balance: 'Saldo:'
+    confirm-refund-body: Emitir um reembolso de {amount} por {gateway}? Isso criará um reembolso no gateway e um estorno no Ledger.
+    confirm-refund-title: Confirmar Reembolso {number}
+    e-g-bank-transfer-ref-cheque: 'ex.: ref. da transferência, número do cheque'
+    enter-a-refund-amount-greater-than: Informe um valor de reembolso maior que zero.
+    gnu-taler-may-return-a-refund: O GNU Taler pode retornar uma URI de reembolso que precisa ser compartilhada com a carteira do cliente.
+    how-the-payment-was-received: Como o pagamento foi recebido.
+    invoice-sent-successfully: Fatura enviada com sucesso.
+    invoice-voided: Fatura anulada.
+    issue-refund-title: Emitir Reembolso {number}
+    line-items-missing-description: '{count} itens estão sem descrição.'
+    no-invoice-found-for-this-order: Nenhuma fatura encontrada para este pedido.
+    no-line-items-recorded: Nenhum item registrado.
+    no-line-items-yet: Nenhum item ainda.
+    one-line-item-is-missing-a: Um item está sem descrição.
+    open-full-invoice-in-ledger: Abrir a fatura completa no Ledger
+    optional-reference-number-or-note-for: Número de referência ou observação opcional para este pagamento.
+    payment-recorded-successfully: Pagamento registrado com sucesso.
+    payment-terms-e-g-net-30: 'Condições de pagamento, ex.: 30 dias…'
+    please-enter-a-valid-payment-amount: Informe um valor de pagamento válido, maior que zero.
+    refund-amount-exceeds-the-selected-payment: O valor do reembolso excede o saldo restante do pagamento selecionado.
+    refund-issued-successfully: Reembolso emitido com sucesso.
+    refund-status-verified: Status do reembolso verificado.
+    refund-uri-sent-to-customer: URI de reembolso enviada ao cliente.
+    refunds-title: Reembolsos {number}
+    search-contacts-or-vendors: Buscar contatos ou fornecedores…
+    select-a-refundable-payment: Selecione um pagamento reembolsável.
+    select-a-template-optional: Selecione um modelo (opcional)
+    select-payment-method: Selecione a forma de pagamento...
+    this-invoice-has-no-refundable-gateway: Esta fatura não tem pagamentos reembolsáveis por gateway.
+    this-will-mark-the-invoice-as: Isso marcará a fatura como anulada e não poderá ser desfeito.
+    unable-to-resolve-the-refund-transaction: Não foi possível identificar a transação de reembolso.
+    void-invoice-title: Anular a Fatura {number}?
+  invoice-template:
+    template-created: Modelo de fatura "{name}" criado com sucesso.
+    template-saved: Modelo de fatura "{name}" salvo.
+  invoice-settings:
+    automatically-email-the-invoice-to-the: Enviar a fatura por e-mail ao cliente automaticamente quando ela for criada.
+    currency-and-payment-terms: Moeda e Prazo de Pagamento
+    default-currency-placeholder: 'Padrão: {currency}'
+    default-terms-and-conditions: Termos e Condições Padrão
+    e-g-payment-is-due-within: 'ex.: O pagamento vence em até 30 dias a partir da data da fatura.'
+    e-g-thank-you-for-your: 'ex.: Obrigado pela preferência!'
+    invoice-settings-saved: Configurações de fatura salvas.
+    no-invoice-templates-found: Nenhum modelo de fatura encontrado.
+    number-of-days-after-the-invoice: Número de dias após a data da fatura até o vencimento do pagamento.
+    select-an-invoice-template: Selecione um modelo de fatura
+    selected: 'Selecionado:'
+    standard-terms-pre-filled-on-every: Condições padrão preenchidas em toda nova fatura.
+    the-currency-applied-to-new-invoices: A moeda aplicada às novas faturas, a menos que seja alterada na própria fatura.
+    the-invoice-template-applied-to-all: O modelo aplicado a todas as novas faturas, inclusive as geradas automaticamente a partir de pedidos do Fleet-Ops. Deixe em branco para usar o padrão do sistema.
+    these-notes-appear-at-the-bottom: Estas observações aparecem no rodapé de toda nova fatura. Você pode alterá-las em cada fatura.
+    this-prefix-is-prepended-to-every: 'Este prefixo é adicionado ao início de todo novo número de fatura, ex.: "INV-000001".'
+    to-enable-custom-invoice-branding: para usar a identidade visual personalizada nas faturas.
+    using-organisation-default-currency: Usando o padrão da organização ({currency}). Selecione uma moeda acima para alterar.
+  payment-settings:
+    allow-customers-to-pay-a-portion: Permitir que os clientes paguem uma parte do valor da fatura em vez do saldo total.
+    automatically-apply-available-wallet-balance-toward: Aplicar automaticamente o saldo disponível na carteira aos pagamentos de faturas antes de cobrar pelo gateway.
+    email-a-payment-receipt-to-the: Enviar automaticamente um comprovante por e-mail ao cliente após um pagamento bem-sucedido.
+    no-active-gateways-found: Nenhum gateway ativo encontrado.
+    payment-settings-saved: Configurações de pagamento salvas.
+    select-a-payment-gateway: Selecione um gateway de pagamento
+    selected: 'Selecionado:'
+    the-gateway-used-for-all-invoice: O gateway usado em todos os pagamentos de faturas, a menos que seja alterado na fatura. Apenas gateways ativos são listados.
+    to-enable-online-payments: para habilitar pagamentos online.
+  gateway:
+    after-saving-open-diagnostics-to-test: Depois de salvar, abra o diagnóstico para testar as credenciais, registrar webhooks e criar um pedido de teste.
+    change-the-gateway-name-credentials-routing: Altere o nome, as credenciais, o roteamento, o status ou o ambiente do gateway.
+    changes-affect-future-invoice-checkout-refunds: As alterações afetam futuros pagamentos de faturas, reembolsos, o roteamento de webhooks e o diagnóstico.
+    checks-whether-ledger-can-authenticate-against: Verifica se o Ledger consegue se autenticar no Taler Merchant Backend configurado.
+    choose-a-gateway-and-complete-the: Escolha um gateway e preencha as credenciais obrigatórias antes de testar.
+    choose-a-payment-gateway-before-entering: Escolha um gateway de pagamento antes de informar as credenciais.
+    choose-a-supported-provider-enter-credentials: Escolha um provedor suportado, informe as credenciais, configure o roteamento do pagamento e prepare o gateway para receber pagamentos de faturas.
+    complete-credentials-to-verify: Preencha as credenciais para verificar
+    configuration-ledger-uses-for-routing-provider: Configuração que o Ledger usa para roteamento, configuração do provedor e disponibilidade no pagamento.
+    configure-checkout-providers-manual-methods-webhooks: Configure provedores de pagamento, métodos manuais, webhooks, reembolsos e a prontidão para liquidação em um só fluxo.
+    confirm-the-configuration-before-saving-existing: Confirme a configuração antes de salvar. Gateways existentes podem executar daqui uma verificação real das credenciais.
+    connect-supported-gateway-drivers-or-manage: Conecte provedores de gateway suportados ou gerencie as contas já configuradas.
+    copies-the-ledger-callback-url-for: Copia a URL de retorno do Ledger para configuração manual no provedor.
+    could-not-load-available-payment-drivers: Não foi possível carregar os provedores de pagamento disponíveis.
+    create-taler-test-order-body: O Ledger criará um pedido de teste no Taler Merchant Backend configurado. Nenhuma fatura de cliente é alterada.
+    create-taler-test-order-title: Criar pedido de teste no Taler?
+    created: 'Criado:'
+    creates-a-provider-test-order-and: Cria um pedido de teste no provedor e registra o ID do pedido.
+    creates-a-small-sandbox-order-to: Cria um pequeno pedido em sandbox para verificar a criação de pedidos e o redirecionamento para a carteira.
+    creates-or-updates-the-taler-webhook: Cria ou atualiza o webhook do Taler para que os eventos de pagamento voltem para este gateway.
+    delete-gateway-title: Excluir o Gateway {name}?
+    driver-description-cash: Registre pagamentos offline ou presenciais sem configurar webhooks externos.
+    driver-description-qpay: Gateway regional para cobranças por QR code e meios de pagamento locais.
+    driver-description-stripe: Processamento de cartões e carteiras digitais com confirmação por webhook e suporte a reembolsos.
+    driver-description-taler: Pagamentos por carteira com privacidade, pagamento por QR code, confirmação por webhook, reembolsos e verificação de liquidação.
+    driver-type-cards: Cartões e carteiras
+    driver-type-manual: Pagamento manual
+    driver-type-regional: Pagamento regional
+    driver-type-wallet: Pagamento por carteira
+    e-g-gnu-taler-sandbox: 'ex.: GNU Taler Sandbox'
+    edit-this-payment-gateway-configuration: Editar a configuração deste gateway de pagamento.
+    enter-the-provider-configuration-ledger-stores: Informe a configuração do provedor que o Ledger guarda neste gateway. Os tokens ficam salvos no registro do gateway e nunca são exibidos no pagamento da fatura.
+    expected-result: 'Resultado esperado:'
+    for-gnu-taler-sandbox-gateways-can: No GNU Taler, gateways em sandbox podem usar a URL do Merchant Backend hospedado pelo Fleetbase quando nenhuma URL de backend for informada, mas os tokens de API ainda precisam ser configurados.
+    gateway-after-saving-steps: Próximos passos do gateway após salvar
+    gateway-credential-test-failed: O teste de credenciais do gateway falhou.
+    gateway-deleted: Gateway excluído.
+    gateway-removed: Gateway removido.
+    last-order: Último pedido {order}
+    last-provider-auth-test: Último teste de autenticação no provedor
+    latest-webhook-payment-refund-and-settlement: Registros mais recentes de webhook, pagamento, reembolso e liquidação deste gateway.
+    ledger-is-checking-the-configured-credentials: O Ledger está verificando as credenciais configuradas com o provedor de pagamento.
+    name-the-gateway-choose-the-environment: Dê um nome ao gateway, escolha o ambiente e configure para onde clientes e provedores retornam os eventos de pagamento.
+    no-credential-test-has-been-run: Nenhum teste de credenciais foi executado.
+    no-gateway-activity-has-been-recorded: Nenhuma atividade do gateway foi registrada ainda.
+    no-provider-mutation-refreshes-this-screen: Não altera nada no provedor; apenas atualiza esta tela.
+    no-provider-webhook-registration-stored: Nenhum registro de webhook no provedor armazenado.
+    no-system-webhook-url-is-available: Ainda não há URL de webhook do sistema disponível.
+    no-test-order-has-been-created: Nenhum pedido de teste foi criado.
+    no-webhook-events-recorded: Nenhum evento de webhook registrado
+    no-webhook-url-is-available-yet: Ainda não há URL de webhook disponível.
+    not-used-at-checkout: Não usado no pagamento
+    opens-the-gateway-setup-wizard-for: Abre o assistente de configuração para este gateway existente.
+    optional-operating-notes-for-this-gateway: Observações operacionais opcionais sobre este gateway.
+    permanently-remove-this-payment-gateway-this: Remove permanentemente este gateway de pagamento. Esta ação não pode ser desfeita.
+    provider-operations-an-operator-is-likely: Operações do provedor que um operador provavelmente vai precisar em seguida.
+    provider-webhook-registration-completed: Registro do webhook no provedor concluído.
+    ready-to-collect-payments: Prontos para receber pagamentos
+    register-taler-webhook-body: O Ledger criará ou atualizará o webhook no Taler Merchant Backend para este gateway.
+    register-taler-webhook-title: Registrar webhook no Taler?
+    reload-diagnostics-without-changing-the-provider: Recarregar o diagnóstico sem alterar nada no provedor.
+    reloads-the-latest-credential-webhook-payment: Recarrega do Ledger os dados de diagnóstico mais recentes de credenciais, webhook, pagamento, reembolso e liquidação.
+    remove-gateway-body: Isso removerá "{name}". Todas as integrações ativas que usam este gateway deixarão de funcionar.
+    remove-payment-gateway: Remover Gateway de Pagamento?
+    review-configured-providers-checkout-availability-environments: Revise os provedores configurados, a disponibilidade no pagamento, os ambientes e o status operacional.
+    review-provider-credentials-routing-status-webhook: Revise as credenciais do provedor, o roteamento, o status, os dados do webhook e a prontidão operacional deste gateway.
+    run-a-credential-test-before-using: Execute um teste de credenciais antes de usar este gateway para pagamentos de faturas.
+    run-a-provider-check: Execute uma verificação no provedor
+    run-provider-facing-checks-and-provisioning: Execute verificações e ações de configuração no provedor, com um resultado esperado claro.
+    same-as-ledger-webhook-url: Igual à URL do webhook do Ledger
+    select-the-provider-ledger-should-use: Selecione o provedor que o Ledger deve usar para o pagamento de faturas, a confirmação de pagamentos, os reembolsos e o acompanhamento da liquidação.
+    stored-encrypted-and-hidden: Armazenadas criptografadas e ocultas
+    stores-the-registered-webhook-url-and: Armazena a URL do webhook registrada e os dados de roteamento.
+    system-webhook-url-copied: URL do webhook do sistema copiada.
+    taler-credentials-accepted: Credenciais do Taler aceitas.
+    taler-test-order-created: Pedido de teste do Taler criado.
+    taler-webhook-registered: Webhook do Taler registrado.
+    test-the-entered-provider-credentials-before: Teste as credenciais do provedor informadas antes de criar este gateway.
+    testing-and-sandbox-use: Uso para testes e sandbox
+    testing-gateway-credentials: Testando as credenciais do gateway...
+    the-gateway-credential-check-completed: A verificação das credenciais do gateway foi concluída.
+    the-provider-posts-events-to-the: O provedor envia os eventos para a URL do webhook do Ledger acima.
+    the-registered-provider-webhook-endpoint-for: O endpoint de webhook registrado no provedor para este gateway.
+    the-url-the-customer-is-redirected: A URL para onde o cliente é redirecionado após o pagamento.
+    this-action-cannot-be-undone: Esta ação não pode ser desfeita.
+    this-gateway-does-not-require-provider: Este gateway não exige credenciais do provedor.
+    this-gateway-driver-does-not-expose: Este provedor de gateway não oferece diagnóstico.
+    unable-to-copy-webhook-url: Não foi possível copiar a URL do webhook.
+    updated: 'Atualizado:'
+    updates-credential-status-and-last-checked: Atualiza o status das credenciais e a hora da última verificação.
+    usability-signals-at-a-glance: Indicadores de uso em um relance.
+    use-the-gateway-details-screen-to: Use a tela de detalhes do gateway para registrar webhooks, criar pedidos de teste e consultar o diagnóstico.
+    use-this-when-provider-webhook-registration: Use quando o registro do webhook no provedor for feito fora do Ledger.
+    webhook: 'Webhook:'
+    webhook-callback-url: URL de Webhook / Retorno
+    webhook-url-copied: URL do webhook copiada.
+    webhook-url-is-configured-but-no: A URL do webhook está configurada, mas nenhum registro foi feito ainda.
+    webhook-url-unavailable-until-this-gateway: URL do webhook indisponível até que este gateway tenha um provedor.
+  wallet:
+    add-funds-title: Adicionar Saldo — {name}
+    add-funds-to-this-wallet-balance: Adicionar saldo a esta carteira.
+    amount-to-add-to-this-wallet: Valor a adicionar a esta carteira.
+    amount-to-transfer: Valor a transferir.
+    cannot-transfer-funds-to-the-same: Não é possível transferir saldo para a mesma carteira.
+    freeze-this-wallet-to-block-all: Bloqueie esta carteira para impedir todos os débitos.
+    freeze-title: Bloquear {name}?
+    freezing-this-wallet-will-block-all: Bloquear esta carteira impedirá todas as transações de débito. Os créditos continuarão sendo aceitos. Você pode desbloqueá-la a qualquer momento.
+    frozen-success: '{name} foi bloqueada.'
+    frozen-wallets-cannot-send-or-receive: Carteiras bloqueadas não podem enviar nem receber saldo.
+    funds-added: Saldo adicionado a {name}.
+    funds-transferred: Saldo transferido para {name}.
+    optional-note-for-this-transaction: Observação opcional para esta transação.
+    optional-note-for-this-transfer: Observação opcional para esta transferência.
+    please-enter-a-valid-amount-greater: Informe um valor válido, maior que zero.
+    please-select-a-destination-wallet: Selecione uma carteira de destino.
+    search-wallets: Buscar carteiras...
+    select-the-destination-wallet-to-transfer: Selecione a carteira de destino para onde o saldo será transferido.
+    transfer-funds-from-this-wallet-to: Transferir saldo desta carteira para outra.
+    transfer-funds-title: Transferir Saldo — {name}
+    unfreeze-this-wallet-to-allow-debits: Desbloqueie esta carteira para permitir débitos.
+    unfreeze-title: Desbloquear {name}?
+    unfreezing-this-wallet-will-restore-normal: Desbloquear esta carteira restaurará o funcionamento normal e permitirá transações de débito.
+    unfrozen-success: '{name} foi desbloqueada.'
+    wallet-frozen: Carteira bloqueada.
+    wallet-unfrozen: Carteira desbloqueada.
+  transaction:
+    internal-notes: Observações internas...
+    short-description-of-this-transaction: Breve descrição desta transação
+  modals:
+    invoice-preview:
+      no-content: Nenhuma pré-visualização disponível.
+    template-preview:
+      no-content: Nenhuma pré-visualização disponível.
+      title: Pré-visualização do Modelo
 
 common:
   ledger: Ledger
@@ -103,5 +631,5 @@ invoice:
     payment-link-copied: URL da fatura copiada para a área de transferência.
     payment-link-copy-failed: Falha ao copiar a URL da fatura. Copie-a manualmente.
     send: Enviar Fatura
-    void: Cancelar Fatura
+    void: Anular Fatura
     edit: Editar Fatura

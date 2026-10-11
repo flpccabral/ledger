@@ -121,8 +121,8 @@ export default class PaymentsTransactionsIndexController extends Controller {
                 filterOptionLabel: 'label',
                 filterOptionValue: 'value',
                 filterOptions: [
-                    { label: 'Credit', value: 'credit' },
-                    { label: 'Debit', value: 'debit' },
+                    { label: this.intl.t('ledger.common.credit'), value: 'credit' },
+                    { label: this.intl.t('ledger.common.debit'), value: 'debit' },
                 ],
             },
             {
@@ -146,7 +146,7 @@ export default class PaymentsTransactionsIndexController extends Controller {
                 filterOptions: ['pending', 'success', 'failed', 'cancelled', 'voided', 'reversed', 'expired'],
             },
             {
-                label: 'Settlement',
+                label: this.intl.t('ledger.common.settlement'),
                 valuePath: 'settlement_status',
                 cellComponent: 'table/cell/status',
                 hidden: true,
@@ -218,10 +218,10 @@ export default class PaymentsTransactionsIndexController extends Controller {
                 filterOptionLabel: 'label',
                 filterOptionValue: 'value',
                 filterOptions: [
-                    { label: 'Card', value: 'card' },
-                    { label: 'Bank Transfer', value: 'bank_transfer' },
-                    { label: 'Wallet', value: 'wallet' },
-                    { label: 'Cash', value: 'cash' },
+                    { label: this.intl.t('ledger.common.card'), value: 'card' },
+                    { label: this.intl.t('ledger.common.bank-transfer'), value: 'bank_transfer' },
+                    { label: this.intl.t('resource.wallet'), value: 'wallet' },
+                    { label: this.intl.t('ledger.common.cash'), value: 'cash' },
                 ],
             },
             {

@@ -21,6 +21,7 @@ import { inject as service } from '@ember/service';
  */
 export default class InvoiceFormComponent extends Component {
     @service currentUser;
+    @service intl;
 
     /** Holds the Invoice::LineItems component instance after it registers. */
     lineItemsRef = null;
@@ -54,7 +55,9 @@ export default class InvoiceFormComponent extends Component {
         const items = this.lineItemsRef.getItems();
         const invalid = items.filter((item) => !item.description?.trim());
         if (invalid.length) {
-            const err = new Error(invalid.length === 1 ? 'One line item is missing a description.' : `${invalid.length} line items are missing a description.`);
+            const err = new Error(
+                invalid.length === 1 ? this.intl.t('ledger.invoice.one-line-item-is-missing-a') : this.intl.t('ledger.invoice.line-items-missing-description', { count: invalid.length })
+            );
             err.errors = [err.message];
             throw err;
         }

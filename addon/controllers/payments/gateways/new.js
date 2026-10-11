@@ -31,7 +31,7 @@ export default class PaymentsGatewaysNewController extends Controller {
             yield this.hostRouter.transitionTo('console.ledger.payments.gateways.details', gateway);
             this.notifications.success(
                 this.intl.t('common.resource-created-success-name', {
-                    resource: 'Gateway',
+                    resource: this.intl.t('resource.gateway'),
                     resourceName: gateway.name,
                 })
             );
