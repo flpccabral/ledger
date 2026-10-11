@@ -1,0 +1,107 @@
+ledger:
+  extension-name: Ledger
+
+common:
+  ledger: Ledger
+  overview: Visão Geral
+  transactions: Transações
+
+resource:
+  account: Conta
+  accounts: Contas
+  invoice: Fatura
+  invoices: Faturas
+  invoice-template: Modelo de Fatura
+  invoice-templates: Modelos de Fatura
+  journal: Lançamento Contábil
+  journal-entries: Lançamentos Contábeis
+  transaction: Transação
+  transactions: Transações
+  wallet: Carteira
+  wallets: Carteiras
+  gateway: Gateway de Pagamento
+  gateways: Gateways de Pagamento
+  wallet-transaction: Transação da Carteira
+  wallet-transactions: Transações da Carteira
+
+column:
+  id: ID
+  number: Número
+  name: Nome
+  code: Código
+  type: Tipo
+  status: Status
+  direction: Direção
+  description: Descrição
+  date: Data
+  created-at: Criado em
+  updated-at: Atualizado em
+  amount: Valor
+  balance: Saldo
+  balance-after: Saldo Após
+  total: Total
+  net-amount: Valor Líquido
+  fee: Taxa
+  tax: Imposto
+  currency: Moeda
+  gateway: Gateway
+  payment-method: Forma de Pagamento
+  reference: Referência
+  memo: Observação
+  period: Período
+  settled-at: Liquidado em
+  failure-reason: Motivo da Falha
+  due-date: Data de Vencimento
+  issued-at: Emitida em
+  invoice-date: Data da Fatura
+  customer: Cliente
+  debit-account: Conta de Débito
+  credit-account: Conta de Crédito
+  source: Origem
+  driver: Provedor
+  environment: Ambiente
+  default: Padrão
+  owner: Titular
+  payer: Pagador
+  payee: Recebedor
+  frozen: Bloqueada
+  orientation: Natureza
+
+menu:
+  dashboard: Painel
+  billing: Faturamento
+  invoices: Faturas
+  payments: Pagamentos
+  wallets: Carteiras
+  gateways: Gateways de Pagamento
+  accounting: Contabilidade
+  chart-of-accounts: Plano de Contas
+  journal-entries: Lançamentos Contábeis
+  general-ledger: Razão Geral
+  reports: Relatórios
+  income-statement: Demonstração de Resultado (DRE)
+  balance-sheet: Balanço Patrimonial
+  trial-balance: Balancete
+  cash-flow: Fluxo de Caixa
+  ar-aging: Contas a Receber por Vencimento
+  wallet-summary: Resumo das Carteiras
+  settings: Configurações
+  invoice-settings: Configurações de Fatura
+  payment-settings: Configurações de Pagamento
+  accounting-settings: Configurações Contábeis
+
+invoice:
+  no-transactions: Nenhuma transação registrada para esta fatura.
+  actions:
+    preview-invoice: Pré-visualizar Fatura nº {number}
+    preview-invoice-fallback: Pré-visualizar Fatura
+    download-pdf: Baixar PDF
+    record-payment: Registrar Pagamento
+    record-payment-title: Registrar Pagamento — {number}
+    copy-payment-link: Copiar Link de Pagamento
+    copy-invoice-url: Copiar URL da Fatura
+    payment-link-copied: URL da fatura copiada para a área de transferência.
+    payment-link-copy-failed: Falha ao copiar a URL da fatura. Copie-a manualmente.
+    send: Enviar Fatura
+    void: Cancelar Fatura
+    edit: Editar Fatura
